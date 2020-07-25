@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/janl/mustache.js/master/mustache.js"></script>
+  <style>
+  * {
+    box-sizing: border-box;
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  .column {
+    float: left;
+    width: 25%;
+    padding: 0 10px;
+  }
+
+  .row {margin: 0 -5px;}
+
+  .row:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  .card {
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+    max-width: 300px;
+    margin: auto;
+    text-align: center;
+    font-family: arial;
+  }
+
+  .price {
+    color: grey;
+    font-size: 22px;
+  }
+
+  .card button {
+    border: none;
+    outline: 0;
+    padding: 12px;
+    color: white;
+    background-color: #000;
+    text-align: center;
+    cursor: pointer;
+    width: 100%;
+    font-size: 18px;
+  }
+
+  .card button:hover {
+    opacity: 0.7;
+  }
+
+  div {
+    word-wrap: break-word;
+  }
+
+
+  /* @media screen and (max-width: 800px) {
+    .column {
+      width: 100%;
+      display: block;
+      margin-bottom: 20px;
+  } */
+  </style>
+  <script>
+  function addToCart(id){
+    $.post("islogged", function (logged){
+      if (logged.user===undefined){
+        alert("You are not logged in");
+        window.location.href='/login';
+      } else {
+        $.post("/addToCart", {pid: id}, function(status){
+          if(status!=='Product added'){
+            alert(status);
+          }
+        })
+      }
+    });
+  }
+
+  $(document).ready(function(){
+    $.post("islogged", function (status){
+
+      if (status.user!=undefined){
+        var divcontent = "<button onclick=\"location.href = '/profile';\">Profile</button>";
+        document.getElementById("logindiv").innerHTML = divcontent;
+        divcontent = "<button onclick=\"location.href = '/cart';\">Cart</button>";
+        document.getElementById("cartdiv").innerHTML = divcontent;
+      }else if (status.admin!=undefined){
+        var divcontent = "<p>Please login as a normal user to purchase</p><button onclick=\"location.href = '/login';\">Login</button>";
+        document.getElementById("logindiv").innerHTML = divcontent;
+      } else {
+        var divcontent = "<button onclick=\"location.href = '/login';\">Login</button>";
+        document.getElementById("logindiv").innerHTML = divcontent;
+      }
+    });
+
+    $.post("/homeProducts", function (res){
+      var temp = $('#products').html();
+      var html = Mustache.render(temp, res);
+      document.getElementById("productdiv").innerHTML = html;
+    });
+  });
+  </script>
+
+  <script type="text/template" id="products">
+    {{#prod}}
+    <div class="column">
+      <div class="card">
+        <img src="{{img}}" alt={{name}} style="width:100%">
+        <p style="font-size: 30px"><b>{{name}}</b><p>
+        <p class="price">${{price}}</p>
+        <p>{{description}}</p>
+        <p><button onclick="addToCart({{id}})">Add to Cart</button></p>
+      </div>
+    </div>
+    {{/prod}}
+  </script>
+
+</head>
+<body>
+  <div style="display: inline" id="logindiv"></div>
+  <div style="display: inline" id="cartdiv"></div>
+  <h1 align="center">Homepage</h1>
+  <p align="center">That's it for now</p>
+  <div style="text-align: center;">
+    <button align="center" onclick="location.href = '/Online_Store/search';">Search</button>
+  <div>
+  <div id="productdiv"></div>
+
+</body>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    input, label {
+      display:block;
+    }
+    form {
+      display: inline-table;
+
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="http://malsup.github.com/jquery.form.js"></script>
+  <script>
+
+    function submitUpdate(){
+      var pid = document.forms.namedItem("update")["pid"].value;
+      var price = document.forms.namedItem("update")["price"].value;
+      var stock = document.forms.namedItem("update")["stock"].value;
+      if(pid==''){
+        alert("A product ID is required");
+      } else {
+        if (!$.isNumeric(pid) || !$.isNumeric(price) || !$.isNumeric(stock)){
+          alert("The ID, price and stock must be numbers")
+        } else {
+          $('#update').ajaxSubmit();
+        }
+      }
+    }
+
+    function submitAdd(){
+      var name = document.forms.namedItem("add")["name"].value;
+      var price = document.forms.namedItem("add")["price"].value;
+      var stock = document.forms.namedItem("add")["stock"].value;
+      if(name==''){
+        alert("A name is required");
+      } else if (price=='') {
+        alert("A price is required");
+      } else if (stock=='') {
+        alert("Stock is required");
+      } else {
+        if (!$.isNumeric(price) || !$.isNumeric(stock)){
+          alert("Price and stock must be numbers")
+        } else {
+          $('#add').ajaxSubmit();
+        }
+      }
+    }
+
+    function submitDelete(){
+       $('#delete').ajaxSubmit();
+    }
+
+    </script>
+</head>
+<body>
+  <div id="controls">
+    <form autocomplete="off" id="update" action="/productControls" method="post" enctype=multipart/form-data>
+      <div>
+        <label for="pid">Product ID:</label>
+        <input type="text" id="pid" name="pid"/><br>
+      </div>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"/><br>
+      </div>
+      <div>
+        <label for=description>Description:</label>
+        <input type="text" id="description" name="description"/><br>
+      </div>
+      <div>
+        <label for=price>Price:</label>
+        <input type="text" id="price" name="price"/><br>
+      </div>
+      <div>
+        <label for=stock>Stock:</label>
+        <input type="text" id="stock" name="stock"/><br>
+      </div>
+      <div>
+        <label for=pic>Image:</label>
+        <input type="file" name="pic" accept="image/*">
+      </div>
+      <input type="button" id="updateButton" value="Update" onclick="submitUpdate()" />
+      <input type="hidden" name="form" value="update" />
+    </form>
+
+    <form autocomplete="off" id="add" action="/productControls" method="post" enctype=multipart/form-data>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name"/><br>
+      </div>
+      <div>
+        <label for=description>Description:</label>
+        <input type="text" id="description" name="description"/><br>
+      </div>
+      <div>
+        <label for=price>Price:</label>
+        <input type="text" id="price" name="price"/><br>
+      </div>
+      <div>
+        <label for=stock>Stock:</label>
+        <input type="text" id="stock" name="stock"/><br>
+      </div>
+      <div>
+        <label for=pic>Image:</label>
+        <input type="file" name="pic" accept="image/*">
+      </div>
+      <input type="button" id="addButton" value="Add" onclick="submitAdd()" />
+      <input type="hidden" name="form" value="add" />
+    </form>
+
+    <form autocomplete="off" id="delete" action="/productControls" method="post" enctype=multipart/form-data>
+      <div>
+        <label for="pid">Product ID:</label>
+        <input type="text" id="pid" name="pid"/><br>
+      </div>
+      <input type="hidden" name="form" value="delete" />
+      <input type="button" id="deleteButton" value="Remove" onclick="submitDelete()" />
+    </form>
+  </div>
+</body>

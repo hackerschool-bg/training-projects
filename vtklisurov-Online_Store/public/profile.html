@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    input, label {
+      display:block;
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+
+  $(document).ready(function(){
+    // $.post("islogged", function (status){
+    //   if (status.user===undefined){
+    //     document.getElementById("content").innerHTML = 'Please login before adding an address<button onclick="window.location.href='/'">Home</button>';
+    //   }
+    // });
+  })
+
+  function submitForm(){
+    $.post("/newAddr", $('#addressform').serialize(),function(status){
+      alert(status);
+    })
+  }
+  </script>
+</head>
+<body>
+  <h1>Still a placeholder</h1>
+</body>

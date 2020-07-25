@@ -1,0 +1,276 @@
+<!DOCTYPE html >
+<html>
+  <head>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/css/select2.min.css" rel="stylesheet" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.8/js/select2.min.js"></script>
+    <title>Wordpress map</title>
+    <style>
+     #map {
+        height: 850px;
+	      width: 100%;
+        margin-left: 150px;
+      }
+
+      html, body {
+        height: 100%;
+	      width: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+      form {
+        margin: auto;
+        width: 350px;
+        padding: 1em;
+                padding-top: 1px;
+        border: 0px solid #CCC;
+          border-radius: 1em;
+      }
+
+      form div + div {
+        margin-top: 10px;
+      }
+
+      label {
+        display: inline-block;
+        width: 250px;
+        text-align: left;
+      }
+
+      input, textarea {
+        font: 1em sans-serif;
+        width: 300px;
+        box-sizing: border-box;
+        border: 1px solid #999;
+      }
+
+      input:focus, textarea:focus {
+        border-color: #000;
+      }
+
+      textarea {
+        vertical-align: top;
+        height: 5em;
+      }
+
+      .button {
+        padding-left: 0px;
+        padding-right: 0px;
+        padding-top: 0px;
+        padding-bottom: 0px;
+      }
+
+      button {
+        margin: auto;
+        line-height: 0px;
+        height: 50px;
+        width:310px;
+      }
+
+      #by_map {
+        position: absolute;
+        top: 370px;
+        left: 10px;
+        z-index: 99;
+      }
+
+      #markercnt {
+        position: absolute;
+        top: 1230px;
+        left: 395px;
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="map"></div>
+
+    <script>
+      var map;
+      var markersArr = [];
+      var infoWindow;
+      function initMap()
+      {
+        map = new google.maps.Map(document.getElementById('map'),
+        {
+          center: new google.maps.LatLng(20, 0),
+          zoom: 2,
+          disableDefaultUI: true
+        });
+        infoWindow = new google.maps.InfoWindow;
+
+      /*downloadUrl('http://localhost/wp-content/plugins/map-integration/outputXML.php', function(data)
+        {
+          var xml = data.responseXML;
+          markers = xml.documentElement.getElementsByTagName('marker');
+          Array.prototype.forEach.call(markers, function(markerElem)
+          {
+            var id = markerElem.getAttribute('id');
+            var name = markerElem.getAttribute('name');
+            var point = new google.maps.LatLng(
+              parseFloat(markerElem.getAttribute('lat')),
+              parseFloat(markerElem.getAttribute('lng')));
+
+              var infowincontent = document.createElement('div');
+              var strong = document.createElement('strong');
+              strong.textContent = name
+              infowincontent.appendChild(strong);
+              infowincontent.appendChild(document.createElement('br'));
+
+              var marker = new google.maps.Marker
+              ({
+              map: map,
+              position: point,
+            });
+            markersArr.push(marker);
+            marker.addListener('click', function()
+            {
+              infoWindow.setContent(infowincontent);
+              infoWindow.open(map, marker);
+            });
+          });
+        });*/
+      }
+
+      function downloadUrl(url, callback)
+      {
+        var request = new XMLHttpRequest();
+        request.onreadystatechange = function()
+        {
+          if (request.readyState == 4)
+          {
+            request.onreadystatechange = doNothing;
+            callback(request, request.status);
+          }
+        };
+
+        request.open('GET', url, true);
+        request.send(null);
+      }
+
+      function doNothing() {}
+
+      function setMapOnAll(map) {
+        for (var i = 0; i < markersArr.length; i++) {
+          markersArr[i].setMap(map);
+        }
+      }
+
+      function deleteMarkers() {
+        setMapOnAll(null);
+        markersArr = [];
+        document.getElementById("cnt").innerHTML = markersArr.length;
+      }
+
+      function validate(){
+        var lat1=document.getElementById("lat1").value;
+        var lat2=document.getElementById("lat2").value;
+        var lng1=document.getElementById("lng1").value;
+        var lng2=document.getElementById("lng2").value;
+        lat1=lat1.replace(/,/,'.');
+        lng1=lng1.replace(/,/,'.');
+        lat2=lat2.replace(/,/,'.');
+        lng2=lng2.replace(/,/,'.');
+        lat1=lat1.replace(/ /g,'');
+        lng1=lng1.replace(/ /g,'');
+        lat2=lat2.replace(/ /g,'');
+        lng2=lng2.replace(/ /g,'');
+        document.getElementById("lat1").value=lat1;
+        document.getElementById("lng1").value=lng1;
+        document.getElementById("lat2").value=lat2;
+        document.getElementById("lng2").value=lng2;
+        if ($.isNumeric(lat1) && $.isNumeric(lng1) && $.isNumeric(lat2) && $.isNumeric(lng2)) submitForm()
+        else if (lat1=="" && lat2=="" && lng1=="" && lng2=="") submitForm()
+        else alert("Coordinates must all be a decimal number");
+
+      }
+
+      function submitForm()
+      {
+        $.post(
+          '/wp-content/plugins/map-integration/outputXML.php',
+          $('#filter').serialize(),
+          function(data){
+            deleteMarkers();
+            var xml = data
+            markers = xml.documentElement.getElementsByTagName('marker');
+            Array.prototype.forEach.call(markers, function(markerElem){
+              var id = markerElem.getAttribute('id');
+              var name = markerElem.getAttribute('name');
+              var country = markerElem.getAttribute('country');
+              var point = new google.maps.LatLng(
+                parseFloat(markerElem.getAttribute('lat')),
+                parseFloat(markerElem.getAttribute('lng')));
+
+                var contentstr="<div><b>" + name + ", " + country + "\n</b></div>"
+                + "<div><b>Coordinates: " + markerElem.getAttribute('lat') + " " + markerElem.getAttribute('lng') + "\n</b></div>";
+
+                var marker = new google.maps.Marker
+                ({
+                  map: map,
+                  position: point,
+                });
+                markersArr.push(marker);
+                document.getElementById("cnt").innerHTML = markersArr.length;
+                marker.addListener('click', function()
+                {
+                  infoWindow.setContent(contentstr);
+                  infoWindow.open(map, marker);
+                });
+              });
+            });
+            document.getElementById("cnt").innerHTML = markersArr.length;
+      }
+
+      $(document).ready(function() {
+
+      });
+      $(document).ready(function(){
+        $("#by_map").load('/wp-content/plugins/map-integration/populate_menu.php');
+
+        setTimeout(function(){
+          $('#type').select2();
+          $("#country").blur(function(){
+            var country=document.getElementById("country").value;
+            var query="country=" + country;
+            $.post("/wp-content/plugins/map-integration/outputXML.php", $('#filter').serialize(), function(data) {
+              var dataList = $("#city_name");
+              var cities = data.documentElement.getElementsByTagName('marker');
+              dataList.empty();
+              var opt = $("<option></option>").attr("value", "");
+              dataList.append(opt);
+              var usedNames=[];
+              Array.prototype.forEach.call(cities, function(cityElem){
+                var name = cityElem.getAttribute('name');
+                if($.inArray(name, usedNames) === -1){
+                  usedNames.push(name);
+                  var opt = $("<option></option>").attr("value", name);
+                  dataList.append(opt);
+                }
+              });
+            });
+          });
+        }, 1000)
+      });
+
+    </script>
+    <div id="markercnt">
+    <p style="margin: 0; display: inline;">Marker count: </p>
+    <p id="cnt" style="margin: 0; display: inline;" align="right"></p>
+    </div>
+    <script>
+    document.getElementById("cnt").innerHTML = markersArr.length;
+    </script>
+
+<div id="by_map">
+
+</div>
+  <iframe width="0" height="0" border="0" name="dummyframe" id="dummyframe" style="display:none"></iframe>
+    <script async defer
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAoaY4TIlQXDHyd5dkFrM5LLiAy9MqZMAA&callback=initMap">
+    </script>
+  </body>
+</html>

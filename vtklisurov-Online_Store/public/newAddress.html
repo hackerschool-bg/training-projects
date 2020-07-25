@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    input, label {
+      display:block;
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+
+  $(document).ready(function(){
+    // $.post("islogged", function (status){
+    //   if (status.user===undefined){
+    //     document.getElementById("content").innerHTML = 'Please login before adding an address<button onclick="window.location.href='/'">Home</button>';
+    //   }
+    // });
+  })
+
+  function submitForm(){
+    $.post("/newAddr", $('#addressform').serialize(),function(status){
+      alert(status);
+    })
+  }
+  </script>
+</head>
+<body>
+  <div id="content">
+    <form autocomplete="off" id="addressform" method="POST" >
+      <div>
+        <label for="country">Country:</label>
+        <input type="text" id="country" name="country" required/><br>
+      </div>
+      <div>
+        <label for="postal">Postal code:</label>
+        <input type="text" id="postal" name="postal" required/><br>
+      </div>
+      <div>
+        <label for="city">City:</label>
+        <input type="text" id="fname" name="city" required/><br>
+      </div>
+      <div>
+        <label for="straddr">Street address:</label>
+        <input type="text" id="straddr" name="straddr" required/><br>
+      </div>
+      <div id="add"><input type="button" style="display:inline" id="submit" value="Add address" onclick="submitForm(false)" /></div>
+    </form>
+  </div>
+</body>

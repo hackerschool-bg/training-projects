@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    input, label {
+      display:block;
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+  function submitForm(){
+    var uname = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
+    var pass2 = document.getElementById("password2").value;
+    var fname = document.getElementById("fname").value;
+    var lname = document.getElementById("lname").value;
+    var email = document.getElementById("email").value;
+
+    if(uname !="" && pass!="" && pass2!="" && fname!="" && lname!="" && email!=""){
+      if (document.getElementById("password").value == document.getElementById("password2").value){
+        $.post("register.js", $("#registerform").serialize(), function (status){
+          if (status!="All good") alert(status);
+          else window.location.replace("./public/success.html");
+        });
+      }
+      else alert("passwords do not match");
+    }
+    else alert("all fields are required");
+  }
+  function goToLogin(){
+    window.location.href="login";
+  }
+  </script>
+</head>
+<body>
+  <form autocomplete="off" id="registerform" action="register.php" method="POST" >
+    <div>
+      <label for="username">Username:</label>
+      <input type="text" id="username" name="uname"/><br>
+    </div>
+    <div>
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="pass"/><br>
+    </div>
+    <div>
+      <label for="password2">Confirm password:</label>
+      <input type="password" id="password2" name="pass2"/><br>
+    </div>
+    <div>
+      <label for="fname">First name:</label>
+      <input type="text" id="fname" name="fname"/><br>
+    </div>
+    <div>
+      <label for="lname">Last name:</label>
+      <input type="text" id="lname" name="lname"/><br>
+    </div>
+    <div>
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email"/><br>
+    </div>
+      <input type="button" id="submit" value="Register" onclick="submitForm()" />
+      <label style="display:inline" for="login">If you already have an account, please log in</label>
+      <input style="display:inline" type="button" id="login" value="Login" onclick="goToLogin()" />
+    </form>
+</body>

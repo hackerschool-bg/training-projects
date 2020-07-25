@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<head>
+  <style>
+    button{
+      margin-bottom: 10px;
+    }
+    pre{
+      margin-bottom: 0px;
+    }
+    .product{
+      display: inline-block;
+      margin-right: 20px;
+    }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script src="https://cdn.rawgit.com/janl/mustache.js/master/mustache.js"></script>
+  <script>
+
+  function removeProduct(pid, forAll){
+    $.post('/removeProduct',{item: pid, all: forAll}, function(){
+        getCart();
+      })
+  }
+
+  function empty(){
+    if (confirm('Are you sure you want to empty your cart?')) {
+      $.post('/removeAll', function(){
+        getCart();
+      })
+    }
+  }
+
+  function buy(){
+    $.post('/checkStock', function(status){
+      if (status!=='Ok'){
+        alert(status);
+        return;
+      } else {
+        window.location.href='/order';
+      }
+    })
+  }
+
+  function getCart(user){
+    var div = document.getElementById('itemsdiv');
+    div.innerHTML='';
+
+    $.post('/getCart', function(cart){
+
+      if (cart.product===undefined || (cart.product.length===1 && cart.product[0].name===undefined)){
+        div.innerHTML='<p>Your shopping cart is empty</p>';
+        document.getElementById("buy").style.display="none";
+        document.getElementById("empty").style.display="none";
+        return;
+      }
+
+      var temp = $('#cartTemp').html();
+      var html = Mustache.render(temp, cart);
+
+      document.getElementById("itemsdiv").innerHTML = html;
+    })
+  }
+
+  $(document).ready(function(){
+    $.post("islogged", function (logged){
+      if (logged.user===undefined){
+        alert("You are not logged in");
+        window.location.href='/';
+      } else {
+        getCart(logged.user);
+      }
+    });
+  })
+  </script>
+
+  <script type="text/template" id="cartTemp">
+    {{#product}}
+    <div class="product">
+      <pre>Product: {{name}}
+Price: {{price}}
+Quantity: {{quantity}}
+Sum: {{sum}}</pre>
+    <button onclick="removeProduct({{id}}, false)">Remove</button>
+    <button onclick="removeProduct({{id}}, true)">Remove All</button>
+    </div>
+    {{/product}}
+    <pre>Total price: {{total}}</pre>
+  </script>
+</head>
+
+<body>
+  <div id="itemsdiv"></div>
+  <button onclick="window.location.href='/'">Home</button>
+  <button id="buy" onclick="buy()">Buy</button>
+  <div></div>
+  <button id="empty" onclick="empty()">Empty cart</button>
+</body>

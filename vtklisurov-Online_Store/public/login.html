@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<head>
+  <style>
+  input, label {
+    display:block;
+  }
+  </style>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <script>
+  localStorage.removeItem('status');
+
+  $(document).ready(function(){
+    $.post("islogged", function (status){
+      if (status.user!=undefined || status.admin!=undefined){
+        document.getElementById("content").innerHTML = "<p1>You are already logged in</p><button onclick='logout()'>Logout</button>";
+      }
+    });
+  })
+
+  function logout(){
+    $.post("logout", function(res){
+      window.location.href='/login';
+    });
+  }
+
+  function submitForm(){
+    var uname = document.getElementById("username").value;
+    var pass = document.getElementById("password").value;
+
+    if(uname !="" && pass!=""){
+      $.post("login", $("#loginform").serialize(), function (status){
+        if (status=="Success"){
+          alert("Welcome");
+          window.location.href="/";
+        }
+        else if (status=="Admin"){
+          alert("Welcome, admin");
+          window.location.href="/admin";
+        }
+        else alert(status);
+      });
+    }
+    else alert("All fields are required");
+  }
+  function goToRegister(){
+    window.location.href="register";
+  }
+  </script>
+</head>
+<body>
+  <div id="content">
+    <form autocomplete="off" id="loginform" action="login.php" method="POST" >
+      <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="uname"/><br>
+      </div>
+      <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="pass"/><br>
+      </div>
+      <input type="button" id="login" value="Login" onclick="submitForm()" />
+      <label style="display:inline" for="register">If you don't have an account, please register: </label>
+      <input style="display:inline" type="button" id="register" value="Register" onclick="goToRegister()" />
+    </form>
+  </div>
+</body>

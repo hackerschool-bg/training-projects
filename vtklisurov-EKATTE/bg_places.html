@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<head>
+  <title>Insert data to PostgreSQL</title>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+  <style>
+
+    #buttons{
+      display: inline-block;
+    }
+    #res{
+      margin: 100px;
+    }
+    #input{
+      align-items: center;
+    }
+
+  </style>
+  <script>
+    $.fn.form = function() {
+      var formData = {};
+      this.find('[name]').each(function() {
+        formData[this.name] = this.value;
+      })
+      return formData;
+    };
+
+    $(document).ready(function(){
+      $("#rowcnt").load('numrows.php');
+    })
+
+    function submitForm()
+    {
+      $("#res").load('search.php', $("#input").form());
+    }
+
+    function deleteRes(){
+       document.getElementById("res").innerHTML = "";
+    }
+
+    function handleSubmit() {
+       submitForm();
+       return false;
+     }
+  </script>
+</head>
+<body>
+  <center>
+    <form onsubmit='return handleSubmit();' autocomplete="off" id="input" name="province" action="search.php" method="POST" >
+      <input type="text" id="inputext" name="input"/><br>
+      <input type="button" id="submit" value="Filter" onclick="submitForm()" />
+      <button type="reset" onclick="deleteRes()">Reset</button>
+    </form>
+  </ceter>
+
+  <div id="rowcnt"></div>
+  <div id="res"></div>
+</body>
+</html>
