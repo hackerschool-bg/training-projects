@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>CSSource</title>
+  <style type="text/css">
+    body {
+      height: 100%;
+      width: 100%;
+      margin: 0;
+      padding: 0;
+      background-color: #000010;
+    }
+    #header {
+      z-index: 3;
+      height: 7rem;
+      width: 100%;
+      top: 0%;
+      position: fixed;
+      background: url('./img/header-trim.png');
+      background-size: 100% 100%;
+    }
+    #footer {
+      z-index: 3;
+      height: 7rem;
+      width: 100%;
+      bottom: 0%;
+      position: fixed;
+      background: url('./img/footer-trim.png');
+      background-size: 100% 100%;
+    }
+    #container {
+      margin-top: 6.25rem;
+      margin-left: 15.625rem;
+      color: white;
+      overflow: auto;
+    }
+    .side-bar-container-enlarged {
+      position: fixed;
+      float: left;
+      width: 12.5rem;
+      height: 100%;
+      margin-top: -6.25rem;
+      background: #102040;
+    }
+    .side-bar-container-enlarged #side-bar {
+      margin-top: 6.25rem;
+      color: white;
+    }
+    .side-bar-container-enlarged #side-bar {
+      margin-top: 9.375rem;
+    }
+    .side-bar-container-enlarged #side-bar div {
+      display: none;
+      margin-left: 1.5625rem;
+      margin-top: 0.625rem;
+    }
+    .side-bar-container-enlarged #side-bar div a {
+      display: block;
+      font-size: 1rem;
+      color: white;
+    }
+    .side-bar-container-enlarged #side-bar label {
+      display: block;
+      font-size: 1.5625rem;
+      margin-left: 2.5rem;
+      margin-top: 1.25rem;
+    }
+    .side-bar-container-enlarged #side-bar label img {
+      display: inline;
+      margin-left: 0.3125rem;
+      width: 1.875rem;
+      height: 1.875rem;
+    }
+    .side-bar-container-enlarged #side-bar label:hover {
+      color: red;
+    }
+    .side-bar-container-enlarged #side-bar div a:hover {
+      color: red;
+    }
+    .side-bar-container-enlarged #side-bar div a img {
+      width: 0.9375rem;
+      height: 0.9375rem;
+    }
+    .side-bar-container-enlarged #side-bar label:before {
+      content: '➤ ';
+    }
+    .side-bar-container-enlarged #side-bar input[type=checkbox]:checked + label:before {
+      content: '⮟ ';
+    }
+    .side-bar-container-enlarged #side-bar input[type=checkbox]:checked + label div {
+      display: block
+    }
+    .side-bar-container-enlarged #side-bar input[type=checkbox] {
+      display: none;
+    }
+    /**/
+    .side-bar-container-minimized {
+      position: fixed;
+      float: left;
+      height: 100%;
+      margin-top: -6.25rem;
+    }
+    .side-bar-container-minimized #side-bar {
+      margin-top: 9.375rem;
+      color: white;
+    }
+    .side-bar-container-minimized #side-bar div {
+      display: none;
+      margin-left: 1.5625rem;
+      margin-top: 0.625rem;
+    }
+    .side-bar-container-minimized #side-bar div a {
+      display: block;
+      float: left;
+      width: 12.5rem;
+      margin-left: 2.8125rem;
+      color: white;
+    }
+    .side-bar-container-minimized #side-bar div a:hover {
+      color: red;
+    }
+    .side-bar-container-minimized #side-bar div a img {
+      display: inline;
+      width: 0.9375rem;
+      height: 0.9375rem;
+    }
+    .side-bar-container-minimized #side-bar label {
+      display: block;
+    }
+    .side-bar-container-minimized #side-bar label img {
+      display: block;
+      width: 3.125rem;
+      height: 3.125rem;
+    }
+    .side-bar-container-minimized #side-bar label:hover {
+      color: red;
+    }
+    .side-bar-container-minimized #side-bar input[type=checkbox] + label:hover div {
+      display: block;
+      margin-top: -3.125rem;
+      position: absolute;
+    }
+    .side-bar-container-minimized #side-bar input[type=checkbox] {
+      display: none;
+    }
+    #toggle-menu {
+      display: none;
+    }
+    input[type=checkbox]:checked + label #toggle-image {
+      content: url('./img/toggleon.png');
+    }
+    input[type=checkbox]:checked + label #toggle-image {
+      content: url('./img/toggleon.png');
+    }
+    #toggle-label {
+      margin-left: 4.375rem;
+    }
+    #toggle-image {
+      width: 2rem;
+      height: 2rem;
+      top: 1.875rem;
+      position: fixed;
+    }
+    #rocket {
+      position: fixed;
+      left: 13.75rem;
+      width: 4rem;
+      height: 4rem;
+      animation: liftoff 15s infinite;
+    }
+    #logo h2 {
+      position: fixed;
+      left: 17.5rem;
+      top: 1.5625rem;
+      color: white;
+    }
+    #content {
+      margin-bottom: 13.125rem;
+    }
+    #content .controls {
+      width: 6.25rem;
+      height: 6.25rem;
+    }
+    #gallery {
+      display: grid;
+      grid-template-columns: 10rem 10rem 10rem 10rem 10rem;
+      grid-gap: 1rem;
+    }
+    #gallery:empty + h1 {
+      display: block;
+    }
+    #gallery .image-container {
+      display: inline-block;
+      margin-right: 1.25rem;
+      margin-bottom: 1.25rem;
+      width: 9.375rem;
+      height: 9.375rem;
+    }
+    #gallery img {
+      position: absolute;
+      width: 9.375rem;
+      height: 9.375rem;
+    }
+    #gallery img:hover {
+      z-index: 2;
+      margin-top: -3.125rem;
+      margin-left: -3.125rem;
+      width: 15.625rem;
+      height: 15.625rem;
+      transition: 0.3s;
+    }
+    #notification {
+      display: none;
+      z-index: 3;
+      position: fixed;
+      right: 6.25rem;
+      top: 6.25rem;
+      border-radius: 0.3125rem;
+      background: #102040;
+      width: 13.125rem;
+      height: 6.25rem;
+      line-height: 5.625rem;
+      text-align: center;
+    }
+    #notification span {
+      display: inline-block;
+      vertical-align: middle;
+      line-height: normal;
+    }
+    #notif-checkbox:checked + label div {
+      display: block;
+    }
+    #notif-checkbox:checked + label + div label span {
+      z-index: -1;
+    }
+    #notif-checkbox {
+      display: none;
+    }
+    #notif-span {
+      position: fixed;
+      background: #102040;
+      right: 1.25rem;
+      bottom: 13.125rem;
+    }
+    #no-rockets-text {
+      display: none;
+    }
+
+    @keyframes liftoff {
+      0% {top: 1.25rem;}
+      20% {top: 1.25rem;}
+      22% {top: 1.3125rem;}
+      24% {top: 1.25rem;}
+      26% {top: 1.3125rem;}
+      28% {top: 1.25rem;}
+      30% {top: 1.3125rem;}
+      31% {top: 1.25rem;}
+      32% {top: 1.3125rem;}
+      33% {top: 1.25rem;}
+      34% {top: 1.3125rem;}
+      35% {top: 1.25rem;}
+      36% {top: 1.3125rem;}
+      37% {top: 1.25rem;}
+      38% {top: 1.3125rem;}
+      39% {top: 1.25rem;}
+      70% {top: -12.5rem;}
+      100% {top: 1.25rem;}
+    }
+
+    @media print {
+      /*replace with print class ?*/
+      #header, #footer, #side-bar-container, #page-name, #plus, #minus, #notif-span {
+        display: none;
+      }
+      #container {
+        margin-left: 3.125rem;
+        color: white;
+        overflow: auto;
+      }
+      #best-rockets-text {
+        display: block;
+        margin-left: 18.75rem;
+      }
+    }
+
+    @media all and (max-width: 1024px) {
+      #gallery {
+        display: grid;
+        grid-template-columns: 10rem 10rem 10rem;
+        grid-gap: 1rem 4rem;
+      }
+      #gallery .image-container {
+        display: inline-block;
+        width: 13rem;
+        height: 13rem;
+      }
+      #gallery img {
+        position: absolute;
+        width: 13rem;
+        height: 13rem;
+      }
+      #gallery img:hover {
+        z-index: 2;
+        margin-top: -2rem;
+        margin-left: -2rem;
+        width: 17rem;
+        height: 17rem;
+        transition: 0.3s;
+      }
+    }
+  </style>
+</head>
+  <body>
+  <div id="header">
+    <input type="checkbox" id="toggle-menu">
+    <label for="toggle-menu" id="toggle-label"><img id="toggle-image" src="./img/toggleoff.png"></label>
+
+    <div id="logo">
+      <img src="./img/rocket.png" id="rocket">
+      <h2>Space Flights</h2>
+    </div>
+  </div>
+  <div id="side-bar-container" class="side-bar-container-enlarged">
+    <div id="side-bar">
+      <input type="checkbox" id="menu-one">
+      <label for="menu-one">Rockets<img src="./img/rocket.png">
+        <div>
+          <a href="#"><img src="./img/infoicon.png">Submenu 1</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 2</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 3</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 4</a>
+        </div>
+      </label>
+      <input type="checkbox" id="menu-two">
+      <label for="menu-two">Pictures<img src="./img/picicon.png">
+        <div>
+          <a href="#"><img src="./img/infoicon.png">Submenu 1</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 2</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 3</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 4</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 5</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 6</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 7</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 8</a>
+        </div>
+      </label>
+      <input type="checkbox" id="menu-three">
+      <label for="menu-three">About<img src="./img/questionicon.png">
+        <div>
+          <a href="#"><img src="./img/infoicon.png">Submenu 1</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 2</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 3</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 4</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 5</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 6</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 7</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 8</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 9</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 10</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 11</a>
+          <a href="#"><img src="./img/infoicon.png">Submenu 12</a>
+        </div>
+      </label>
+    </div>
+  </div>
+  <div id="container">
+    <h1 id="page-name">Rockets</h1>
+    <h1 id="best-rockets-text" hidden="hidden">Best Rockets EU</h1>
+    <input type="checkbox" id="notif-checkbox">
+    <label for="notif-checkbox"><div id="notification"><span>You've just been Notified</span></div></label>
+    <div id="content">
+      <label for="notif-checkbox">
+        <span id="notif-span">Notify me</span>
+      </label>
+      <a href="#" id="plus"><img src="./img/plus.png" class="controls"></a>
+      <a href="#" id="minus"><img src="./img/minus.png" class="controls"></a>
+      <div id="gallery"><div class="image-container"><img src="./img/rocket7.jpg"></div></div>
+      <h1 id="no-rockets-text">All rockets took off</h1>
+    </div>
+  </div>
+  <div id="footer"></div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  let index = 0;
+  document.getElementById('toggle-menu').addEventListener('change', (event) => {
+    document.getElementById('side-bar-container').setAttribute('class', event.target.checked ? 'side-bar-container-minimized' : 'side-bar-container-enlarged');
+  });
+
+  document.getElementById('plus').addEventListener('click', (event) => {
+    const imgContainer = document.createElement('div');
+    imgContainer.className = 'image-container';
+    const img = document.createElement('img');
+    img.setAttribute('src', `./img/rocket${(index++%7) + 1}.jpg`);
+    imgContainer.appendChild(img);
+    document.getElementById('gallery').appendChild(imgContainer);
+  });
+
+  document.getElementById('minus').addEventListener('click', (event) => {
+    let gallery = document.getElementById('gallery');
+    let elements = gallery.getElementsByTagName('div');
+    if (elements.length > 0) gallery.removeChild(elements[0]);
+  });
+</script>

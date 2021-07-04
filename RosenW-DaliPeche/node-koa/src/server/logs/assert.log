@@ -1,0 +1,126 @@
+2018-09-11T15:05:17.881Z:  Error: No total in post buy
+2018-09-12T09:02:36.860Z:  TypeError: Assignment to constant variable.
+2018-09-12T09:04:40.256Z:  TypeError: Assignment to constant variable.
+2018-09-12T10:23:52.956Z:  TypeError: Assignment to constant variable.
+2018-09-13T08:00:32.023Z:  Error: The partial navBar could not be found
+2018-09-13T11:17:15.978Z:  Error: Parse error on line 8:
+...ody>    {{> navBar {{username}} }}    
+----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'OPEN'
+2018-09-13T11:23:03.956Z:  Error: Parse error on line 5:
+...ogged in as: {{JSON.stringify(this)}} ({
+-----------------------^
+Expecting 'ID', got 'INVALID'
+2018-09-13T11:33:44.658Z:  Error: Parse error on line 8:
+...ody>    {{> navBar {{username}}}}    {
+----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'OPEN'
+2018-09-13T14:06:51.012Z:  Error: Post /admin user has no permissions
+2018-09-14T12:09:44.716Z:  Error: Post /admin user not found
+2018-09-14T12:11:03.088Z:  Error: Post /admin user not found
+2018-09-14T12:13:21.005Z:  Error: ENOENT: no such file or directory, open '/admin_form.hbs'
+2018-09-14T12:14:09.481Z:  Error: Post /admin user not found
+2018-09-14T12:22:09.726Z:  Error: ENOENT: no such file or directory, open '/admin_form.hbs'
+2018-09-14T13:03:19.584Z:  Error: Error while querying: error: permission denied for relation countries
+2018-09-14T13:04:24.237Z:  Error: Error while querying: error: permission denied for sequence countries_id_seq
+2018-09-14T14:10:17.036Z:  Error: Error while querying: error: column reference "name" is ambiguous
+2018-09-14T14:11:29.676Z:  Error: Error while querying: error: column ctr.country does not exist
+2018-09-19T11:49:41.061Z:  Error: Error while querying: error: duplicate key value violates unique constraint "backoffice_users_roles_pkey"
+2018-09-19T11:59:33.485Z:  Error: Error while querying: error: duplicate key value violates unique constraint "backoffice_users_roles_pkey"
+2018-09-19T14:58:05.181Z:  Error: Post /backoffice-users body has no role id
+2018-09-19T15:24:28.104Z:  Error: Error while querying: error: bind message supplies 1 parameters, but prepared statement "" requires 0
+2018-09-19T16:16:16.429Z:  Error: Post /backoffice-users has no username
+2018-09-19T16:16:50.939Z:  Error: Post /backoffice-users has no username
+2018-09-19T16:18:11.449Z:  Error: Error while querying: error: operator does not exist: text = integer
+2018-09-19T16:28:23.069Z:  Error: Username in /backoffice-users has no id
+2018-09-19T16:29:16.879Z:  Error: Username in /backoffice-users has no id
+2018-09-19T16:36:03.828Z:  Error: Error while querying: error: duplicate key value violates unique constraint "backoffice_users_roles_pkey"
+2018-09-21T15:27:59.843Z:  Error: Error while querying: error: syntax error at or near "GROUP"
+2018-09-21T15:28:14.502Z:  Error: Error while querying: error: there is no parameter $1
+2018-09-21T15:29:35.331Z:  Error: Error while querying: error: column "ct.id" must appear in the GROUP BY clause or be used in an aggregate function
+2018-09-21T15:34:10.501Z:  ReferenceError: total is not defined
+2018-09-22T16:43:10.822Z:  error: password authentication failed for user "dalipecheclient"
+2018-09-22T17:01:42.632Z:  TypeError: Cannot set property 'can_see_users' of undefined
+2018-09-22T17:02:34.903Z:  Error: Error while querying: error: function unaccent(text) does not exist
+2018-09-22T17:08:30.148Z:  Error: Error while querying: error: function unaccent(text) does not exist
+2018-09-22T17:36:02.311Z:  ReferenceError: term is not defined
+2018-09-22T17:36:34.031Z:  ReferenceError: page is not defined
+2018-09-22T17:52:57.088Z:  Error: Parse error on line 66:
+...elected');</script>
+----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+2018-09-22T17:53:28.868Z:  Error: Parse error on line 66:
+...elected');</script>
+----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+2018-09-22T17:54:46.693Z:  Error: Parse error on line 66:
+...elected');</script>
+----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+2018-09-22T17:57:03.112Z:  Error: Parse error on line 66:
+...elected');</script>
+----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+2018-09-22T18:27:53.488Z:  Error: getaddrinfo EAI_AGAIN localhost:5432
+2018-09-22T18:27:57.997Z:  Error: getaddrinfo EAI_AGAIN localhost:5432
+2018-09-22T18:29:43.504Z:  Error: getaddrinfo EAI_AGAIN localhost:5432
+2018-09-22T18:32:31.355Z:  Error: getaddrinfo EAI_AGAIN localhost:5432
+2018-09-24T09:07:55.063Z:  Error: Parse error on line 102:
+...{event}}';</script>
+----------------------^
+Expecting 'OPEN_INVERSE_CHAIN', 'INVERSE', 'OPEN_ENDBLOCK', got 'EOF'
+2018-09-25T07:24:51.086Z:  Error: Error while querying: error: bind message supplies 3 parameters, but prepared statement "" requires 1
+2018-09-25T11:58:56.557Z:  Error: Parse error on line 75:
+...         {{#if role !== ../role}}      
+-----------------------^
+Expecting 'CLOSE_RAW_BLOCK', 'CLOSE', 'CLOSE_UNESCAPED', 'OPEN_SEXPR', 'CLOSE_SEXPR', 'ID', 'EQUALS', 'OPEN_BLOCK_PARAMS', 'STRING', 'NUMBER', 'BOOLEAN', 'UNDEFINED', 'NULL', 'DATA', 'SEP', got 'INVALID'
+2018-09-25T13:04:31.226Z:  Error: Error while querying: error: column "user_id" does not exist
+2018-09-25T13:04:59.909Z:  Error: Error while querying: error: column "user_id" does not exist
+2018-09-25T13:59:00.960Z:  Error: Error while making a transaction: Error: Query values must be an array
+2018-09-26T13:49:22.895Z:  ReferenceError: filters is not defined
+2018-09-26T15:09:41.962Z:  TypeError: Assignment to constant variable.
+2018-09-26T16:34:05.833Z:  TypeError: u.entries(...) is not a function or its return value is not iterable
+2018-09-26T16:35:13.043Z:  TypeError: Assignment to constant variable.
+2018-09-27T07:57:39.612Z:  ReferenceError: dateTos is not defined
+2018-09-27T08:47:53.853Z:  ReferenceError: c is not defined
+2018-09-27T08:47:58.079Z:  ReferenceError: c is not defined
+2018-09-27T10:55:38.827Z:  ReferenceError: substr is not defined
+2018-09-27T13:01:50.119Z:  ReferenceError: u is not defined
+2018-10-09T10:38:51.847Z:  Error: Error while querying: error: syntax error at or near "ORDER"
+2018-10-09T10:39:11.816Z:  Error: Error while querying: error: syntax error at or near "ORDER"
+2018-10-09T10:39:49.235Z:  Error: Error while querying: error: syntax error at end of input
+2018-10-09T10:40:18.799Z:  Error: Error while querying: error: syntax error at or near "GROUP"
+2018-10-09T10:41:04.770Z:  Error: Error while querying: error: syntax error at or near "GROUP"
+2018-10-09T10:43:00.388Z:  Error: Error while querying: error: syntax error at or near "GROUP"
+2018-10-09T10:45:26.788Z:  Error: Error while querying: error: syntax error at or near "ORDER"
+2018-10-09T10:46:00.740Z:  Error: Error while querying: error: syntax error at end of input
+2018-10-09T10:46:42.116Z:  Error: Error while querying: error: syntax error at end of input
+2018-10-09T10:49:01.257Z:  Error: Error while querying: error: syntax error at end of input
+2018-10-09T10:49:24.859Z:  Error: Error while querying: error: syntax error at end of input
+2018-10-09T10:52:40.681Z:  TypeError: Cannot read property 'setDate' of undefined
+2018-10-09T10:54:01.312Z:  Error: Error while querying: error: syntax error at or near "as"
+2018-10-09T11:02:13.537Z:  Error: Error while querying: error: function month(timestamp without time zone) does not exist
+2018-10-09T11:08:05.746Z:  TypeError: t.transfer_date.getDate is not a function
+2018-10-09T11:10:09.320Z:  TypeError: t.transfer_date.getDate is not a function
+2018-10-09T11:11:48.921Z:  Error: Error while querying: error: function year(timestamp without time zone) does not exist
+2018-10-09T11:27:13.654Z:  TypeError: transfers is not iterable
+2018-10-09T11:33:00.200Z:  TypeError: bundle.transfers is not iterable
+2018-10-09T11:33:28.265Z:  TypeError: bundle.transfers is not iterable
+2018-10-09T11:36:37.094Z:  ReferenceError: transfers is not defined
+2018-10-09T11:37:21.848Z:  ReferenceError: transfers is not defined
+2018-10-09T13:57:32.446Z:  Error: next() called multiple times
+2018-10-09T13:58:32.334Z:  Error: next() called multiple times
+2018-10-09T13:59:34.041Z:  Error: next() called multiple times
+2018-10-09T13:59:57.737Z:  Error: next() called multiple times
+2018-10-10T08:59:20.647Z:  Error: in 'admin/user' dateFrom expected to be object. actual: number
+2018-10-10T08:59:52.687Z:  Error: in 'admin/user' dateFrom expected to be object. actual: number
+2018-10-10T09:00:15.570Z:  Error: in 'admin/user' dateFrom expected to be object. actual: number
+2018-10-10T09:00:39.443Z:  TypeError: (intermediate value).setFullYear(...).toISOString is not a function
+2018-10-10T09:01:09.179Z:  Error: in 'admin/user' dateFrom expected to be object. actual: number
+2018-10-10T10:55:01.674Z:  TypeError: Cannot read property 'length' of undefined
+2018-10-10T11:30:19.747Z:  ReferenceError: users is not defined
+2018-10-10T11:32:16.789Z:  TypeError: bundle.users is not iterable
+2018-10-10T12:33:24.883Z:  ReferenceError: dateTo is not defined
+2018-10-12T07:53:44.086Z:  error: password authentication failed for user "dalipecheclient"
+2018-10-15T15:26:37.990Z:  Error: ENOENT: no such file or directory, stat '/home/rosen/Desktop/repo/RosenW-DaliPeche/node-koa/src/server/views/licenses.hbs'
+2018-10-15T15:27:19.918Z:  Error: ENOENT: no such file or directory, stat '/home/rosen/Desktop/repo/RosenW-DaliPeche/node-koa/src/server/views/licenses.hbs'

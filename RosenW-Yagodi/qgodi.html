@@ -1,0 +1,134 @@
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+   <body>
+     <input type="text" id='rows' placeholder="Rows">
+     <input type="text" id='cols' placeholder="Cols">
+     <input type="text" id='days' placeholder="Days">
+     <br>
+     <br>
+     <label>First Strawberry</label>
+     <br>
+     <input type="text" id='firstX' placeholder="X">
+     <input type="text" id='firstY' placeholder="Y">
+     <br>
+     <label>Second Strawberry (optional)</label>
+     <br>
+     <input type="text" id='secondX' placeholder="X">
+     <input type="text" id='secondY' placeholder="Y">
+     <button id='submit'>submit</button>
+     <p id='result'> </p>
+     <canvas id="myCanvas" width="5000" height="5000">
+     </canvas>
+    </body>
+</html>
+
+<script>
+  function draw(matrix, cols, rows) {
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for(let i = 0; i < cols; i++){
+      for(let j = 0; j < rows; j++){
+        if(matrix[i][j]=='1'){
+          ctx.fillStyle = "#AAFFAA";
+            ctx.strokeRect(32 + (i*32), 32 + (j*32), 32, 32);
+            ctx.fillRect(32 + (i*32), 32 + (j*32), 32, 32);
+        }else if(matrix[i][j]=='0'){
+          ctx.fillStyle = "#FFAAAA";
+            ctx.strokeRect(32 + (i*32), 32 + (j*32), 32, 32);
+            ctx.fillRect(32 + (i*32), 32 + (j*32), 32, 32);
+        }
+      }
+    }
+  }
+
+  $('#submit').click(function () {
+    let rows = $('#rows').val();
+    let cols = $('#cols').val();
+    let days = $('#days').val();
+
+    matrix = [];
+
+    for (let i = 0; i < cols; i++) {
+      matrix[i] = [];
+      for (let j = 0; j < rows; j++) {
+        matrix[i][j] = 0;
+      }
+    }
+
+    let firstX = $('#firstX').val();
+    let firstY = $('#firstY').val();
+    let secondX = $('#secondX').val();
+    let secondY = $('#secondY').val();
+
+    matrix[firstY-1][firstX-1] = 1;
+
+    if (secondX.length > 0 && secondY.length > 0) {
+      matrix[secondY-1][secondX-1] = 1;
+    }
+
+    console.log(matrix.join('\n'));
+
+    for (let k = 0; k<days; k++) {
+      for (let i = 0; i<cols; i++) {
+        for (let j = 0; j<rows; j++) {
+          if (matrix[i][j] == 1){
+            try {
+              if (matrix[i-1][j] == 0) {
+                matrix[i-1][j] = 2;
+              }
+            } catch (err) {
+
+            }
+            try {
+              if (matrix[i+1][j] == 0) {
+                matrix[i+1][j] = 2;
+              }
+            } catch (err) {
+
+            }
+            try {
+              if (matrix[i][j+1] == 0) {
+                matrix[i][j+1] = 2;
+              }
+            } catch (err) {
+
+            }
+            try {
+              if (matrix[i][j-1] == 0) {
+                matrix[i][j-1] = 2;
+              }
+            } catch (err) {
+
+            }
+          }
+        }
+      }
+
+      for (let i = 0; i<cols; i++) {
+        for (let j = 0; j<rows; j++) {
+          if (matrix[i][j] == 2) {
+            matrix[i][j] = 1;
+          }
+        }
+      }
+    }
+
+    let count = 0;
+    for (let i = 0; i<cols; i++) {
+      for (let j = 0; j<rows; j++) {
+        if (matrix[i][j] == 0) {
+          count+=1
+        }
+      }
+    }
+
+    draw(matrix, cols, rows);
+
+    $('#result').text("Remaining healty strawberries (pink): " + count);
+  });
+</script>

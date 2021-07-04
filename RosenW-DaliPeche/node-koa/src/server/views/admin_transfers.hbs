@@ -1,0 +1,137 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="./../bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./../sidebar.css">
+    <link rel="stylesheet" type="text/css" href="./../navbar.css">
+    <link rel="stylesheet" type="text/css" href="./../loading.css">
+    <script type="text/javascript" src="./../utils.js"></script>
+  </head>
+   <body>
+    {{> navBar }}
+    {{> adminMenu }}
+    <ul class="list-group-item col-lg-10">
+    <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">Credit Transfers</h2>
+      <form id="form" class="inline">
+        <input type="text" name="search" hidden="hidden" value="1">
+        <div style="height: 20.8em"> <!-- testing -->
+          <br>
+          <label class="col-lg-12">Username:</label>
+          <div class="col-lg-12">
+            <input id="username" type="text" name="username" class="form-control" value="{{username}}">
+          </div>
+          <label class="col-lg-12">Date From/To:</label>
+          <div class="col-lg-4">
+            <input id="dateFrom" type="date" name="date-from" class="form-control" value="{{dateFrom}}">
+          </div>
+          <div class="col-lg-4">
+            <input id="dateTo" type="date" name="date-to" class="form-control" value="{{dateTo}}">
+          </div>
+          <div class="col-lg-4">
+            <select id="select-group-by" name="date-group-by" class="form-control">
+              <option value="all">All Values</option>
+              <option value="day">By Day</option>
+              <option value="month">By Month</option>
+              <option value="year">By Year</option>
+            </select>
+          </div>
+          <label class="col-lg-12">Event:</label>
+          <div class="col-lg-12">
+            <select id="select-event" name="event" class="form-control">
+              <option value="">All</option>
+              <option value="Successful Request">Successful Request</option>
+              <option value="Failed Request">Failed Request</option>
+              <option value="Credit Purchase">Credit Purchase</option>
+              <option value="Credits given by admin">Credits given by admin</option>
+            </select>
+          </div>
+        </div>
+        <div>
+          <div class="col-lg-6">
+            <button id="export-btn" class='form-control btn-info' onclick="exportToExcel(event,
+            {
+              username: document.getElementById('username').value,
+              dateFrom: document.getElementById('dateFrom').value,
+              dateTo: document.getElementById('dateTo').value,
+              event: document.getElementById('select-event').value,
+              dateGroupByValue: document.getElementById('select-group-by').value
+            }, 'ctransfers')">Export</button>
+          </div>
+          <div class="col-lg-6">
+            <input type="submit" id="search-btn" value="Search" class='form-control btn-success'>
+          </div>
+        </div>
+      </form>
+    </ul>
+    <div id="loading-animation" hidden="hidden"></div>
+    {{#if search}}
+      {{#if show}}
+        <h3 id="report-text" class="col-lg-10 text-center">Report</h3>
+        <div id="table-container" class="col-lg-10 pre-scrollable" style="max-height: 33em; height: 33em">
+          <table id="credit-transfers-table" class="table table-hover table-bordered">
+            <tr>
+              <th>ID</th>
+              <th>Transfer Date</th>
+              <th>User</th>
+              <th>Event</th>
+              <th>Credits Received</th>
+              <th>Credits Spent</th>
+            </tr>
+            {{#each transfers}}
+              <tr class="gen-tr">
+                <td class="text-right">{{id}}</td>
+                <td>{{transfer_date}}</td>
+                <td>{{username}}</td>
+                <td>{{event}}</td>
+                <td class="text-right">{{credits_received}}</td>
+                <td class="text-right">{{credits_spent}}</td>
+              </tr>
+            {{/each}}
+            <tr>
+              <th class="text-right"><strong>Total</strong></th>
+              <th></th>
+              <th></th>
+              <th></th>
+              <th class="text-right"><strong>{{total.total_received}}</strong></th>
+              <th class="text-right"><strong>{{total.total_spent}}</strong></th>
+            </tr>
+          </table>
+        </div>
+      {{else}}
+        <h1 class="col-lg-10 text-center"></h1>
+        <div class="text-center">
+          <p>Too Many Results ({{resultCount}}) please check your filters. <a href="/admin/ctransfers?username={{username}}&date-from={{dateFrom}}&date-to={{dateTo}}&event={{event}}&date-group-by={{dateGroupByValue}}&search=1&show=1"> display anyway </a></p>
+        </div>
+      {{/if}}
+    {{/if}}
+  </body>
+</html>
+
+<script type="text/javascript">
+  if ('{{err}}') {
+    document.getElementById('navbar-msg').className += ' text-danger';
+    document.getElementById('navbar-msg').innerHTML = '{{err.msg}}';
+    if ('{{err.code}}' === '1') {
+      document.getElementById('dateFrom').setAttribute('style', 'border-color: red');
+      document.getElementById('dateTo').setAttribute('style', 'border-color: red');
+    } else if ('{{err.code}}' === '2') {
+      document.getElementById('username').setAttribute('style', 'border-color: red');
+    }
+  }
+
+  const dateGroupByValues = ['all', 'day', 'month', 'year'];
+  if (dateGroupByValues.indexOf('{{dateGroupByValue}}') > -1) {
+    document.getElementById('select-group-by').value = '{{dateGroupByValue}}'
+  }
+
+  document.getElementById('menu-ctransfers').setAttribute('class', 'selected');
+  document.getElementById('select-event').value = '{{event}}';
+
+  document.getElementById('search-btn').addEventListener('click', (event) => {
+    document.getElementById('loading-animation').removeAttribute('hidden');
+    document.getElementById('search-btn').setAttribute('disabled', 'disabled');
+    document.getElementById('form').submit();
+    document.getElementById('table-container').setAttribute('hidden', 'hidden');
+    document.getElementById('report-text').setAttribute('hidden', 'hidden');
+  });
+
+</script>

@@ -1,0 +1,9 @@
+.modal-chbox-label {
+  height: 2em;
+  font-size: 2em;
+  display: block;
+}
+
+input[type=checkbox]:checked + .modal-chbox-label {
+  background-color: green;
+}

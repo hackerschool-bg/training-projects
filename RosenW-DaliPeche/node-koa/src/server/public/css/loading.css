@@ -1,0 +1,16 @@
+#loading-animation {
+  position: absolute;
+  left: 55%;
+  top: 60%;
+  border: 12px solid #e5e5e5;
+  border-top: 12px solid #3498db;
+  border-radius: 50%;
+  width: 80px;
+  height: 80px;
+  animation: spin 0.5s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

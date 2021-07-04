@@ -1,0 +1,167 @@
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+   <body>
+     <label>Input Matrix</label>
+     <input type="text" id='matrix' placeholder="[[a, b], [c, d], [e, f]]">
+     <button id='submit'> submit </button>
+     <p id='error'> </p>
+     <canvas id="myCanvas" width="5000" height="5000">
+     </canvas>
+    </body>
+</html>
+
+
+<script>
+  function draw (matrix, path) {
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    for (let i = 0; i < matrix.length; i++) {
+      for (let j = 0; j < matrix.length; j++) {
+        matrix[j][i] == '*' ? ctx.fillStyle = "#000000" : ctx.fillStyle = "#333333";
+        if (Array.isArray(path)) {
+          path.forEach((e) => {
+            if (e.x == j && e.y == i) {
+              ctx.fillStyle = "#55FF55";
+            }
+          });
+        }
+        matrix[j][i] == 'e' ? ctx.fillStyle = "#FF5555" : '';
+
+        ctx.strokeRect(32 + (i*32), 32 + (j*32), 32, 32);
+        ctx.fillRect(32 + (i*32), 32 + (j*32), 32, 32);
+      }
+    }
+  }
+
+  $('#submit').click(() => {
+    let matrixString = $('#matrix').val();
+    let matrix = JSON.parse(matrixString);
+
+    let width = matrix.length;
+    let height = matrix[0].length;
+
+    path = findPath(matrix);
+    draw(matrix, path);
+  });
+
+  function checkIfCoordInArray(arr, x, y) {
+    for (var i = 0; i < arr.length; i++) {
+      if(arr[i].x == x && arr[i].y == y) {
+        return true;
+      }
+    }
+    return false;
+  }
+
+  function findPath(matrix) {
+    let checked = [{x: 0, y: 0}];
+    let queue = [[{x: 0, y: 0}]];
+
+    while (queue.length > 0) {
+      const path = queue.shift();
+      let pos = path[path.length - 1];
+
+      if (matrix[pos.x][pos.y] == 'e') {
+        return path;
+      }
+
+      try {
+        if (
+          matrix[pos.x+1][pos.y] != '*' &&
+          !checkIfCoordInArray(checked, pos.x+1, pos.y) &&
+          matrix[pos.x+1][pos.y] != null
+        ) {
+          const newArray = [];
+          path.forEach((e) => newArray.push(e));
+          newArray.push({x: pos.x+1, y:pos.y});
+          queue.push(newArray);
+          checked.push({x: pos.x+1, y:pos.y});
+        }
+      } catch(err) {
+
+      }
+      try {
+        if (
+          matrix[pos.x-1][pos.y] != '*' &&
+          !checkIfCoordInArray(checked, pos.x-1, pos.y) &&
+          matrix[pos.x-1][pos.y] != null
+        ) {
+          const newArray = [];
+          path.forEach((e) => newArray.push(e));
+          newArray.push({x: pos.x-1, y:pos.y});
+          queue.push(newArray);
+          checked.push({x: pos.x-1, y:pos.y});
+        }
+      } catch(err) {
+
+      }
+      try {
+        if (
+          matrix[pos.x][pos.y+1] != '*' &&
+          !checkIfCoordInArray(checked, pos.x, pos.y+1) &&
+          matrix[pos.x][pos.y+1] != null
+        ) {
+          const newArray = [];
+          path.forEach((e) => newArray.push(e));
+          newArray.push({x: pos.x, y:pos.y+1});
+          queue.push(newArray);
+          checked.push({x: pos.x, y:pos.y+1});
+        }
+      } catch(err) {
+
+      }
+      try {
+        if (
+          matrix[pos.x][pos.y-1] != '*' &&
+          !checkIfCoordInArray(checked, pos.x, pos.y-1) &&
+          matrix[pos.x][pos.y-1] != null
+        ) {
+          const newArray = [];
+          path.forEach((e) => newArray.push(e));
+          newArray.push({x: pos.x, y:pos.y-1});
+          queue.push(newArray);
+          checked.push({x: pos.x, y:pos.y-1});
+        }
+      } catch(err) {
+
+      }
+    }
+    return 'No path available';
+  }
+</script>
+
+<!-- test
+[
+  [" ", " ", "*", " ", " ", " ", " ", "*", " ", " "],
+  [" ", " ", "*", " ", "*", " ", " ", "*", " ", " "],
+  [" ", "*", "*", " ", "*", " ", "*", "*", " ", " "],
+  [" ", " ", " ", " ", "*", " ", " ", " ", " ", " "],
+  [" ", "*", "*", " ", "*", " ", "*", "*", " ", " "],
+  [" ", " ", " ", " ", "*", " ", " ", "*", "*", " "],
+  [" ", "*", "*", " ", "*", " ", "*", "*", " ", " "],
+  [" ", " ", " ", " ", "*", " ", " ", "*", " ", "*"],
+  [" ", "*", "*", " ", " ", " ", "*", "*", " ", " "],
+  [" ", " ", " ", "*", " ", " ", " ", " ", "*", "e"]
+]
+
+[
+  [" ", " ", "*", " ", " "],
+  ["*", " ", "*", " ", " "],
+  ["*", "*", "*", " ", " "],
+  [" ", " ", " ", " ", " "],
+  [" ", " ", " ", "*", "e"]
+]
+
+[
+  [" ", " ", " ", " ", " "],
+  ["*", " ", "*", " ", " "],
+  ["*", "*", "*", " ", " "],
+  [" ", " ", " ", " ", " "],
+  [" ", " ", " ", "*", "e"]
+]
+ -->

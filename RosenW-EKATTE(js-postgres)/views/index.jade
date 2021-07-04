@@ -1,0 +1,46 @@
+extends layout
+
+block content
+  script(type='text/javascript' src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js")
+  script(type='text/javascript').
+    if(!window.jQuery){
+      alert("check internet connection");
+      window.stop();
+    }
+  input#tbox(type='textbox')
+  button#submit Submit
+  div#info
+  script(type='text/javascript').
+    const resultsShown = 15;
+    $("#submit").click((event) => {
+      $.get('/getdata', function(data) {
+          $('#info').empty();
+          settlementName = $('#tbox').val();
+          selectedSett = null;
+          count = 0;
+          data.settlements.forEach((sett)=>{
+              if(sett.name.toLowerCase().indexOf(settlementName.toLowerCase()) !== -1 && count++<resultsShown){
+                  selectedSett = sett;
+                  displayString = "Село: " + sett.name + ", ";
+                  currentMun = null;
+          data.municipalities.forEach((mun)=>{
+            if(selectedSett.municipality == mun.id){
+              currentMun = mun;
+              displayString += "Община: " + mun.name + ", ";
+              
+            }
+          });
+          data.areas.forEach((area)=>{
+                if(currentMun.area == area.id){
+                  displayString += "Област: " + area.name;
+                }
+              });
+              $('#info').append($('<p>'+displayString+'</p>'));
+              }
+          });
+
+          if(count>resultsShown){
+              $('#info').append($('<p> още '+(count-resultsShown)+' резултата</p>'));
+              }                 
+        }); 
+      });

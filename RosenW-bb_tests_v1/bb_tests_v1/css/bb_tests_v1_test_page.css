@@ -1,0 +1,19 @@
+form {
+  margin-top: 7%;
+  margin-bottom: 10%;
+  font-size: 18px;
+}
+
+#err-msg {
+  color: #FF0000;
+  margin-top: 5%;
+  font-size: 18px;	
+}
+
+#foot {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    overflow: hidden;
+}

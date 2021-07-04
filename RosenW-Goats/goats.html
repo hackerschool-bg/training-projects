@@ -1,0 +1,125 @@
+<html lang="en">
+  <head>
+  </head>
+   <body>
+     <label>Max Courses</label>
+     <input type="text" id='courses' placeholder="Max Courses">
+     <label>Sheep</label>
+     <input type="text" id='sheep' placeholder="eg: '5 3 5 1 18'">
+     <button id='submit'> submit </button>
+     <canvas id="myCanvas" width="5000" height="5000">
+     </canvas>
+    </body>
+</html>
+
+<script type="text/javascript">
+  function draw (groups, shipSize, sheep) {
+    console.log(groups);
+    console.log(shipSize);
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.font = '22px serif';
+
+    ctx.fillText(`Minimum Ship Size: ${shipSize}`, 32, 32);
+    for (let i = 0; i < groups.length; i++) {
+      ctx.fillText(
+        `course ${i + 1}: ship capacity taken ${groups[i].reduce((a, b) => a + b)}/${shipSize}`,
+        32,
+        630 + (500 * i)
+      );
+      ctx.strokeRect(10, 660 + (500 * i), 1150, 430);
+      ctx.fillStyle = 'Blue';
+      ctx.fillRect(10, 800 + (500 * i), 1150, 100);
+      ctx.fillStyle = 'Black';
+    }
+
+    ctx.strokeRect(10, 160, 1150, 430);
+    ctx.fillStyle = 'Blue';
+    ctx.fillRect(10, 300, 1150, 100);
+    ctx.fillStyle = 'Black';
+
+    for (let i = 0; i < sheep.length; i++) {
+      ctx.strokeRect(150 + (100 * i), 450, 100, 100);
+      ctx.fillText(sheep[i], 200 + (100 * i), 500);
+    }
+
+    sheepOnTheOtherSide = [];
+    for (let k = 0; k < groups.length; k++) {
+      for (let j = 0; j < groups[k].length; j++) {
+        sheepOnTheOtherSide.push(groups[k][j]);
+        const index = sheep.indexOf(groups[k][j]);
+        if (index > -1) {
+          sheep.splice(index, 1);
+        }
+      }
+      console.log(sheepOnTheOtherSide);
+
+      for (let i = 0; i < sheepOnTheOtherSide.length; i++) {
+        ctx.strokeRect(150 + (100 * i), 680 + (500 * k), 100, 100);
+        ctx.fillText(sheepOnTheOtherSide[i], 200 + (100 * i), 730 + (500 * k));
+      }
+      for (let i = 0; i < sheep.length; i++) {
+        ctx.strokeRect(150 + (100 * i), 950 + (500 * k), 100, 100);
+        ctx.fillText(sheep[i], 200 + (100 * i), 1000 + (500 * k));
+      }
+    }
+  }
+
+  document.getElementById('submit').addEventListener('click', (e) => {
+    if (document.getElementById('courses').value === '') return alert('Max courses field cannot be empty');
+    if (isNaN(document.getElementById('courses').value)) return alert('Max courses must be a number');
+    const maxCourses = document.getElementById('courses').value;
+    if (maxCourses > 1000 || maxCourses < 1) return alert('Max courses must be 0 <= N <= 1000');
+    if (document.getElementById('sheep').value === '') return alert('Sheep field cannot be empty');
+    const sheep =
+    document.getElementById('sheep')
+      .value
+      .split(' ')
+      .map((e) => parseInt(e))
+      .sort((a, b) => b - a);
+    if (sheep.length > 100000 || sheep.length < 1) return alert('Sheep count must be between 0 <= N <= 100000');
+
+    for (const s of sheep) {
+      if (isNaN(s)) return alert('All sheep weights must be numbers');
+    }
+
+    let shipSize = sheep[0];
+    console.log(sheep);
+
+    let cycle = 0;
+    let sheepLeft = [];
+    let groups = [];
+    sheep.forEach((s) => sheepLeft.push(s));
+    while (true) {
+      cycle++;
+      let weightOnShip = 0;
+
+      let group = [];
+      for (let i = 0; i < sheepLeft.length; i++) {
+        const currentSheepWeight = sheepLeft[i];
+        if (weightOnShip + currentSheepWeight <= shipSize) {
+          weightOnShip += currentSheepWeight;
+          group.push(currentSheepWeight);
+          sheepLeft.splice(i--, 1);
+        }
+      }
+      groups.push(group)
+
+
+      if (cycle >= maxCourses) {
+        if (sheepLeft.length === 0) {
+          draw(groups, shipSize, sheep);
+          break;
+        } else {
+          groups = [];
+          shipSize++;
+          cycle=0;
+          sheepLeft = [];
+          sheep.forEach((s) => sheepLeft.push(s));
+        }
+      }
+    }
+  });
+</script>

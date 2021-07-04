@@ -1,0 +1,113 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+   <body>
+     <input type="text" id='n' placeholder="n">
+     <input type="text" id='a' placeholder="a">
+     <input type="text" id='b' placeholder="b">
+     <input type="text" id='c' placeholder="c">
+     <button id='submit'> submit </button>
+     <p id='result'> </p>
+     <canvas id="myCanvas" width="20000" height="100">
+     </canvas>
+    </body>
+</html>
+
+<script>
+  function draw(marks, drawPoints, n, c){
+    let result = 0;
+    let boolArr = [];
+    for(let i = 0;i<n;i++){
+      if(drawPoints.includes(i)){
+        boolArr.push(true);
+      }else{
+        boolArr.push(false);
+      }
+    }
+
+    for(let i = n;i>=0;i--){
+      if(boolArr[i]){
+        for(let j = i;j<i+Number(c);j++){
+          boolArr[j] = true;
+        }
+      }
+    }
+
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.fillStyle = "#000000";
+    let defaultFont = ctx.font;
+    for(let i=0;i<=n;i++){
+      if(marks.includes(i)){
+        ctx.font = "bold 9pt Courier";
+        ctx.fillText(i, 28 + (i*20),30);
+        ctx.font = defaultFont;
+      }else{
+        ctx.fillText(i, 28 + (i*20),30);
+      }
+      ctx.fillRect(32 + (i*20),40,2,30);
+    }
+    for(let i=0;i<n;i++){
+      ctx.fillRect(32 + (i*20),50,20,20);
+    }
+
+    ctx.fillStyle = "#FF0000";
+    for(let i=0;i<n;i++){
+      if(boolArr[i]){
+        ctx.fillRect(32 + (i*20),50,20,20);
+      }else{
+        result++;
+      }
+    }
+
+    $('#result').text(result)
+  }
+
+  function onlyUnique(value, index, self) {
+      return self.indexOf(value) === index;
+  }
+
+  $('#submit').click(function(){
+    let a = Number($('#a').val());
+    let b = Number($('#b').val());
+    let c = Number($('#c').val());
+    let n = Number($('#n').val());
+
+    let stop = false;
+    if(n>=100000 || a>=100000 || b>=100000 || c>=100000 || n<=0 || a<=0 || b<=0 || c<=0 || !Number.isInteger(a) || !Number.isInteger(b) || !Number.isInteger(c) || !Number.isInteger(n)){
+      stop = true;
+    }
+    if(stop){
+      $('#result').text('Invalid Values')
+    }else{
+      let marks = [];
+
+      for(let i=0;i<=n;i+=a){
+        marks.push(i);
+      }
+
+      for(let i=n;i>=0;i-=b){
+        marks.push(i);
+      }
+
+      marks.sort((a, b) => a-b);
+      marks = marks.filter(onlyUnique);
+
+
+      let drawPoints = [];
+
+      for (let i=0; i<marks.length; i++) {
+        if(marks.includes(marks[i]+c)){
+            drawPoints.push(marks[i]);
+        }
+      }
+
+      draw(marks, drawPoints, n, c);
+    }
+  });
+</script>

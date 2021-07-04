@@ -1,0 +1,28 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    script(type='text/javascript' src="/js/jquery.min.js")
+  body
+    block content
+  include ./navbar.jade
+table(style='width:35%')
+  tr
+    th Name
+    th(align="right") Quantity
+    th(align="right") Total
+  each item in data.order
+      tr(id="row-#{item.id}")
+        td #{item.name}
+        td(align="right") #{item.quantity}
+        td(align="right") $#{parseFloat(Math.round((item.price * item.quantity) * 100) / 100).toFixed(2)}
+  tr 
+    td Total: 
+    td
+    td
+    td(align="right", id="total", style="font-weight:bold") $#{data.total}
+
+script.
+  //make link with black bg
+  $('#nav-orders').addClass('page');

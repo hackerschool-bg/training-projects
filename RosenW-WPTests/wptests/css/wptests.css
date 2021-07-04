@@ -1,0 +1,64 @@
+.admin-form {
+  text-align: center;
+  margin: 0 auto;
+  width: 600px;
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  margin-top: 5em;
+}
+
+.tests {
+  margin: 0 auto;
+  width: 95%;
+  padding: 1em;
+  border: 1px solid #CCC;
+  border-radius: 1em;
+  margin-top: 5em;
+}
+
+.controls {
+  text-align: center;
+}
+
+label {
+  display: inline-block;
+  width: 180px;
+  text-align: right;
+}
+
+input, textarea {
+  font: 1em sans-serif;
+
+  width: 400px;
+  box-sizing: border-box;
+
+  border: 1px solid #999;
+  resize: vertical;
+}
+
+input:focus {
+  border-color: #000;
+}
+
+p {
+  text-align: center;
+  font-weight: bold;
+}
+
+span {
+  text-align: center;
+  font-weight: bold;
+}
+
+.invalid-input {
+  border: 1px solid #FF0000 !important;
+}
+
+#err-msg {
+  color: #FF0000;
+}
+
+.ctrl-form {
+  display: inline;
+}

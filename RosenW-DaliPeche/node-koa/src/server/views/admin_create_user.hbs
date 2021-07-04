@@ -1,0 +1,88 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="./../bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./../sidebar.css">
+    <link rel="stylesheet" type="text/css" href="./../navbar.css">
+  </head>
+  <body>
+    {{> navBar }}
+    {{> adminMenu }}
+    <ul class="list-group-item col-lg-10">
+    <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">Create User</h2>
+      <form method="post">
+        <div style="height: 24em">
+          <label for="username" class="col-lg-12">Username:</label>
+          <div class="col-lg-12">
+            <input type="text" id='username' name='username' placeholder="Enter Username" class="form-control" value="{{username}}">
+            <p id="username-err" hidden="true" class="text-danger">Username must be at least 3 symbols, only letters</p>
+          </div>
+          <label for="role" class="col-lg-12">Role:</label>
+          <div class="col-lg-12">
+            <select name="select-role" class="form-control">
+              {{#each roles}}
+                <option value="{{id}}">{{role}}</option>
+              {{/each}}
+            </select>
+          </div>
+          <label for="username" class="col-lg-12">Password:</label>
+          <div class="col-lg-12">
+            <input type="password" id='password' name='password' placeholder="Enter Password" class="form-control">
+            <p id="password-err" hidden="true" class="text-danger">Password must be at least 3 symbols</p>
+          </div>
+          <label for="username" class="col-lg-12">Repeat Password:</label>
+          <div class="col-lg-12">
+            <input type="password" id='repeat-password' name='repeat-password' placeholder="Repeat Password" class="form-control">
+            <p id="pass-err" hidden="true" class="text-danger">Passwords don't match</p>
+          </div>
+        </div>
+        <div class="col-lg-12">
+          <input type="submit" id='sub-btn' class='form-control btn-success' value="Create">
+        </div>
+      </form>
+    </ul>
+  </body>
+</html>
+
+<script type="text/javascript">
+  document.getElementById('navbar-msg').innerHTML = '{{msg}}';
+  if ('{{error}}') {
+    document.getElementById('navbar-msg').className += ' text-danger';
+    document.getElementById('navbar-msg').innerHTML = '{{error}}';
+  }
+  document.getElementById('menu-create-user').setAttribute('class', 'selected');
+
+  const MINIMUM_PASS_LENGTH = 3;
+  const usernameBox = document.getElementById('username');
+  const passwordBox = document.getElementById('password');
+  const repeatPasswordBox = document.getElementById('repeat-password');
+
+  const passwordsDontMatchErrorMsg = document.getElementById('pass-err');
+  const usernameLengthErrorMsg = document.getElementById('username-err');
+  const passwordLengthErrorMsg = document.getElementById('password-err');
+
+  usernameBox.addEventListener('keyup', checkUsernameField);
+  passwordBox.addEventListener('keyup', checkPasswordFields);
+  repeatPasswordBox.addEventListener('keyup', checkPasswordFields);
+
+  function checkUsernameField () {
+    if (usernameBox.value.length < MINIMUM_PASS_LENGTH) {
+      usernameLengthErrorMsg.removeAttribute('hidden');
+    } else {
+      usernameLengthErrorMsg.setAttribute('hidden', 'true');
+    }
+  }
+
+  function checkPasswordFields () {
+    if (passwordBox.value.length < MINIMUM_PASS_LENGTH) {
+      passwordLengthErrorMsg.removeAttribute('hidden');
+    } else {
+      passwordLengthErrorMsg.setAttribute('hidden', 'true');
+    }
+
+    if (passwordBox.value !== repeatPasswordBox.value) {
+      passwordsDontMatchErrorMsg.removeAttribute('hidden');
+    } else {
+      passwordsDontMatchErrorMsg.setAttribute('hidden', 'true');
+    }
+  }
+</script>

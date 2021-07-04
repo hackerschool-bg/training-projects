@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <input type="text" id="a">
+  <button id="submit">Submit</button>
+</body>
+</html>
+
+<script type="text/javascript">
+  document.getElementById('submit').addEventListener('click', (event) => {
+    const a = document.getElementById('a').value;
+    if (a <= 0 || a >= 20000) return alert('A out of range');
+    const square = [];
+    for(let i=0; i<=a; i++) {
+        square[i] = new Array();
+    }
+
+    for (let i = 0; i <= a; i++) {
+      for (let j = 0; j <= a; j++) {
+        square[i][j] = {x: i, y: j};
+      }
+    }
+
+    const allLines = new Set();
+    for (let l = 0; l <= a; l++) {
+      console.log(l);
+      for (let k = 0; k <= a; k++) {
+        const currentDot = square[l][k];
+        for (let i = 0; i <= a; i++) {
+          for (let j = 0; j <= a; j++) {
+            const testDot = square[i][j];
+            if (currentDot.x === testDot.x || currentDot.y === testDot.y) continue;
+            const distance = Math.sqrt(Math.pow(currentDot.x - testDot.x, 2) + Math.pow(currentDot.y - testDot.y, 2), 2);
+            if (distance % 1 === 0) {
+              allLines.add(distance);
+            }
+          }
+        }
+      }
+    }
+
+    if (allLines.size === 0) return alert('0 0');
+
+    let max = 0;
+    for (v of allLines) {
+      if (v > max) max = v;
+    }
+
+    alert(`${v} - ${allLines.size}`);
+  });
+</script>

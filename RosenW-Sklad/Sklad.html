@@ -1,0 +1,153 @@
+<html lang="en">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  </head>
+   <body>
+   	 <label>Input Matrix</label>
+     <input type="text" id='matrix' placeholder="[[a, b], [c, d], [e, f]]">
+     <button id='submit'> submit </button>
+     <p id='stacks'> </p>
+     <p id='paths'> </p>
+     <canvas id="myCanvas" width="5000" height="5000">
+     </canvas>
+    </body>
+</html>
+
+<script>
+	function draw(matrix){
+	    let canvas = document.getElementById("myCanvas");
+	    let ctx = canvas.getContext("2d");
+
+	    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+	    for(let i = 0; i < matrix.length; i++){
+	    	for(let j = 0; j < matrix.length; j++){
+	    		if(matrix[j][i]=='1'){
+	    			ctx.fillStyle = "#000000";
+      				ctx.strokeRect(32 + (i*32), 32 + (j*32), 32, 32);
+      				ctx.fillRect(32 + (i*32), 32 + (j*32), 32, 32);
+	    		}else if(matrix[j][i]=='2'){
+	   				ctx.fillStyle = "#E0FFE0";
+      				ctx.strokeRect(32 + (i*32), 32 + (j*32), 32, 32);
+      				ctx.fillRect(32 + (i*32), 32 + (j*32), 32, 32);
+	    		}else{
+	   				ctx.fillStyle = "#EEEEEE";
+      				ctx.strokeRect(32 + (i*32), 32 + (j*32), 32, 32);
+      				ctx.fillRect(32 + (i*32), 32 + (j*32), 32, 32);
+	    		}
+	    	}
+	    }
+	}
+    function countVertLines(matrix, n){
+		let lines = 0
+		for(let i = 0; i < n; i++){
+			let hasLine = true;
+			for (let j = 0; j < n; j++) {
+				if(matrix[i][j]=='1'){
+					hasLine = false;
+				}
+			}
+			if(hasLine){
+				lines++;
+				for (let j = 0; j < n; j++) {
+					matrix[i][j] = '2';
+				}
+			}
+		}
+		return lines;
+	}
+
+	function countHorLines(matrix, n){
+		let lines = 0
+		for(let i = 0; i < n; i++){
+			let hasLine = true;
+			for (let j = 0; j < n; j++) {
+				if(matrix[j][i]=='1'){
+					hasLine = false;
+				}
+			}
+			if(hasLine){
+				lines++;
+				for (let j = 0; j < n; j++) {
+					matrix[j][i] = '2';
+				}
+			}
+		}
+		return lines;
+	}
+
+	function countDifferentIsles(matrix, n){
+	    let products = 0
+	    if(n==1 && matrix[0][0] == '1'){
+			return '1'
+	    }
+
+	    for(let i = 0; i < n; i++){
+			for (let j = 0; j < n; j++) {
+				let lastOne = true;
+				if(matrix[i][j]=='1'){
+					try {
+						if(matrix[i-1][j]=='1'){
+							lastOne = false;
+						}
+					}catch(e){
+						
+					}
+					try {
+						if(matrix[i+1][j]=='1'){
+							lastOne = false;
+						}
+					}catch(e){
+
+					}
+					try {
+						if(matrix[i][j+1]=='1'){
+							lastOne = false;
+						}
+					}catch(e){
+						
+					}
+					try {
+						if(matrix[i][j-1]=='1'){
+							lastOne = false;
+						}
+					}catch(e){
+						
+					}
+					if(lastOne){
+						products+=1;
+					}else{
+						matrix[i][j] = '0';
+					}
+				}
+			}
+		}
+
+	    return products
+	}
+
+  $('#submit').click(function(){
+  	console.log('working')
+    let matrixString = $('#matrix').val();
+    let matrix = JSON.parse(matrixString);
+    let n = matrix.length;
+    console.log(n);
+    if(n<1 || n>100){
+    	$('#stacks').text("Matrix Length out of range.");
+    }else{
+	    let paths = countVertLines(matrix, n) + countHorLines(matrix, n);
+	    draw(matrix);
+	    let items = countDifferentIsles(matrix, n);
+	    $('#stacks').text("Different Stacks: " + items);
+	    $('#paths').text("Paths: " + paths);
+    }
+  });
+</script>
+
+<!-- [[1, 0, 1], [1, 0, 1], [1, 0, 1]]-->
+<!-- [
+[1,1,1,0,1],
+[1,1,1,0,0],
+[0,0,0,0,1],
+[1,1,0,0,1],
+[0,0,0,0,0]] -->

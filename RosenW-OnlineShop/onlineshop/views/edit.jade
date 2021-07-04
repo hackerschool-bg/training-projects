@@ -1,0 +1,34 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/form.css')
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    script(type='text/javascript' src="/js/jquery.min.js")
+
+  body
+    block content
+      include ./backofficenav.jade
+      div
+        form.form(method='post' enctype="multipart/form-data")
+          label Name :
+          input#name(type='text', name='name', value='#{data.name}')
+          label Price (in $) :
+          input#price(type='text', name='price', value='#{data.price}')
+          label Quantity :
+          input#quantity(type='text', name='quant', value='#{data.quantity}')
+          label Image :
+          input(id='image' type='text', name='img' value='#{data.img}')
+          br
+          br
+          label Categories :
+              -for(var i = 0;i<data.ctg.length;i++){
+                br
+                input(type='checkbox' name='#{i+1}' value='#{data.ctg[i]}' id='#{data.ctg[i]}')
+                label(for='#{data.ctg[i]}') #{data.ctg[i]}
+              -}
+          br
+          br
+          label Description :
+          textarea#descr(name='descr', placeholder='Enter item description here...') #{data.descr}
+          input#edit(type='submit', name='loginiBtn', value='Edit')

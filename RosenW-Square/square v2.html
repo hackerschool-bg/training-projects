@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title></title>
+</head>
+<body>
+  <input type="text" id="a">
+  <button id="submit">Submit</button>
+  <canvas id="myCanvas" width="5000" height="5000"></canvas>
+</body>
+</html>
+
+<script type="text/javascript">
+  function draw(a, lineEndpoints, longestLine, differentLineSizesCount) {
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+    let squareSize = a > 50 ? 32 : 64;
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = '22px serif';
+    ctx.fillText(`Longest Line: ${longestLine}`, 10, 30);
+    ctx.fillText(`Different line sizes count: ${differentLineSizesCount}`, 10, 60);
+
+    for (let i = 0; i <= a; i++) {
+      ctx.fillRect(10 + (i * squareSize), 100, 4, 4 + squareSize * a);
+      ctx.fillRect(10, 100 + (i * squareSize), 4 + squareSize * a, 4);
+    }
+
+    ctx.strokeStyle = 'Red';
+    for (const endpoint of lineEndpoints) {
+      const distance = Math.sqrt(Math.pow(endpoint.x, 2) + Math.pow(endpoint.y, 2), 2);
+      if (distance === longestLine) {
+        ctx.strokeStyle = 'Green';
+        ctx.beginPath();
+        ctx.moveTo(14, 104);
+        ctx.lineTo(10 + endpoint.x * squareSize, 100 + endpoint.y * squareSize);
+        ctx.stroke();
+        ctx.strokeStyle = 'Red';
+        continue;
+      }
+      ctx.beginPath();
+      ctx.moveTo(14, 104);
+      ctx.lineTo(10 + endpoint.x * squareSize, 100 + endpoint.y * squareSize);
+      ctx.stroke();
+    }
+  }
+
+  document.getElementById('submit').addEventListener('click', (event) => {
+    const a = document.getElementById('a').value;
+    if (a <= 0 || a >= 20000) return alert('A out of range');
+    const square = [];
+    for(let i=0; i<=a; i++) {
+        square[i] = new Array();
+    }
+
+    for (let i = 0; i <= a; i++) {
+      for (let j = 0; j <= a; j++) {
+        square[i][j] = {x: i, y: j};
+      }
+    }
+
+    const allLines = new Set();
+    const drawInfo = [];
+    const startingPoint = square[0][0];
+    for (let i = 0; i <= a; i++) {
+      for (let j = 0; j <= a; j++) {
+        const testDot = square[i][j];
+        if (startingPoint.x === testDot.x || startingPoint.y === testDot.y) continue;
+        const distance = Math.sqrt(Math.pow(startingPoint.x - testDot.x, 2) + Math.pow(startingPoint.y - testDot.y, 2), 2);
+        if (distance % 1 === 0) {
+          drawInfo.push(testDot);
+          allLines.add(distance);
+        }
+      }
+    }
+
+    if (allLines.size === 0) return draw(a, drawInfo, 0, 0);
+
+    let max = 0;
+    for (v of allLines) {
+      if (v > max) max = v;
+    }
+
+    draw(a, drawInfo, max, allLines.size);
+  });
+</script>

@@ -1,0 +1,164 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Office Shop
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    // Bootstrap styles
+    link(href='../../../assets/css/bootstrap.css', rel='stylesheet')
+    // Customize styles
+    link(href='../../../assets/css/style.css', rel='stylesheet')
+    // font awesome styles
+    link(href='../../../assets/font-awesome/css/font-awesome.css', rel='stylesheet')
+    //if IE 7
+      link(href='../../css/font-awesome-ie7.min.css', rel='stylesheet')
+    //if lt IE 9
+      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+    // Favicons
+    link(rel='shortcut icon', href='../assets/ico/favicon.ico')
+  body
+    //
+      Lower Header Section
+    .container
+      //
+        Navigation Bar Section
+      include ./navbar.jade
+      //
+        Body Section
+      .row
+        .span12
+          div.alert.alert-success.pull-right.my-alert(id="addalert" style='width:20%; height:24px; display:none; padding: 5px;')
+            strong Product added to cart
+          ul.breadcrumb
+            li
+              a(href='/') Home
+              span.divider /
+            li.active #{data.cname}
+          .well.well-small
+            h1
+              | #{data.cname}
+              form.navbar-search.pull-right(method='post')
+                label Price Range: 
+                  input.search-query.span1(type='text', placeholder='from' name='from')
+                  input.search-query.span1(type='text', placeholder='to' name='to')
+                  input.span1(type='submit' name='name' value='Filter')
+                //- label : 
+                //-   input.search-query.span2(type='text', placeholder='Search' name='name')
+            hr.soften
+            table.table.table-bordered.table-condensed
+                tr
+                  if data.sort != 1
+                    th(width="20%")
+                      a(href='/category/#{data.catid}/1/#{data.word}?page=#{data.page}&from=#{data.from}&to=#{data.to}') Product
+                  else
+                    th(width="20%")
+                      a(href='/category/#{data.catid}/3/#{data.word}?page=#{data.page}&from=#{data.from}&to=#{data.to}') Product 
+                  th(width="20%") Description
+                  th(width="20%") Quantity in stock
+                  if data.sort != 2
+                    th(width="15%") 
+                      a(href='/category/#{data.catid}/2/#{data.word}?page=#{data.page}&from=#{data.from}&to=#{data.to}') Price
+                  else
+                    th(width="15%") 
+                      a(href='/category/#{data.catid}/4/#{data.word}?page=#{data.page}&from=#{data.from}&to=#{data.to}') Price
+                  
+                  if data.isLoggedIn && !data.isAdmin
+                      th(width="10%") Quantity
+                      th(width="10%") Add
+                  if data.isAdmin
+                      th(width="10%") Edit
+                      th(width="10%") Delete
+                  each item in data.prods
+                      tr
+                      td(style="text-align:center") #{item.name}
+                          img(style="height: 200px; width: 100%" src="#{item.img}")
+                      td(style="text-align:left; vertical-align:top") #{item.description}
+                      td(style="text-align:center") #{item.quantity}
+                      td(align="right") $#{item.price}
+                      if data.isLoggedIn && !data.isAdmin
+                          td(style="text-align:center")
+                              input(id="input-#{item.id}" type='text', placeholder='quant.', style='width: 50px', onkeyup="changeQuantity('#{item.id}', '#{item.quantity}')" ) 
+                          td(style="text-align:center")
+                              button.shopBtn.btn-large(onclick="add('#{item.id}')") add
+                      if data.isAdmin
+                          td(style="text-align:center")
+                              button(onclick="location.href = '/edit/#{item.id}';") edit
+                          td(style="text-align:center")
+                              button(onclick="location.href = '/delete/#{item.id}';") delete    
+            br
+            
+            a.shopBtn.btn-large(href='/')
+              span.icon-arrow-left
+              |  Continue Shopping
+              
+            ul.pagination-centered.pagination
+              a.page-link.paginationBtn.btn-large(href='/category/#{data.catid}/#{data.sort}/#{data.word}?page=1&from=#{data.from}&to=#{data.to}') <<
+              if data.page > 1
+                a.page-link.paginationBtn.btn-large(href='/category/#{data.catid}/#{data.sort}/#{data.word}?page=#{data.page-1}&from=#{data.from}&to=#{data.to}') Previous
+              if data.page > 2
+                a.page-link.paginationBtn.btn-large(href='/category/#{data.catid}/#{data.sort}/#{data.word}?page=#{data.page-2}&from=#{data.from}&to=#{data.to}') #{Number(data.page)-2}
+              if data.page > 1
+                a.page-link.paginationBtn.btn-large(href='/category/#{data.catid}/#{data.sort}/#{data.word}?page=#{data.page-1}&from=#{data.from}&to=#{data.to}') #{data.page-1}
+              a.page-link.paginationBtn.selected.btn-large.active(href='/category/#{data.catid}/#{data.sort}/#{data.word}?page=#{data.page}&from=#{data.from}&to=#{data.to}') #{data.page}
+              a.page-link.paginationBtn.btn-large(href='/category/#{data.catid}/#{data.sort}/#{data.word}?page=#{data.page+1}&from=#{data.from}&to=#{data.to}') #{data.page+1}
+              a.page-link.paginationBtn.btn-large(href='/category/#{data.catid}/#{data.sort}/#{data.word}?page=#{data.page+2}&from=#{data.from}&to=#{data.to}') #{data.page+2}
+              a.page-link.paginationBtn.btn-large(href='/category/#{data.catid}/#{data.sort}/#{data.word}?page=#{data.page+1}&from=#{data.from}&to=#{data.to}') Next
+              a.page-link.paginationBtn.btn-large(href='#') >>
+
+
+// Placed at the end of the document so the pages load faster
+script(src='../../../assets/js/jquery.js')
+script(src='../../../assets/js/bootstrap.min.js')
+script(src='../../../assets/js/jquery.easing-1.3.min.js')
+script(src='../../../assets/js/jquery.scrollTo-1.4.3.1-min.js')
+script(src='../../../assets/js/shop.js')
+         
+script.
+  //notify options
+  //make link with black bg
+  $('#nav-home').parent().addClass('active');
+  $('#nav-home').text('Back');
+
+  //sorting
+  function sortByQuantity(){
+    console.log(data.prods);
+  }
+
+  //changes quantity to max allowed
+  function changeQuantity(id, max){
+    let quantityBox = $('#input-' + id);
+    let value = quantityBox.val();
+    if(Number(value)>max){
+      quantityBox.val(max);
+    }
+  }
+
+  function add(id){
+    let box = $('#input-' + id);
+    let textBoxValue = box.val();
+    box.val("");
+    if(isNumber(textBoxValue) && isWholeNumber(textBoxValue) && Number(textBoxValue)>0){
+      $.post('/addtocart', {id: id, quant: textBoxValue});
+      let currentCount = Number($('#nav-sc').text().replace(/[^0-9]/g,''));
+      let newCount = currentCount + Number(textBoxValue);
+      $('#nav-sc').text('Shopping Cart (' + newCount + ')');
+      //make alert flash
+      let alert = $('#addalert'); 
+      alert.show();
+      setTimeout(() => {alert.hide();}, 750);
+    }
+  }
+
+  function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+
+  function isWholeNumber(n){
+    var result = (n - Math.floor(n)) !== 0; 
+    if (result)
+    return false;
+    else
+    return true;
+  }

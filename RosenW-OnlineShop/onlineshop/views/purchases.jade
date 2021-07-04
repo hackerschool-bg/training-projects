@@ -1,0 +1,67 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/table.css')
+    script(type='text/javascript' src="/js/jquery.min.js")
+    script(type='text/javascript' src='/js/jspdf.min.js')
+  body
+    block(id='content') content
+  include ./backofficenav.jade
+div(id='editor')
+  table(style='width:70%' id='maint')
+    tr
+      th(align="left")
+      th Name
+      th(align="right") Quantity
+      th(align="right") Total
+    each item in data.cart
+        tr(id="row-#{item.id}")
+          td
+          td(class='gatherinfoname') #{item.name}
+          td(align="right" class='gatherinfoquantity') #{item.quantity}
+          td(align="right" class='gatherinfoprice') $#{parseFloat(Math.round((item.price * item.quantity) * 100) / 100).toFixed(2)}
+    tr 
+      td Total: 
+      td
+      td
+      td(align="right", id="total", style="font-weight:bold") $#{data.total}
+    form.form(method='post')
+      tr
+        td Actions
+        td
+          select(name='state')
+              option(value='0') Awaiting Delivery
+              option(value='1') Being Delivered
+              option(value='2') Delivered
+        td
+          input(id='change' type='submit', name='buybtn', value='Change')
+          
+        td
+          button(id='print' name='printbtn' type='button' onclick="printFormat('#{data.cart[0].userid}')") Print
+              //- button(onclick="add('#{item.id}')") add
+script.
+  //make link with black bg
+  $('#nav-pur').addClass('page');
+  function printFormat(user){
+    let tot = $('#total').text();
+    let names = [];
+    let quantities = [];
+    let prices = [];
+
+    $('.gatherinfoname').each(function() {
+        var cellText = $(this).html(); 
+        names.push(cellText);
+    });
+    $('.gatherinfoquantity').each(function() {
+        var cellText = $(this).html(); 
+        quantities.push(cellText);
+    });
+    $('.gatherinfoprice').each(function() {
+        var cellText = $(this).html(); 
+        prices.push(cellText);
+    });
+
+    $.post('/print', {total: tot, user: user, names: names, qs: quantities, prices: prices});
+  }

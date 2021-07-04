@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+    </title>
+  </head>
+  <body>
+    <label>Circles: </label>
+    <input type="text" id='circles' placeholder="eg: [{x:1, y:1, r:1}, {x:2, y:2, r:3}, ...{}]">
+    <button id="submit">Submit</button>
+     <p id='result'></p>
+     <canvas id="myCanvas" width="5000" height="5000">
+     </canvas>
+  </body>
+</html>
+
+<script type="text/javascript">
+  function draw (circles, path) {
+    let canvas = document.getElementById("myCanvas");
+    let ctx = canvas.getContext("2d");
+
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+    ctx.font = '22px serif';
+    path.length === 0 ? ctx.fillText(`No Path Found`, 32, 32) : ctx.fillText(`Circles from start (green) to finish (red): ${path.length - 1}`, 32, 32);
+
+    ctx.fillRect(150, 350, 500, 1);
+    ctx.fillRect(400, 100, 1, 500);
+
+    for (const circle of circles) {
+      circle.index === 1 ? ctx.strokeStyle = 'green' : ctx.strokeStyle = 'black';
+      if (circle.index === circles.length) ctx.strokeStyle = 'red';
+      ctx.beginPath();
+      ctx.arc(402 + (circle.x * 32), 352 + (circle.y * 32), circle.r * 32, 0, Math.PI * 2, true);
+      ctx.stroke();
+    }
+
+    ctx.beginPath();
+    ctx.strokeStyle = 'green';
+    for (const circle of path) {
+      ctx.lineTo(402.5 + (circle.x * 32), 352.5 + (circle.y * 32));
+    }
+    ctx.stroke();
+  }
+
+  document.getElementById('submit').addEventListener('click', (event) => {
+    const circles = JSON.parse(document.getElementById('circles').value).map((c, index) => {
+      c.index = index + 1;
+      return c;
+    });
+    const n = circles.length;
+
+    const queue = [[circles[0]]];
+    const checked = [circles[0].index];
+
+    let found = false;
+    while (queue.length > 0) {
+      const path = queue.shift();
+      let currCircle = path[path.length - 1];
+      for (const circle of circles) {
+        if (intersects(currCircle, circle) && !checked.includes(circle.index)) {
+          const newArray = [];
+          path.forEach((e) => newArray.push(e));
+          newArray.push(circle);
+          queue.push(newArray);
+          checked.push(circle.index);
+          if (circle.index === n) {
+            draw(circles, newArray);
+            found = true;
+          };
+        }
+      }
+    }
+    if (!found) draw(circles, []);
+  });
+
+  function intersects (c1, c2) {
+    const distance = Math.sqrt(Math.pow(c1.x - c2.x, 2) + Math.pow(c1.y - c2.y, 2));
+    if (c1.r >= c2.r + distance || c2.r >= c1.r + distance) return false;
+    return Math.pow(c1.x - c2.x, 2) + Math.pow(c1.y - c2.y, 2) < Math.pow(c1.r + c2.r, 2) ? true : false;
+  }
+
+</script>
+
+<!-- Tests
+[
+  {"x":-6, "y":-2, "r":1},
+  {"x":-2, "y":-1, "r":4},
+  {"x":-2, "y":-4, "r":2},
+  {"x":2, "y":3, "r":4},
+  {"x":5, "y":4, "r":2}
+]
+
+[
+  {"x":2, "y":3, "r":2},
+  {"x":3, "y":2, "r":2},
+  {"x":0, "y":3, "r":4},
+  {"x":-4, "y":2, "r":1}
+]
+
+[
+  {"x":2, "y":2, "r":2},
+  {"x":3, "y":2, "r":2},
+  {"x":2, "y":2, "r":4},
+  {"x":-2, "y":2, "r":1}
+]
+-->

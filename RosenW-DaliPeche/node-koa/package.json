@@ -1,0 +1,39 @@
+{
+  "name": "dali-peche-api",
+  "version": "0.0.0",
+  "private": true,
+  "config": {
+    "port": "3001"
+  },
+  "scripts": {
+    "start": "node ./src/app.js",
+    "test": "./node_modules/mocha/bin/_mocha"
+  },
+  "keywords": [],
+  "author": "R.M.",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "4.1.1",
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "bcrypt": "^3.0.1",
+    "braintree": "^2.12.0",
+    "co-body": "^6.0.0",
+    "handlebars": "^4.0.11",
+    "koa": "^2.5.3",
+    "koa-body": "^4.0.4",
+    "koa-bodyparser": "^4.2.1",
+    "koa-mount": "^3.0.0",
+    "koa-router": "^7.4.0",
+    "koa-session": "^5.8.2",
+    "koa-static": "^5.0.0",
+    "koa-views": "^6.1.4",
+    "node-fetch": "^2.2.0",
+    "nodemailer": "^4.6.8",
+    "pg": "^7.4.3",
+    "request": "^2.87.0",
+    "request-promise": "^4.2.2",
+    "sqlite": "^2.9.2"
+  }
+}

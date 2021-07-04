@@ -1,0 +1,37 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="./../bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./../sidebar.css">
+    <link rel="stylesheet" type="text/css" href="./../navbar.css">
+    <script type="text/javascript" src="./../utils.js"></script>
+  </head>
+   <body>
+    {{> navBar }}
+    {{> adminMenu }}
+    <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">Backoffice Users</h2>
+  </body>
+</html>
+
+<script type="text/javascript">
+  document.getElementById('navbar-msg').className += ' text-danger';
+  document.getElementById('navbar-msg').innerHTML = '{{msg}}';
+
+  async function addCredits (username) {
+    const credits = prompt(`add credits to user ${username}`);
+    if (!Number(credits)) return;
+    const response = await fetch('/admin/addCreditsToUser', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({
+        username,
+        credits
+      })
+    });
+    const data = await response.json();
+    console.log(data);
+    creditBox = document.getElementById(`credits-${username}`);
+    creditBox.value = parseInt(creditBox.value) + parseInt(credits);
+  }
+</script>

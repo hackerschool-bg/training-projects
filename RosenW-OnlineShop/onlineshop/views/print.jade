@@ -1,0 +1,71 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    script(type='text/javascript' src="/js/jquery.min.js")
+  body
+    block content
+  include ./backofficenav.jade
+  form(method='post')
+    textarea(name='format' rows="15" cols="200" style="width:50%; resize:none") #{data.format}
+    textarea(id="legend" name="legend" rows="15" cols="200" style="width:49%; resize:none" disabled="disabled") 
+    button(type="submit") Save Format 
+
+script.
+  //make link with black bg
+  $('#nav-print').addClass('page');
+  let text =   'Manual : \n \
+                EOT Transmit status \n \
+                ESC L Select page mode \n \
+                BS ^ E Set NV user memory area \n \
+                ESC M Select character font/ MSR card read \n \
+                BS ^ L BS ^ 7 Select graphics data \n \
+                ESC R Specify an international character set \n \
+                HT Horizontal tab \n \
+                ESC S Select standard mode \n \
+                LF Print and line feed \n \
+                ESC T Select print direction in page mode \n \
+                FF Print and feed paper to print starting position \n \
+                ESC V Turn 90° clockwise rotation mode on/off \n \
+                CR Print and carriage return \n \
+                ESC W Set print area in page mode \n \
+                DLE Set real-time command mode \n \
+                ESC \ Set relative print position \n \
+                CAN Cancel the print data in page mode \n \
+                ESC a Set position alignment \n \
+                DC4 Generate pulse \n \
+                ESC d Print and feed n lines \n \
+                ESC SP Set the character right space \n \
+                ESC i Partial cut \n \
+                ESC ! Set print mode \n \
+                ESC m Partial cut \n \
+                ESC $ Set absolute print position \n \
+                ESC p Generate pulse \n \
+                ESC % Select/cancel user-defined character set \n \
+                ESC t Select character code table \n \
+                ESC & Define user-defined character set \n \
+                ESC v Transmit paper sensor status \n \
+                ESC * Specify bit image mode \n \
+                ESC { Turn upside-down print mode on/off \n \
+                ESC - Turn underline mode on/off \n \
+                FS p Print NV bit image \n \
+                ESC 2 Select default line spacing \n \
+                FS q Define NV bit image \n \
+                ESC 3 Set line spacing \n \
+                GS ! Select character size \n \
+                ESC = Select peripheral device \n \
+                GS $ Set absolute vertical print position in page mode \n \
+                ESC ? Cancel user-defined characters \n \
+                GS ( A Execute test print \n \
+                ESC @ Initialize printer \n \
+                GS ( F Set black mark control functions \n \
+                ESC D Set horizontal tab positions \n \
+                GS ( N Select character color \n \
+                ESC E Turn emphasized mode on/off \n \
+                GS ( k Specify and print the symbol \n \
+                ESC G Turn double-strike mode on/off \n \
+                GS * Define downloaded bit image \n \
+                ESC J Print and feed paper \n \
+                GS / Print downloaded bit image '
+  $('#legend').text(text);

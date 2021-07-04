@@ -1,0 +1,19 @@
+form {
+	width: 303px; 
+	height: 300px;
+	margin-left: 38%;
+	margin-bottom: 32.5%; 
+	margin-top: 5%;
+}
+
+#err-msg, #info-msg {
+	margin-left: 38%;
+	font-size: 22px;
+	margin-top: 5%;
+	margin-bottom: 55.6%;
+}
+
+#bbtest {
+	height: 800px;
+	width: 100%;
+}

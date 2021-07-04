@@ -1,0 +1,36 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/table.css')
+    script(type='text/javascript' src="/js/jquery.min.js")
+  body
+    block content
+  include ./backofficenav.jade
+div
+  table(id='maint')
+    tr
+      th(align="left") ID
+      th(align="left") Email
+      th(align="left") Name
+      th(align="right") Address
+      th(align="right") Role
+      th(align="right") Active
+      th(align="right") Suspended
+      th
+    each u in data.users
+        tr
+          td #{u.id}
+          td #{u.email}
+          td #{u.first_name + " " + u.last_name}
+          td #{u.address}
+          td #{u.role}
+          td #{u.active}
+          td #{u.suspended}
+          td
+              button ???
+
+script.
+  //make link with black bg
+  $('#nav-us').addClass('page');

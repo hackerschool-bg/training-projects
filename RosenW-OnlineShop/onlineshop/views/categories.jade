@@ -1,0 +1,176 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title Office Shop
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
+    meta(name='description', content='')
+    meta(name='author', content='')
+    // Bootstrap styles
+    link(href='assets/css/bootstrap.css', rel='stylesheet')
+    // Customize styles
+    link(href='style.css', rel='stylesheet')
+    style(type='text/css').
+      .my-alert {
+          overflow: hidden;
+          position: fixed; /* Set to fixed position */
+          top: 0; /* set position at the top of the page */
+          right: auto;
+      }
+    // font awesome styles
+    link(href='assets/font-awesome/css/font-awesome.css', rel='stylesheet')
+    //if IE 7
+      link(href='css/font-awesome-ie7.min.css', rel='stylesheet')
+    //if lt IE 9
+      script(src='http://html5shim.googlecode.com/svn/trunk/html5.js')
+    // Favicons
+    link(rel='shortcut icon', href='assets/ico/favicon.ico')
+  body
+    //Lower Header Section
+    .container
+      #gototop
+      include ./navbar.jade
+      //
+        Body Section
+      .row
+        #sidebar.span3
+          .well.well-small
+            ul.nav.nav-list
+              each cat in data.cats
+                li
+                  a(href="/category/#{cat.id}/1/*?page=1")
+                    span.icon-chevron-right #{cat.name}
+                      
+        .span9
+          .well.np
+            #myCarousel.carousel.slide.homCar
+              .carousel-inner
+                each item, index in data.cats
+                  if index == 0
+                    .item.active
+                      img(style='width:100%; height:320px', src='/images/#{item.img}')
+                      .carousel-caption
+                        h4 #{item.name}
+                  else
+                    .item
+                      img(style='width:100%; height:320px', src='/images/#{item.img}')
+                      .carousel-caption
+                        h4 #{item.name}
+              a.left.carousel-control(href='#myCarousel', data-slide='prev') ‹
+              a.right.carousel-control(href='#myCarousel', data-slide='next') ›
+          //New Products
+          .well.well-small
+            h3 New Products 
+            hr.soften
+            .row-fluid
+              #newProductCar.carousel.slide
+                .carousel-inner
+                  .item.active
+                    ul.thumbnails
+                      each prod, index in data.eight
+                        if index < 4
+                          li.span3
+                            .thumbnail
+                              img(style="height:150px" src='#{prod.img}')
+                  .item
+                    ul.thumbnails
+                      each prod, index in data.eight
+                        if index >= 4
+                          li.span3
+                            .thumbnail
+                              img(style="height:150px" src='#{prod.img}')
+                a.left.carousel-control(href='#newProductCar', data-slide='prev') ‹
+                a.right.carousel-control(href='#newProductCar', data-slide='next') ›
+            .row-fluid
+              ul.thumbnails
+                each prod in data.three
+                  li.span4
+                    .thumbnail
+                      img(style="height:250px" src='#{prod.img}')
+                      .caption.cntr
+                        p #{prod.name}
+                        p
+                          strong  $#{prod.price} 
+                        .actionList
+                        br.clr
+      div.alert.alert-success.pull-right.my-alert(id='ver-alert' style='width:40%; height:24px; display:none; padding: 5px;')
+        strong A Verification message has been sent to your email
+      div.alert.alert-success.pull-right.my-alert(id='info-alert' style='width:40%; height:24px; display:none; padding: 5px;')
+        strong Your profile information has been successfuly changed
+      div.alert.alert-success.pull-right.my-alert(id='pass-alert' style='width:40%; height:24px; display:none; padding: 5px;')
+        strong Your password has been successfuly changed
+      div.alert.alert-success.pull-right.my-alert(id='GRM-alert' style='width:40%; height:24px; display:none; padding: 5px;')
+        strong A mail with your password has been sent, please change it as soon as possible
+      div.alert.alert-danger.pull-right.my-alert(id='GARM-alert' style='width:40%; height:24px; display:none; padding: 5px;')
+        strong Already registered with this email
+      div.alert.alert-success.pull-right.my-alert(id='fpe-alert' style='width:40%; height:24px; display:none; padding: 5px;')
+        strong A link to change your password has been sent to your email 
+
+    // Placed at the end of the document so the pages load faster
+    script(src='assets/js/jquery.js')
+    script(src='assets/js/bootstrap.min.js')
+    script(src='assets/js/jquery.easing-1.3.min.js')
+    script(src='assets/js/jquery.scrollTo-1.4.3.1-min.js')
+    script(src='assets/js/shop.js')
+
+script.
+  //make link with black bg
+  $('#nav-home').parent().addClass('active');
+  
+  function showAlert(id){
+    $(id).show();
+    //- $('.my-alert').hide();
+  }
+  
+  function addTrailingZeros(number) { // todo use this func
+    return parseFloat(Math.round(number * 100) / 100).toFixed(2);
+  },
+  
+if data.pc
+  script.
+    $(document).ready(function(){ 
+      let alert = $('#pass-alert'); 
+      alert.show();
+      setTimeout(() => {alert.hide();}, 2000);
+    });
+
+if data.pi
+  script.
+    $(document).ready(function(){ 
+      let alert = $('#info-alert'); 
+      alert.show();
+      setTimeout(() => {alert.hide();}, 2000);
+    });
+
+if data.reg
+  script.
+    $(document).ready(function(){ 
+      let alert = $('#ver-alert'); 
+      alert.show();
+      setTimeout(() => {alert.hide();}, 2000);
+    });
+
+
+if data.GRM
+  script.
+    $(document).ready(function(){ 
+      let alert = $('#GRM-alert'); 
+      alert.show();
+      setTimeout(() => {alert.hide();}, 4000);
+    });
+  
+if data.GARM
+  script.
+    $(document).ready(function(){ 
+      let alert = $('#GARM-alert'); 
+      alert.show();
+      setTimeout(() => {alert.hide();}, 3000);
+    });
+  
+if data.fpe
+  script.
+    $(document).ready(function(){ 
+      let alert = $('#fpe-alert'); 
+      alert.show();
+      setTimeout(() => {alert.hide();}, 3000);
+    });

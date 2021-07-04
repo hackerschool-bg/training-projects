@@ -1,0 +1,114 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="./../bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./../sidebar.css">
+    <link rel="stylesheet" type="text/css" href="./../navbar.css">
+    <link rel="stylesheet" type="text/css" href="./../loading.css">
+    <link rel="stylesheet" type="text/css" href="./../multiselect.css">
+
+    <script src="./../jquery.min.js"></script>
+    <script src="./../bootstrap.min.js"></script>
+  </head>
+   <body>
+    {{> navBar }}
+    {{> adminMenu }}
+    <ul class="list-group-item col-lg-10">
+      <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">Assign Roles</h2>
+      <form id="form" class="inline">
+        <div style="height: 20.8em">
+          <label class="col-lg-12">Username:</label>
+          <div class="col-lg-12">
+            <input type="text" name="username" class="form-control" value="{{username}}">
+          </div>
+        </div>
+        <div>
+          <div class="col-lg-12">
+            <input type="submit" id="search-btn" value="Search" class='form-control btn-success'>
+          </div>
+        </div>
+      </form>
+    </ul>
+    <div id="loading-animation" hidden="hidden"></div>
+    <h2 class="col-lg-10 text-center"></h2>
+    <div id="table-container" class="col-lg-10 pre-scrollable" style="max-height: 33em; height: 33em">
+      <table id="users-table" class="table table-hover table-bordered">
+        <tr>
+          <th>User</th>
+          <th>Role</th>
+          <th>Save User/Role Pair</th>
+        </tr>
+        {{#each users}}
+          <form method="POST">
+            <tr class="gen-tr">
+              <td>{{username}}<input type="text" value="{{username}}" hidden="hidden" name="username"></td>
+              <td>
+                <div class="multiselect">
+                  <div class="selectBox" onclick="showCheckboxes('{{role}}-{{username}}'); setCheckedBoxes('{{username}}')">
+                    <select class="form-control">
+                      <option>Select Roles</option>
+                    </select>
+                    <div class="overSelect"></div>
+                  </div>
+                  <div id="checkboxes-{{role}}-{{username}}" class="cbx">
+                    {{#each ../roles}}
+                      <label for="input-{{role}}-{{../role}}-{{../username}}"><input type="checkbox" id="input-{{role}}-{{../username}}" class="role-cbx" name="{{role}}">{{role}}</label>
+                    {{/each}}
+                  </div>
+                </div>
+              </td>
+              <td>
+                <input type="submit" class="form-control btn-info" value="Save">
+              </td>
+            </tr>
+          </form>
+        {{/each}}
+      </table>
+    </div>
+  </body>
+</html>
+
+<script type="text/javascript">
+  document.getElementById('search-btn').addEventListener('click', (event) => {
+    document.getElementById('loading-animation').removeAttribute('hidden');
+    document.getElementById('search-btn').setAttribute('disabled', 'disabled');
+    document.getElementById('form').submit();
+    document.getElementById('table-container').setAttribute('hidden', 'hidden');
+  });
+
+  document.getElementById('navbar-msg').innerHTML = '{{msg}}';
+  document.getElementById('menu-backoffice-users').setAttribute('class', 'selected');
+
+  let expanded = false;
+
+  function showCheckboxes(affix) {
+    let checkboxes = document.getElementById(`checkboxes-${affix}`);
+    if (!expanded) {
+      checkboxes.style.display = "block";
+      expanded = true;
+    } else {
+      checkboxes.style.display = "none";
+      expanded = false;
+    }
+  }
+
+  async function setCheckedBoxes (username) {
+    const response = await fetch('get-user-roles', {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method : "POST",
+      body: JSON.stringify({ username })
+    });
+    const data = await response.json();
+
+    for (const r of data.roles) {
+      for (const cbx of document.getElementsByClassName(`role-cbx`)) {
+        cbx.checked = false;
+      }
+    }
+
+    for (const r of data.roles) {
+      document.getElementById(`input-${r.role}-${username}`).checked = true;
+    }
+  }
+</script>

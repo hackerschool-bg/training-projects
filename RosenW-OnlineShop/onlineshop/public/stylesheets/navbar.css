@@ -1,0 +1,72 @@
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+/* Change the link color to #111 (black) on hover */
+li a:hover {
+    background-color: #111;
+}
+
+/* Change the link color to #111 (black) if on page */
+li a.page{
+    background-color: #111;
+}
+
+@media print {
+    body * {
+      visibility: hidden;
+    }
+    #section-to-print, #section-to-print * {
+      visibility: visible;
+    }
+    #section-to-print {
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+    a[href]::after {
+        content: ""
+    }
+  }
+@page {
+    size: auto;   /* auto is the initial value */
+    margin: 0;  /* this affects the margin in the printer settings */
+}
+
+.link-right {
+    float: 'right'
+}
+
+.search-container {
+    float: right;
+}
+  
+input[type=textbox] {
+    padding: 6px;
+    margin-top: 8px;
+    font-size: 17px;
+    border: none;
+}
+input[type=submit] {
+    padding-top: 7px;
+    padding-bottom: 6px;
+  }
+#navbar, #submenu{
+    padding-right: 10px;
+}

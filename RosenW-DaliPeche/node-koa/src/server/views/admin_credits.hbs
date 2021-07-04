@@ -1,0 +1,90 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="./../bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./../sidebar.css">
+    <link rel="stylesheet" type="text/css" href="./../navbar.css">
+    <link rel="stylesheet" type="text/css" href="./../loading.css">
+    <script type="text/javascript" src="./../utils.js"></script>
+  </head>
+   <body>
+    {{> navBar }}
+    {{> adminMenu }}
+    <ul class="list-group-item col-lg-10">
+    <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">Credit Balance</h2>
+      <form id="form" class="inline">
+        <input type="text" name="search" hidden="hidden" value="1">
+        <div style="height: 20.8em">
+          <label class="col-lg-12">Username:</label>
+          <div class="col-lg-12">
+            <input id="username" type="text" name="username" class="form-control" value="{{username}}">
+          </div>
+        </div>
+        <div>
+          <div class="col-lg-6">
+            <button id="export-btn" class='form-control btn-info' onclick="exportToExcel(event, {username: document.getElementById('username').value}, 'credits')">Export</button>
+          </div>
+          <div class="col-lg-6">
+            <input type="submit" id="search-btn" value="Search" class='form-control btn-success'>
+          </div>
+        </div>
+      </form>
+    </ul>
+    <div id="loading-animation" hidden="hidden"></div>
+    {{#if search}}
+      {{#if show}}
+        <h3 class="col-lg-10 text-center">Credit Balance</h3>
+        <div id="table-container" class="col-lg-10 pre-scrollable" style="max-height: 33em; height: 33em">
+          <table id="credits-table" class="table table-hover table-bordered">
+            <tr>
+              <th>ID</th>
+              <th>User</th>
+              <th>Credits Purchased</th>
+              <th>Credits Spent</th>
+              <th>Credits Remaining</th>
+            </tr>
+            {{#each users}}
+              <tr class="gen-tr">
+                <td class="text-right">{{id}}</td>
+                <td>{{username}}</td>
+                <td class="text-right">{{credits_purchased}}</td>
+                <td class="text-right">{{credits_spent}}</td>
+                <td class="text-right">{{credits_remaining}}</td>
+              </tr>
+            {{/each}}
+            <tr>
+              <td class="text-right"><strong>#</strong></td>
+              <td><strong>Total</strong></td>
+              <td class="text-right"><strong>{{total_credits_purchased}}</strong></td>
+              <td class="text-right"><strong>{{total_credits_spent}}</strong></td>
+              <td class="text-right"><strong>{{total_credits_remaining}}</strong></td>
+            </tr>
+          </table>
+        </div>
+      {{else}}
+        <h1 class="col-lg-10 text-center"></h1>
+        <div class="text-center">
+          <p>Too Many Results ({{resultCount}}) please check your filters. <a href="/admin/credits?username={{username}}&search=1&show=1"> display anyway </a></p>
+        </div>
+      {{/if}}
+    {{/if}}
+  </body>
+</html>
+
+<script type="text/javascript">
+  if ('{{err}}') {
+    document.getElementById('navbar-msg').className += ' text-danger';
+    document.getElementById('navbar-msg').innerHTML = '{{err.msg}}';
+    if ('{{err.code}}' === '1') {
+      document.getElementById('username').setAttribute('style', 'border-color: red');
+    }
+  }
+
+  document.getElementById('search-btn').addEventListener('click', (event) => {
+    document.getElementById('loading-animation').removeAttribute('hidden')
+    document.getElementById('search-btn').setAttribute('disabled', 'disabled');
+    document.getElementById('form').submit();
+    document.getElementById('table-container').setAttribute('hidden', 'hidden')
+    document.getElementById('report-text').setAttribute('hidden', 'hidden')
+  });
+  document.getElementById('menu-credits').setAttribute('class', 'selected');
+</script>

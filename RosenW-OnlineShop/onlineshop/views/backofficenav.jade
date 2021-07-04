@@ -1,0 +1,20 @@
+ul(id="navbar")
+    li
+        a(href='/' id='nav-home') Home
+    if data.isLoggedIn && data.isAdmin
+        li
+            a(href='/add' id='nav-addpr') Add Product
+        li
+            a(href='/check?state=4&groupby=3&sort=1&from=01-01-1999&to=01-01-2050&word=' id='nav-pur') Purchases
+        li
+            a(href='/accs' id='nav-us') Users
+        li
+            a(href='/all' id='nav-all') All Products
+        li
+            a(href='/printf' id='nav-print') Set Print Format
+        li
+            a(href='/logout') Log out
+        li(class="search-container")
+            form(method='post' action="/")
+                input(type='textbox', placeholder='Search product by name', name='name')
+                input(type='submit', value='Search')

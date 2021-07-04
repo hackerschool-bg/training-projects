@@ -1,0 +1,395 @@
+[Error] - 2018-10-10 18:33:59.018984 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 108, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:33:59.019909 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 122, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:33:59.020206 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 108, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:33:59.043740 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 122, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.277333 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 109, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.284084 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 123, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.312053 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 109, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.317211 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 123, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.318170 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 109, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.312939 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 109, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.319601 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 123, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.316233 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 109, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.321353 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 123, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:36:20.323874 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 123, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:38:01.520144 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 107, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:38:01.520955 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 122, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:38:01.525011 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 107, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:38:01.525853 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 122, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:38:01.547499 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 107, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:38:01.563290 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 122, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:38:01.596817 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 107, in handle_request
+    send(connection, html)
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:38:01.605533 - [Errno 32] Broken pipe
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 50, in start
+    self.handle_request(connection, client_address)
+  File "./forkserver-v1.py", line 122, in handle_request
+    send(connection, self.generate_headers(500))
+  File "/home/ros/Desktop/repo/RosenW-WebServer/v1/utils/sender.py", line 2, in send
+    socket.sendall(data)
+  File "/usr/lib/python2.7/socket.py", line 228, in meth
+    return getattr(self._sock,name)(*args)
+error: [Errno 32] Broken pipe
+[Error] - 2018-10-10 18:45:22.110974 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:22.147514 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:22.303857 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:22.370974 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:22.715177 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:22.778978 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:22.879528 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:22.987744 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:23.615717 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:23.710975 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:45:23.771673 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:08.387695 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:08.421431 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:08.479219 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:08.894968 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:09.022985 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:09.060917 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:09.115844 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:09.266944 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:09.379123 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:09.570973 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:09.790975 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:09.954976 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:11.478983 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out
+[Error] - 2018-10-10 18:46:11.497016 - timed out
+Traceback (most recent call last):
+  File "./forkserver-v1.py", line 99, in handle_request
+    request = self.recv_request(connection)
+  File "./forkserver-v1.py", line 176, in recv_request
+    data = connection.recv(self.opts['recv'])
+timeout: timed out

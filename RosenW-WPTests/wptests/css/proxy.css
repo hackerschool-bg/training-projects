@@ -1,0 +1,3 @@
+header, footer, #top, #foot, #wpadminbar, .titleBar {
+    display: none;
+}

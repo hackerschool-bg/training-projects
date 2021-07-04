@@ -1,0 +1,79 @@
+#maint {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    align-self:'center';
+}
+
+#maint td, .maint th {
+    word-break: break-word;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#maint tr:nth-child(even){background-color: #f2f2f2;}
+
+/* #maint tr:hover {background-color: #ddd;} */
+
+#maint th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+#maint td th {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: left;
+    background-color: #333;
+    color: white;
+}
+#maint td tr:nth-child(even){background-color: #f2f2f2;}
+#maint td tr:nth-child(odd){background-color: #FFFFFF;}
+
+
+
+
+table {
+    margin-left:auto; 
+    margin-right:auto;
+}
+
+div{
+    padding-top: 25px;
+}
+
+#maintsc {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    align-self:'center';
+}
+
+#maintsc td, .maint th {
+    word-break: break-word;
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+/* #maint tr:hover {background-color: #ddd;} */
+
+#maintsc th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: center;
+    background-color: #333;
+    color: white;
+}
+
+#maintsc td th {
+    padding-top: 2px;
+    padding-bottom: 2px;
+    text-align: left;
+    background-color: #333;
+    color: white;
+}
+#maintsc td tr:nth-child(even){background-color: #f2f2f2;}
+#maintsc td tr:nth-child(odd){background-color: #f2f2f2;}

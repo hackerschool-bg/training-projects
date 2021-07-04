@@ -1,0 +1,29 @@
+.selectBox {
+  position: relative;
+}
+
+.selectBox select {
+  width: 100%;
+  height: 100%;
+}
+
+.overSelect {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+}
+
+.cbx {
+  display: none;
+  border: 1px #dadada solid;
+}
+
+.cbx label {
+  display: block;
+}
+
+.cbx label:hover {
+  background-color: #1e90ff;
+}

@@ -1,0 +1,80 @@
+<html lang="en">
+  <head>
+    <link rel="stylesheet" type="text/css" href="./../bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="./../sidebar.css">
+    <link rel="stylesheet" type="text/css" href="./../navbar.css">
+    <link rel="stylesheet" type="text/css" href="./../loading.css">
+    <script type="text/javascript" src="./../utils.js"></script>
+  </head>
+   <body>
+    {{> navBar }}
+    {{> adminMenu }}
+    <ul class="list-group-item col-lg-10">
+    <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">Requests</h2>
+      <form id="form" class="inline">
+        <input type="text" name="search" hidden="hidden" value="1">
+        <div style="height: 20.8em">
+          <br>
+          <label class="col-lg-12">IATA Code / City:</label>
+          <div class="col-lg-12">
+            <input id="term" type="text" name="term" class="form-control" value="{{term}}">
+          </div>
+        </div>
+        <div>
+          <div class="col-lg-6">
+            <button id="export-btn" class='form-control btn-info' onclick="exportToExcel(event, {term: document.getElementById('term').value}, 'requests')">Export</button>
+          </div>
+          <div class="col-lg-6">
+            <input type="submit" id="search-btn" value="Search" class='form-control btn-success'>
+          </div>
+        </div>
+      </form>
+    </ul>
+    <div id="loading-animation" hidden="hidden"></div>
+    {{#if search}}
+      {{#if show}}
+        <h3 id="report-text" class="col-lg-10 text-center">Report</h3>
+        <div id="table-container" class="col-lg-10 pre-scrollable" style="max-height: 33em; height: 33em">
+          <table id="request-table" class="table table-hover table-bordered">
+            <tr>
+              <th>Request</th>
+              <th>Type</th>
+              <th>Call Count</th>
+            </tr>
+            {{#each requests}}
+              <tr class="gen-tr">
+                <td>{{request}}</td>
+                <td>{{type}}</td>
+                <td class="text-right">{{call_count}}</td>
+              </tr>
+            {{/each}}
+          </table>
+        </div>
+      {{else}}
+        <h1 class="col-lg-10 text-center"></h1>
+        <div class="text-center">
+          <p>Too Many Results ({{resultCount}}) please check your filters. <a href="/admin/requests?term={{term}}&search=1&show=1"> display anyway </a></p>
+        </div>
+      {{/if}}
+    {{/if}}
+  </body>
+</html>
+
+<script type="text/javascript">
+  if ('{{err}}') {
+    document.getElementById('navbar-msg').className += ' text-danger';
+    document.getElementById('navbar-msg').innerHTML = '{{err.msg}}';
+    if ('{{err.code}}' === '1') {
+      document.getElementById('term').setAttribute('style', 'border-color: red');
+    }
+  }
+
+  document.getElementById('search-btn').addEventListener('click', (event) => {
+    document.getElementById('loading-animation').removeAttribute('hidden')
+    document.getElementById('search-btn').setAttribute('disabled', 'disabled');
+    document.getElementById('form').submit();
+    document.getElementById('table-container').setAttribute('hidden', 'hidden')
+    document.getElementById('report-text').setAttribute('hidden', 'hidden')
+  });
+  document.getElementById('menu-requests').setAttribute('class', 'selected');
+</script>

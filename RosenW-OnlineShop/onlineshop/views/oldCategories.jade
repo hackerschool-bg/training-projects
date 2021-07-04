@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/table.css')
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    script(type='text/javascript' src="/js/jquery.min.js")
+    script(type='text/javascript' src="/js/notify.min.js")
+    
+  body
+    block content
+  include ./backofficenav.jade
+  div
+    table(id='maint')
+      th Category
+        each item, index in data.cat
+            tr
+              td
+                a(href="/category/#{item.id}/1/*") #{item.name}
+
+script.
+  let options = {
+    clickToHide: true,
+    autoHide: false,
+    autoHideDelay: 5000,
+    arrowShow: true,
+    arrowSize: 5,
+    position: 'bottom right',
+    style: 'bootstrap',
+    className: 'success',
+    showAnimation: 'slideDown',
+    showDuration: 400,
+    hideAnimation: 'slideUp',
+    hideDuration: 200,
+    gap: 0
+  }
+
+if data.pc
+  script.
+    $(document).ready(function(){ 
+        $('#navbar').notify('Password changed successfully', options);  
+    });
+
+if data.pi
+  script.
+    $(document).ready(function(){ 
+        $('#navbar').notify('Profile information changed successfully', options);  
+    });
+
+if data.reg
+  script.
+    $(document).ready(function(){ 
+        $('#navbar').notify('A verification link has been sent to your email', options);  
+    });

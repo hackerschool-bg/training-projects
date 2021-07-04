@@ -1,0 +1,91 @@
+<html lang="en">
+  <head>
+    <link href="./bootstrap.css" rel="stylesheet">
+  </head>
+   <body>
+    <h2 class="col-lg-12 col-md-12 col-sm-12 col-xs-12 text-center">Welcome, {{ user }}</h2>
+    <ul class="list-group-item col-lg-offset-4 col-md-offset-4 col-sm-offset-4 col-xs-offset-4 col-lg-4 col-md-4 col-sm-4 col-xs-4">
+      <form method="post" action="/home">
+        <label for="apikey-box">Generate API key: </label>
+        <br>
+        <input type="text" id="apikey-box" name="apikey-box" disabled>
+        <button id="copy-btn">Copy</button>
+        <button type="submit" class="pull-right" id="generate-btn">Generate API Key</button>
+        <br>
+        <br>
+        <p>Your API keys:</p>
+        <ul id="keys">
+          {{#each keys}}
+            <li>{{key}} ({{use_count}} / {{../limit}}) <a href="#" class="text-danger" onclick="deleteAPIKey('{{key}}')">x</a></li>
+          {{/each}}
+        </ul>
+        <br>
+        <br>
+        <p class="pull-right"><a href="/logout">Log out</a></p>
+        <p class="pull-left">Credits: {{credits}} <a href="/buy">(get more credits !)</a></p>
+      </form>
+    </ul>
+
+    <a class="col-lg-12 " href="/all-licenses.log">licenses</a>
+  </body>
+</html>
+
+<script type="text/javascript">
+  const generateBtn = document.getElementById('generate-btn');
+  const copyBtn = document.getElementById('copy-btn');
+  const APIKeyBox = document.getElementById('apikey-box');
+
+  copyBtn.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const keyBox = document.getElementById('apikey-box');
+
+    const el = document.createElement('textarea');
+    el.value = keyBox.value;
+    document.body.appendChild(el);
+    el.select();
+    document.execCommand('copy');
+    document.body.removeChild(el);
+  });
+
+  generateBtn.addEventListener('click', async (event) => {
+    event.preventDefault();
+    const username = "{{user}}";
+    const limit = "{{limit}}";
+    const response = await fetch('api/generateAPIKey', {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method : "POST",
+      body: JSON.stringify({ name: username })
+    });
+    const keyObj = await response.json();
+    const key = keyObj.key;
+
+    if (key == null && typeof keyObj.msg == 'string') {
+      APIKeyBox.value = keyObj.msg;
+    } else {
+      APIKeyBox.value = key;
+      const keyElement = document.createElement('li');
+      const deleteElement = document.createElement('a');
+      deleteElement.setAttribute('href', `#`);
+      deleteElement.setAttribute('id', `key-${key}`);
+      deleteElement.addEventListener('click', (event) => deleteAPIKey(key));
+      deleteElement.setAttribute('class', `text-danger`);
+      deleteElement.innerHTML = 'x';
+      keyElement.innerHTML = `${key} (0 / ${limit}) `;
+      keyElement.appendChild(deleteElement);
+      document.getElementById('keys').appendChild(keyElement);
+    }
+  });
+
+  async function deleteAPIKey (key) {
+    await fetch(`api/del`, {
+      headers: {
+        "Content-Type": "application/json"
+      },
+      method : "DELETE",
+      body: JSON.stringify({ key })
+    });
+    window.location.reload(true);
+  }
+</script>

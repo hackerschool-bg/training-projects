@@ -1,0 +1,27 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/form.css')
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    script(type='text/javascript' src="/js/jquery.min.js")
+    script(type='text/javascript' src="/js/notify.min.js")
+    script(type='text/javascript' src='https://www.google.com/recaptcha/api.js')
+  body
+    block content
+      include ./backofficenav.jade
+      div
+        form.form(method='post')
+          label Username :
+          input(type='text', name='username')
+          label Password :
+          input(type='password', name='password')
+          if data.r
+            div(class="g-recaptcha" data-sitekey="6LdF9FQUAAAAAO7KK6yzeKXmWB9vfvJUPhSg4YoT")
+          if data.f == 1
+            label(style='color:red') Incorrect Password
+          if data.f == 2
+            label(style='color:red') Invalid Username
+          if data.f == 3
+            label(style='color:red') Please complete the captcha
+          input(type='submit', name='loginiBtn', value='Log In')

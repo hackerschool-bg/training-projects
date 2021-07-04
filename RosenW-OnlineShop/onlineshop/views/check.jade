@@ -1,0 +1,199 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/table.css')
+    script(type='text/javascript' src="/js/jquery.min.js")
+    style.
+      a {
+        color: white;
+      }
+      input {
+        box-shadow: 0 0 1px #000000;
+      }
+      .center {
+        margin: auto;
+        width: 100%;
+      }
+      .col-25 {
+          float: left;
+          width: 15%;
+          margin-top: 6px;
+      }
+
+      .col-75 {
+          float: left;
+          width: 20%;
+          margin-top: 6px;
+      }
+      .filtBtn{
+          float: left;
+          margin-top: 8px;
+      }
+  body
+    block content
+  include ./backofficenav.jade
+  
+div.center
+  th
+    form(method='post')
+      label.col-25 GROUP BY:   
+      select.form-padding.col-75(name='groupby')
+        optgroup
+          option(value='3') Nothing
+          | &#x9;&#x9;
+          option(value='0') Day
+          | &#x9;&#x9;
+          option(value='1') Month
+          | &#x9;&#x9;
+          option(value='2') Year
+          | &#x9;&#x9;
+      br
+      br
+      label.col-25 STATE:     
+      select.form-padding.col-75(name='state')
+        optgroup
+          option(value='4') All
+          | &#x9;&#x9;
+          option(value='0') Awaiting Delivery
+          | &#x9;&#x9;
+          option(value='1') Being Delivered
+          | &#x9;&#x9;
+          option(value='2') Delivered
+          | &#x9;&#x9;
+      br
+      br
+          
+      label.col-25 FROM:    
+      input.col-75(type='textbox', placeholder='dd', name='fromDay' style='width:5%' value="#{data.from.split('-')[0]}")
+      | -
+      input(type='textbox', placeholder='mm', name='fromMonth' style='width:5%' value="#{data.from.split('-')[1]}")
+      | -
+      input(type='textbox', placeholder='yyyy', name='fromYear' style='width:5%' value="#{data.from.split('-')[2]}")
+      br
+      label.col-25 TO: 
+      input.col-75(type='textbox', placeholder='dd', name='toDay' style='width:5%' value="#{data.to.split('-')[0]}")
+      | -
+      input(type='textbox', placeholder='mm', name='toMonth' style='width:5%' value="#{data.to.split('-')[1]}")
+      | -
+      input(type='textbox', placeholder='yyyy', name='toYear' style='width:5%' value="#{data.to.split('-')[2]}")
+      br
+      label.col-25 USER: 
+      input.col-75(type='textbox', placeholder='user', name='word' value="#{data.word}")
+      input.filtBtn(type='submit', value='Filter')
+      br
+      br
+      br
+      br
+    button#excelBtn(onclick="exportTableToExcel('maint', 'data')" type='submit' style="padding:5px") Generate Excel file
+  table(style='width:100;' id="maint" class='allpurch' align="center")
+    tr
+      th(style="text-align:center")
+        if data.sort != 1
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=1&from=#{data.from}&to=#{data.to}&word=#{data.word}")  Date
+        else
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=6&from=#{data.from}&to=#{data.to}&word=#{data.word}")  Date
+      th(style="text-align:center")
+        if data.sort != 2
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=2&from=#{data.from}&to=#{data.to}&word=#{data.word}")  User
+        else
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=7&from=#{data.from}&to=#{data.to}&word=#{data.word}")  User
+      th(style="text-align:center") 
+        if data.sort != 3
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=3&from=#{data.from}&to=#{data.to}&word=#{data.word}")  Address
+        else
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=8&from=#{data.from}&to=#{data.to}&word=#{data.word}")  Address
+      th(style="text-align:center")  
+        if data.sort != 4
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=4&from=#{data.from}&to=#{data.to}&word=#{data.word}")  State
+        else 
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=9&from=#{data.from}&to=#{data.to}&word=#{data.word}")  State
+      th(style="text-align:center")  
+        if data.sort != 5
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=5&from=#{data.from}&to=#{data.to}&word=#{data.word}")  Total
+        else 
+          a(href=
+            "/check?state=#{data.state}&groupby=#{data.groupby}&sort=10&from=#{data.from}&to=#{data.to}&word=#{data.word}")  Total
+      th
+    each item, index in data.purchases
+        tr
+          td(style="text-align:center")  #{item.date}
+          if item.first_name != undefined
+            td(style="text-align:left")  #{item.first_name + " " + item.last_name}
+          else
+            td(style="text-align:left")
+          td(style="text-align:left")  #{item.address}
+          td(style="text-align:center")  #{item.state}
+          td(id="tot-#{index}" style="text-align:right")  $#{item.tot}
+          td(style="text-align:center") 
+              button(onclick="location.href = '/check/#{item.id}';") see
+    tr
+      td(style="text-align:center")  Total
+      td
+      td
+      td
+      td#sum(style="text-align:right")
+      td
+  
+script.
+  //make link with black bg
+  $('#nav-pur').addClass('page');
+  $('#submenu-all').addClass('page');
+  
+  let total = 0;
+  $('[id^="tot-"]').each(function(){
+    total += Number($(this).text().substr(2,));
+  });
+  $('#sum').text('$' + addTrailingZeros(total));
+  
+  function addTrailingZeros(number) {
+    return parseFloat(Math.round(number * 100) / 100).toFixed(2);
+  }
+  
+  
+  function exportTableToExcel(tableID, filename = ''){
+    var downloadLink;
+    var dataType = 'application/vnd.ms-excel';
+    var tableSelect = document.getElementById(tableID);
+    var tableHTML = tableSelect.outerHTML.replace(/ /g, '%20');
+    
+    // Specify file name
+    filename = filename?filename+'.xls':'excel_data.xls';
+    
+    // Create download link element
+    downloadLink = document.createElement("a");
+    
+    document.body.appendChild(downloadLink);
+    
+    if(navigator.msSaveOrOpenBlob){
+        var blob = new Blob(['\ufeff', tableHTML], {
+            type: dataType
+        });
+        navigator.msSaveOrOpenBlob( blob, filename);
+    }else{
+        // Create a link to the file
+        downloadLink.href = 'data:' + dataType + ', ' + tableHTML;
+    
+        // Setting the file name
+        downloadLink.download = filename;
+        
+        //triggering the function
+        downloadLink.click();
+    }
+  }
+  
+  
+  
+  
+  
+  

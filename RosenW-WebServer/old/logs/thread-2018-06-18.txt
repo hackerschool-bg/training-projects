@@ -1,0 +1,14 @@
+IP: <socket._socketobject object at 0x7fbd42ef2980>
+DATE: 2018-06-18 10:22:27.086246
+GET /sum?a=1&login=asd HTTP/1.1
+Host: 127.0.0.1:8888
+Connection: keep-alive
+Cache-Control: max-age=0
+Upgrade-Insecure-Requests: 1
+User-Agent: Mozilla/5.0 (X11; Linux x86_64) AppleWebKit/537.36 (KHTML, like Gecko) Ubuntu Chromium/66.0.3359.181 Chrome/66.0.3359.181 Safari/537.36
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8
+Accept-Encoding: gzip, deflate, br
+Accept-Language: en-US,en;q=0.9
+
+IP: <socket._socketobject object at 0x7fbd42ef2a60>
+DATE: 2018-06-18 10:22:27.116378

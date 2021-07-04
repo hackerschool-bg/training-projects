@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+    <link rel="stylesheet" type="text/css" href="/css/google_map.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+</head>
+<body>
+<div id="map" style="float: left"></div>
+
+<form style="float: left">
+    From:<br>
+    <input type="text" id="from" placeholder="Lat, Long">
+    <br>
+    To:<br>
+    <input type="text" id="to" placeholder="Lat, Long">
+    <br>
+    <button type="button" id="submitBtn">Search</button>
+    <button type="button" id="showAllBtn">Show All</button>
+    <button type="button" id="hideAllBtn">Hide All</button>
+</form>
+
+<form style="float: left">
+    Find by name:<br>
+    <input type="text" name="name" class="autocomplete" id="findBox">
+    <br><br>
+</form>
+
+<form style="float: left">
+    Filter by type:<br>
+    <div class="multiselect">
+        <div class="selectBox" onclick="showCheckboxes()">
+            <select>
+                <option>Select types</option>
+            </select>
+            <div class="overSelect"></div>
+        </div>
+        <div id="checkboxes"></div>
+    </div>
+    <br>
+</form>
+
+<div id="count"></div>
+
+<script src="jquery/jquery.min.js" rel="stylesheet"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDWCr6tIiwBUyJvMSaEHkFHtSkRPDH8VmU&callback=initMap" async
+        defer></script>
+<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+<script src="js/google_map.js"></script>
+</body>
+</html>

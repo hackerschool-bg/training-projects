@@ -1,0 +1,113 @@
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/navbar.css')
+    link(rel='stylesheet', href='/stylesheets/table.css')
+    script(type='text/javascript' src="/js/jquery.min.js")
+    script(type='text/javascript' src="/js/notify.min.js")
+
+  body
+    block content
+  include ./backofficenav.jade
+div
+  table(id="maint")
+    tr
+      th Product
+      th Description
+      th Quantity in stock
+      th Price
+      if data.isLoggedIn && !data.isAdmin
+        th Quantity
+        th Add
+      if data.isAdmin
+        th Edit
+        th Delete
+    each item, index in data.prods
+      if index < 50
+        tr
+          td(style="text-align:center")
+            img(height='120px' src="#{item.img}")
+          td(style="text-align:left; vertical-align:top") #{item.name}
+          td(style="text-align:center") #{item.quantity}
+          td(align="right") $#{item.price}
+          if data.isLoggedIn && !data.isAdmin
+            td(style="text-align:center")
+              input(id="input-#{item.id}" type='text', placeholder='quant.', style='width: 50px', onkeyup="changeQuantity('#{item.id}', '#{item.quantity}')" ) 
+            td(style="text-align:center")
+              button(onclick="add('#{item.id}')") add
+          if data.isAdmin
+            td(style="text-align:center")
+              button(onclick="location.href = '/edit/#{item.id}';") edit
+            td(style="text-align:center")
+              button(onclick="location.href = '/delete/#{item.id}';") delete
+              
+script.
+  //notify options
+  let options = {
+  // whether to hide the notification on click
+  clickToHide: true,
+  // whether to auto-hide the notification
+  autoHide: true,
+  // if autoHide, hide after milliseconds
+  autoHideDelay: 5000,
+  // show the arrow pointing at the element
+  arrowShow: true,
+  // arrow size in pixels
+  arrowSize: 5,
+  // position defines the notification position though uses the defaults below
+  position: 'bottom right',
+  // default style
+  style: 'bootstrap',
+  // default class (string or [string])
+  className: 'success',
+  // show animation
+  showAnimation: 'slideDown',
+  // show animation duration
+  showDuration: 400,
+  // hide animation
+  hideAnimation: 'slideUp',
+  // hide animation duration
+  hideDuration: 200,
+  // padding between element and notification
+  gap: 0
+  }
+  //make link with black bg
+  $('#nav-home').addClass('page');
+  $('#nav-home').text('Back');
+
+  //sorting
+  function sortByQuantity(){
+    console.log(data.prods);
+  }
+
+  //changes quantity to max allowed
+  function changeQuantity(id, max){
+    let quantityBox = $('#input-' + id);
+    let value = quantityBox.val();
+    if(Number(value)>max){
+      quantityBox.val(max);
+    }
+  }
+
+  function add(id){
+    let box = $('#input-' + id);
+    let textBoxValue = box.val();
+    box.val("");
+    if(isNumber(textBoxValue) && isWholeNumber(textBoxValue) && Number(textBoxValue)>0){
+      $.post('/addtocart', {id: id, quant: textBoxValue});
+      $('#navbar').notify('Product added to cart', options);
+    }
+  }
+  
+  function isNumber(n) {
+    return !isNaN(parseFloat(n)) && isFinite(n);
+  }
+
+  function isWholeNumber(n){
+    var result = (n - Math.floor(n)) !== 0; 
+    if (result)
+    return false;
+    else
+    return true;
+  }

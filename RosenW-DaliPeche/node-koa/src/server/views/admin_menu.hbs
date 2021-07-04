@@ -1,0 +1,48 @@
+<ul id="menu" class="list-group-item col-lg-2 col-md-2 col-sm-2 col-xs-2">
+  <div id="side-bar" onselectstart="return false">
+    <input type="checkbox" id="reports-menu-checkbox" class="sidebar-menu-chbox">
+    <label id="reports-dd" for="reports-menu-checkbox" class="dropdown">
+      <label for="reports-menu-checkbox">Reports</label>
+      <label id="reports-arrow" class="dd-arrow pull-right" for="reports-menu-checkbox"></label>
+      <div>
+        {{#if permissions.can_see_users}}
+          <a href="/admin/users" id="menu-users"><span>Users</span></a>
+        {{/if}}
+        {{#if permissions.can_see_transfers}}
+          <a href="/admin/ctransfers" id="menu-ctransfers"><span>Credit Transfers</span></a>
+        {{/if}}
+        {{#if permissions.can_see_cities}}
+          <a href="/admin/cities" id="menu-cities"><span>Cities</span></a>
+        {{/if}}
+        {{#if permissions.can_see_cities}}
+          <a href="/admin/requests" id="menu-requests"><span>Requests</span></a>
+        {{/if}}
+        {{#if permissions.can_see_credit_balance}}
+          <a href="/admin/credits" id="menu-credits"><span>Credit Balance</span></a>
+        {{/if}}
+      </div>
+    </label>
+    <input type="checkbox" id="action-menu-checkbox" class="sidebar-menu-chbox">
+    <label id="actions-dd" for="action-menu-checkbox" class="dropdown">
+      <label for="action-menu-checkbox">Actions</label>
+      <label id="actions-arrow" class="dd-arrow pull-right" for="action-menu-checkbox"></label>
+      <div>
+        {{#if permissions.can_see_roles}}
+          <a href="/admin/roles" id="menu-roles"><span>Change Roles</span></a>
+        {{/if}}
+        {{#if permissions.can_edit_backoffice_users}}
+          <a href="/admin/backoffice-users" id="menu-backoffice-users"><span>Assign Roles</span></a>
+        {{/if}}
+        {{#if permissions.can_approve_credits}}
+          <a href="/admin/approve" id="menu-approve"><span>Approve Transfers</span></a>
+        {{/if}}
+        {{#if permissions.can_edit_backoffice_users}}
+          <a href="/admin/create-user" id="menu-create-user"><span>Create User</span></a>
+        {{/if}}
+        {{#if permissions.can_add_credits}}
+          <a href="/admin/add" id="menu-give-credits"><span>Give Credits</span></a>
+        {{/if}}
+      </div>
+    </label>
+  </div>
+</ul>
