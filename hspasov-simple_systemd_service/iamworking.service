@@ -1,0 +1,6 @@
+[Unit]
+Description=Service that logs to stderr every 60 minutes the message 'I am working'
+
+[Service]
+ExecStart=/usr/bin/python3 -u [path to iamworking.py]/iamworking.py
+PIDFile=/var/run/iamworking.pid

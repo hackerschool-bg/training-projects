@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Bookstore</title>
+  </head>
+  <body>
+    <div id="content">
+      <div>
+        <form action="/admin/users/create">
+          <button>New user</button>
+        </form>
+      </div>
+      <div>
+        <% if (users.length > 0) { %>
+          <% users.forEach(function (user) { %>
+            <form action="/admin/users/<%= user.id %>/edit">
+              <button id="edit-user">Edit</button>
+            </form>
+            <p><%= user.id %></p>
+            <p><%= user.username %></p>
+            <p><%= user.email %></p>
+            <p><%= user.first_name %></p>
+            <p><%= user.last_name %></p>
+            <p><%= user.country %></p>
+          <% });%>
+        <% } else { %>
+          <p>No results</p>
+        <% }%>
+      </div>
+    </div>
+  </body>
+</html>

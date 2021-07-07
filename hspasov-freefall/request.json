@@ -1,0 +1,16 @@
+{
+	"jsonrpc": 2.0,
+	"method": "search",
+	"params": {
+		"v": "1.0",
+		"fly_from": "1",
+		"fly_to": "2",
+		"price_to": "1000",
+		"currency": "EUR",
+		"date_from": "2018-07-01",
+		"date_to": "2018-10-01",
+		"sort": "price",
+		"max_fly_duration": "20"
+	},
+	"id": 1
+}

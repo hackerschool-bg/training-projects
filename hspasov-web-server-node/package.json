@@ -1,0 +1,19 @@
+{
+  "name": "hspasov-web-server-node",
+  "version": "1.0.0",
+  "description": "Node web server",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "CONFIG=./config.json node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/hspasov/training-projects/tree/master/hspasov-web-server-node"
+  },
+  "author": "Hristo Spasov",
+  "license": "ISC",
+  "dependencies": {
+    "ajv": "^6.9.1"
+  }
+}

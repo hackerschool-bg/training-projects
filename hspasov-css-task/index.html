@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>CSS task</title>
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+  </head>
+  <body>
+    <div class="container">
+      <input type="checkbox" id="side-menu-toggle" class="toggle menu-toggle">
+      <div class="top-bar">
+        <label id="side-menu-toggle-label" for="side-menu-toggle">
+          <span class="menu-button">
+            <img class="top-bar-img" src="./images/menu-icon.png">
+          </span>
+        </label>
+        <img src="images/Okay-Face-Meme-PNG.png" class="logo top-bar-img" id="top-bar-logo">
+      </div>
+      <div class="side-menu">
+        <div class="item">
+          <input type="checkbox" id="checkbox-toggle-1">
+          <label class="side-menu-item-label" for="checkbox-toggle-1">
+            <span class="item-button"><img class="item-icon" src="./images/triangular_bullet_white.png">Item</span>
+          </label>
+          <div class="subitems">
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+          </div>
+        </div>
+        <div class="item">
+          <input type="checkbox" id="checkbox-toggle-2">
+          <label class="side-menu-item-label" for="checkbox-toggle-2">
+            <span class="item-button"><img class="item-icon" src="./images/triangular_bullet_white.png">Item</span>
+          </label>
+          <div class="subitems">
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+          </div>
+        </div>
+        <div class="item">
+          <input type="checkbox" id="checkbox-toggle-3">
+          <label class="side-menu-item-label" for="checkbox-toggle-3">
+            <span class="item-button"><img class="item-icon" src="./images/triangular_bullet_white.png">Item</span>
+          </label>
+          <div class="subitems">
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+          </div>
+        </div>
+        <div class="item">
+          <input type="checkbox" id="checkbox-toggle-4">
+          <label class="side-menu-item-label" for="checkbox-toggle-4">
+            <span class="item-button"><img class="item-icon" src="./images/triangular_bullet_white.png">Item</span>
+          </label>
+          <div class="subitems">
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+            <div class="subitem">Subitem</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="side-menu-collapsed">
+        <div class="collapsed-item" class="item">
+          <span class="collapsed-item-button"><img class="item-icon" src="./images/triangular_bullet_u2023_icon_256x256.png"></span>
+          <div class="subitems">
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+          </div>
+        </div>
+        <div class="collapsed-item" class="item">
+          <span class="collapsed-item-button"><img class="item-icon" src="./images/triangular_bullet_u2023_icon_256x256.png"></span>
+          <div class="subitems">
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+          </div>
+        </div>
+        <div class="collapsed-item" class="item">
+          <span class="collapsed-item-button"><img class="item-icon" src="./images/triangular_bullet_u2023_icon_256x256.png"></span>
+          <div class="subitems">
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+          </div>
+        </div>
+        <div class="collapsed-item" class="item">
+          <span class="collapsed-item-button"><img class="item-icon" src="./images/triangular_bullet_u2023_icon_256x256.png"></span>
+          <div class="subitems">
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+            <div class="collapsed-subitem">Subitem</div>
+          </div>
+        </div>
+
+      </div>
+      <div class="main">
+        <div class="print-msg">
+          <p>This message is only visible when printing!</p>
+        </div>
+        <h1>Sample heading</h1>
+        <div id="content">
+          <div id="content-container">
+          </div>
+          <label id="add-content-btn" class="btn">+</label>
+          <label id="remove-content-btn" class="btn">-</label>
+          <input type="checkbox" id="error-alert-toggle">
+          <label id="show-error-btn" class="btn" for="error-alert-toggle">-</span>
+          </label>
+          <div id="error-alert" class="alert error-message">
+            <label class="close-alert" id="close-error-alert" for="error-alert-toggle">X</label>
+            <p>No more items to remove!</p>
+          </div>
+        </div>
+      </div>
+      <div class="footer">
+        <label class="btn" id="open-alert-label" for="alert-toggle">Open alert</label>
+      </div>
+      <input type="checkbox" class="toggle" id="alert-toggle">
+      <div class="alert">
+        <label class="close-alert" id="close-alert" for="alert-toggle">X</label>
+        <p>Alert</p>
+      </div>
+    </div>
+    <script src="./js/index.js"></script>
+  </body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Segments</title>
+    <link rel="stylesheet" href="./segments.css">
+  </head>
+  <body>
+    <h1>Segments</h1>
+    <p>n - the length of the line</p>
+    <p>a - the distance between the points George puts</p>
+    <p>b - the distance between the points Gergana puts</p>
+    <p>c - the distance that has to be between two points so that George and Gergana can paint it red</p>
+    <p>Result - the amount of segments which are not colored</p>
+    <p>Dots between segments ('.') represent placed dots, spaces (' ') - represent not placed dots. Symbol for equation ('=') in red represents a red-colored segment. Underscore ('_') represents a not-painted segment.</p>
+    <label>n: <input id="n-input" type="number" min="1" max="100000" step="1" value="1"></label>
+    <label>a: <input id="a-input" type="number" min="1" max="100000" step="1" value="1"></label>
+    <label>b: <input id="b-input" type="number" min="1" max="100000" step="1" value="1"></label>
+    <label>c: <input id="c-input" type="number" min="1" max="100000" step="1" value="1"></label>
+    <button id="submit">Submit</button>
+    <p id="result"></p>
+    <pre id="visualization"></pre>
+    <script type="text/javascript" src="./segments.js"></script>
+  </body>
+</html>

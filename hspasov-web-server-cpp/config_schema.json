@@ -1,0 +1,135 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "$id": "config",
+  "title": "Config file schema",
+  "type": "object",
+  "properties": {
+    "socket_recv_timeout": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "socket_send_timeout": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "read_buffer": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "recv_buffer": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "send_buffer": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "req_meta_limit": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "backlog": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "protocol": {
+      "type": "string"
+    },
+    "host": {
+      "type": "string",
+      "format": "hostname"
+    },
+    "port": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 65535
+    },
+    "web_server_root": {
+      "type": "string"
+    },
+    "document_root": {
+      "type": "string"
+    },
+    "access_log": {
+      "type": "string"
+    },
+    "error_log_level": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 4
+    },
+    "error_log_fields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "pid",
+          "timestamp",
+          "level",
+          "context",
+          "var_name",
+          "var_value",
+          "msg"
+        ]
+      }
+    },
+    "access_log_enabled": {
+      "type": "boolean"
+    },
+    "access_log_fields": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "pid",
+          "timestamp",
+          "remote_addr",
+          "req_line",
+          "user_agent",
+          "status_code",
+          "content_length"
+        ]
+      }
+    },
+    "access_log_write_buffer": {
+      "type": "integer",
+      "minimum": 1
+    },
+    "access_log_field_sep": {
+      "type": "string"
+    },
+    "error_log_field_sep": {
+      "type": "string"
+    },
+    "access_log_empty_field": {
+      "type": "string"
+    },
+    "error_log_empty_field": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "socket_recv_timeout",
+    "socket_send_timeout",
+    "read_buffer",
+    "recv_buffer",
+    "send_buffer",
+    "req_meta_limit",
+    "backlog",
+    "protocol",
+    "host",
+    "port",
+    "web_server_root",
+    "document_root",
+    "access_log",
+    "error_log_level",
+    "error_log_fields",
+    "access_log_enabled",
+    "access_log_fields",
+    "access_log_field_sep",
+    "access_log_write_buffer",
+    "error_log_field_sep",
+    "access_log_empty_field",
+    "error_log_empty_field"
+  ]
+}

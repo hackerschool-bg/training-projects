@@ -1,0 +1,37 @@
+{
+  "socket_operation_timeout": 5,
+  "read_buffer": 4096,
+  "recv_buffer": 1024,
+  "req_meta_limit": 8192,
+  "backlog": 2000,
+  "protocol": "HTTP/1.1",
+  "host": "localhost",
+  "port": 8081,
+  "web_server_root": "/home/hristo/Documents/training-projects/hspasov-web-server-perl/content",
+  "document_root": "/html",
+  "access_log": "/home/hristo/Documents/training-projects/hspasov-web-server-perl/logs/access.log",
+  "error_log_level": 3,
+  "error_log_fields": [
+    "pid",
+    "timestamp",
+    "level",
+    "context",
+    "var_name",
+    "var_value",
+    "msg"
+  ],
+  "access_log_enabled": true,
+  "access_log_fields": [
+    "pid",
+    "timestamp",
+    "remote_addr",
+    "req_line",
+    "user_agent",
+    "status_code",
+    "content_length"
+  ],
+  "access_log_field_sep": "  ",
+  "error_log_field_sep": "  ",
+  "access_log_empty_field": "-",
+  "error_log_empty_field": "-"
+}

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Profile</title>
+  <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+</head>
+<body>
+	<div class="container">
+    {{> heading }}
+    {{> menu }}
+    <table class="table table-bordered">
+      <tr>
+        <th>Airport from</th>
+        <th>Airport to</th>
+        <th>Date from</th>
+        <th>Date to</th>
+        <th>Options</th>
+      </tr>
+      <tr>
+        <td>Sofia</td>
+        <td>John F. Kennedy International</td>
+        <td>2018-07-19</td>
+        <td>2018-07-19</td>
+        <td>
+          <button type="button" class="btn btn-primary">Edit</button>
+        </td>
+      </tr>
+      <tr>
+        <td>Sofia</td>
+        <td>John F. Kennedy International</td>
+        <td>2018-07-19</td>
+        <td>2018-07-19</td>
+        <td>
+          <button type="button" class="btn btn-primary">Edit</button>
+        </th>
+      </tr>
+      <tr>
+        <td><input id="from-input" class="form-control" name="from" type="text" placeholder="Airport from" list="from-airports" required></td>
+        <td><input id="to-input" name="to" class="form-control" type="text" placeholder="Airport to" list="to-airports" required></td>
+        <td><input id="date-from" class="form-control" name="date-from" type="text" placeholder="Date from" required></td>
+        <td><input id="date-to" name="date-to" class="form-control" type="text" placeholder="Date to" required></td>
+        <th>
+          <button type="button" class="btn btn-primary">Save</button>
+          <button type="button" class="btn btn-danger">Remove</button>
+        </th>
+      </tr>
+    </table>
+  </div>
+  <script src="js/jquery/jquery-2.2.4.js"></script>
+  <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+  <script src="js/autocomplete-plugin-ff20.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.5.2/ajv.min.js"></script>
+  <script src="js/json-schemas.js"></script>
+  <script src="js/main-ff20.js"></script>
+  <script type="text/javascript" src="js/profile.js"></script>
+</body>
+</html>

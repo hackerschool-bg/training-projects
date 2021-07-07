@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Subscribe</title>
+    <!-- Bootstrap -->
+    <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+    <link href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" rel="stylesheet">
+  </head>
+  <body>
+    <div class="container">
+      {{> heading }}
+      {{> menu }}
+      <form id="subscribe-form" class="row">
+        <div class="col-md-6 col-md-offset-3">
+          <div class="form-group">
+            <div class="form-group fixed-form-height">
+              <label for="email" text-center">Email</label>
+              <input id="email" class="form-control" name="email" type="email" placeholder="Email" required>
+            </div>
+            <div class="form-group fixed-form-height">
+              <label for="from-input" text-center">Airport from</labeL>
+              <input id="from-input" class="form-control" name="from" type="text" placeholder="From" list="from-airports" required>
+            </div>
+            <div class="form-group fixed-form-height">
+              <label for="to-input" text-center">Airport to</label>
+              <input id="to-input" name="to" class="form-control" type="text" placeholder="To" list="to-airports" required>
+            </div>
+            <div class="form-group fixed-form-height">
+              <label for="date-from" text-center">Date from</label>
+              <input id="date-from" class="form-control" name="date-from" type="text" required>
+            </div>
+            <div class="form-group fixed-form-height">
+              <label for="date-to" text-center">Date to</label>
+              <input id="date-to" name="date-to" class="form-control" type="text" required>
+            </div>
+            <div class="form-group fixed-form-height text-center">
+              <button id="subscribe-button" type="submit" class="btn btn-primary">Subscribe</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    {{> messages }}
+    <script src="https://cdn.jsdelivr.net/npm/lodash@3.10.1/index.min.js"></script>
+    <script src="js/jquery/jquery-2.2.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.min.js"></script>
+    <script src="css/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.5.2/ajv.min.js"></script>
+    <script src="js/autocomplete-plugin-ff20.js"></script>
+    <script src="js/json-schemas.js"></script>
+    <script src="js/js-yaml/js-yaml.min.js"></script>
+    <script src="js/main-ff20.js"></script>
+    <script src="js/subscribe.js"></script>
+  </body>
+</html>

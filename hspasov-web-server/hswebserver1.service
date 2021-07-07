@@ -1,0 +1,7 @@
+[Unit]
+Description=Web server that forks child processes for handling requests
+
+[Service]
+ExecStart=/usr/bin/python3 -u /home/hristo/Documents/training-projects/hspasov-web-server/server.py
+RootDirectory=/home/hristo/Documents/training-projects/hspasov-web-server/content
+

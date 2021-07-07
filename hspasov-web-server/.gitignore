@@ -1,0 +1,10 @@
+tests
+logs
+__pycache__
+accept_lock
+error.log
+config.json
+content/etc
+content/usr
+content/lib
+content/lib64

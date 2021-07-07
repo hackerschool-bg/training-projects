@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+  <title>Freefall</title>
+
+  <!-- Bootstrap -->
+  <link href="css/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/style.css" rel="stylesheet">
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+<body id="bootstrap-overrides">
+  <div class="container">
+    {{> heading }}
+    {{> menu }}
+    <form id="flight-form" class="row">
+      <div class="col-md-6 col-md-offset-3">
+        <div class="form-group">
+          <div class="form-group fixed-form-height">
+            <label for="from-input" text-center">From</label>
+            <input id="from-input" class="form-control" name="from" type="text" placeholder="From" list="from-airports" required>
+          </div>
+          <div class="form-group fixed-form-height">
+            <label for="to-input" text-center">To</label>
+            <input id="to-input" name="to" class="form-control" type="text" placeholder="To" list="to-airports" required>
+          </div>
+          <div class="form-group fixed-form-height">
+            <label for="date-from" text-center">Departure</label>
+            <input id="date-from" class="form-control" name="date-from" type="date">
+          </div>
+          <div class="form-group fixed-form-height">
+            <label for="date-to" text-center">Arrival</label>
+            <input name="date-to" class="form-control" type="date">
+          </div>
+          <div class="form-group fixed-form-height">
+            <label for="price-to" text-center">Max price</label>
+            <input id="price-to" class="form-control" name="price-to" placeholder="max-price" min="0" type="number">
+          </div>
+          <div class="form-group fixed-form-height text-center">
+            <button id="submit-button" type="submit" class="btn btn-primary">Search</button>
+          </div>
+        </div>
+      </div>
+    </form>
+    <form id=class="row"></form>
+    {{> messages }}
+    <div id="routes-container" class="row text-center">
+      <ul class="list-unstyled col-sm-12" id="all-routes-list">
+        <li id="flights-list-item-template" class="collapse">
+          <hr>
+          <div class="row">
+            <strong class="route-price col-md-1"></strong>
+            <div class="col-md-5">
+              <time></time>
+              <span class="middle-dash">-</span>
+              <time></time>
+            </div>
+          </div>
+          <ul class="row">
+            <li id="flight-item-template" class="row collapse text-center centered-row">
+              <div class="col-sm-2">
+                <img class="airline-logo img-responsive center-block"
+                src="https://www.designevo.com/res/templates/thumb_small/glorious-sunrise-aviation.png">
+                <p class="airline-name text-center"></p>
+              </div>
+              <div class="col-sm-2 center-block text-center">
+                <div class="row">
+                  <time class="departure-time"></time>
+                  <span class="middle-dash">-</span>
+                  <time class="arrival-time"></time>
+                  <span class="timezone"></span>
+                </div>
+                <div class="row">
+                  <time class="flight-date"></time>
+                </div>
+              </div>
+              <div class="col-sm-8">
+                <div>
+                  <div class="duration"></div>
+                  <div class="from-to-display"></div>
+                </div>
+              </div>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+    <button id="load-more-button" class="btn-primary col-xs-12 collapse">Load more</button>
+  </div>
+
+<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+  <script src="https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js)"></script>
+  <script src="js/jquery/jquery-2.2.4.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="css/bootstrap/js/bootstrap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/ajv/6.5.2/ajv.min.js"></script>
+  <script src="js/autocomplete-plugin.js"></script>
+  <script src="js/dbdump.js"></script>
+  <script src="js/json-schemas.js"></script>
+  <script src="js/js-yaml/js-yaml.min.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

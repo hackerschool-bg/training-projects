@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Round</title>
+  </head>
+  <body>
+    <h1>Round</h1>
+    <div>
+        <h5>About:</h5>
+        <p>There are n circles: A1, A2...An. There is a path between two circles when they have two intersections. This program finds the shortest path from A1 to An.</p>
+    </div>
+    <div>
+        <h5>Input:</h5>
+        <p>First line needs to contain one number - the amount of circles</p>
+        <p>Next n lines should consist of three numbers - x, y and r:</p>
+        <p>x and y are the coordinates of the center of a circle</p>
+        <p>r is the radius of the circle</p>
+        <p>Then click submit</p>
+        <p>Example:</p>
+        <pre>7
+3 -9 4
+-3 -5 2
+0 0 7
+0 6 3
+4 6 3
+5 7 4
+8 9 1</pre>
+    </div>
+    <div><textarea id="input"></textarea></div>
+    <div>
+      <button id="submit">Submit</button>
+    </div>
+    <div>
+        <p id="result"></p>
+    </div>
+    <div>
+        <canvas id="coordinate-system"></canvas>
+    </div>
+    <script type="text/javascript" src="./round.js"></script>
+  </body>
+</html>

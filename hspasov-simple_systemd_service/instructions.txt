@@ -1,0 +1,5 @@
+Requirements: python3
+1. Open iamworking.service and change ExecStart accordingly
+2. Copy iamworking.service to /etc/systemd/system/
+3. sudo systemctl daemon-reload
+4. sudo systemctl start iamworking

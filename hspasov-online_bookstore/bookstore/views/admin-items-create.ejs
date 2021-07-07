@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Bookstore admin - create item</title>
+  </head>
+  <body>
+    <div id="content">
+      <form action='/admin/items/create' method='POST'>
+        <label>
+          Title:
+          <input
+            name='title'
+            type='text' />
+        </label>
+        <br />
+        <label>
+          Description:
+          <input
+            name='description'
+            type='text' />
+        </label>
+        <br />
+        <label>
+          Price:
+          <input
+            name='price'
+            type='text' />
+        </label>
+        <br />
+        <label>
+          Currency:
+          <input
+            name='currency'
+            type='text' />
+        </label>
+        <br />
+        <label>
+          Category id:
+          <input
+            name='category'
+            type='text' />
+        </label>
+        <br />
+        <label>
+          Thumbnail:
+          <input
+            name='thumbnail'
+            type='text' />
+        </label>
+        <input type='submit' value='Create item' />
+      </form>
+    </div>
+  </body>
+</html>
