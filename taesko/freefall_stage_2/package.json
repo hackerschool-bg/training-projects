@@ -1,0 +1,33 @@
+{
+  "name": "freefall-server",
+  "version": "0.0.0",
+  "description": "FreeFall app backend",
+  "main": "index.js",
+  "scripts": {
+    "server": "eslint . && node ./server.js",
+    "fetch": "eslint . && node ./scripts/fetch-data.js"
+  },
+  "repository": "https://github.com/hspasov/training-projects/tree/master/hspasov-freefall",
+  "author": "Hristo Spasov",
+  "license": "MIT",
+  "dependencies": {
+    "@koa/cors": "2",
+    "ajv": "^6.5.2",
+    "js-yaml": "^3.12.0",
+    "koa": "^2.5.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "koa-send": "^5.0.0",
+    "koa-static": "^5.0.0",
+    "lodash": "^4.17.10",
+    "moment": "^2.22.2",
+    "node-fetch": "^2.1.2",
+    "sqlite": "^2.9.2"
+  },
+  "devDependencies": {
+    "babel-eslint": "^8.2.5",
+    "eslint-config-semistandard-react": "^4.2.0",
+    "eslint-plugin-semistandard-react": "^4.1.0"
+  }
+}

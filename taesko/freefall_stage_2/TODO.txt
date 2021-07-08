@@ -1,0 +1,4 @@
+scripts/fetch-data.js:77:      new Date(sub.date_from).getTime() < new Date(sub.date_to).getTime(),
+scripts/fetch-data.js:109:        dateFrom: new Date(sub.date_from),
+scripts/fetch-data.js:110:        dateTo: new Date(sub.date_to),
+scripts/fetch-data.js:136:    new Date(dateFrom).getTime() < new Date(dateTo).getTime()

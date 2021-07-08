@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <title>Music Box</title>
+
+    <!-- Bootstrap -->
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="style.css" rel="stylesheet">
+</head>
+<body>
+<div class="container">
+    <header class="container">
+        <form id="url-form" class="row">
+            <div class="col-lg-9">
+                <div class="input-group">
+                    <input id="urls-input" type="text" class="form-control" placeholder="Enter channel urls here...">
+                    <span class="input-group-btn">
+                        <button id="subscribe-btn" class="btn btn-primary" type="submit">Subscribe</button>
+                        <button id="unsubscribe-all-btn" class="btn btn-danger" type="button">Unsubscribe from all</button>
+                    </span>
+                </div><!-- /input-group -->
+            </div><!-- /.col-lg-6 -->
+            <div class="col-lg-3">
+                Uploaded in the last:
+                <br>
+                <div class="radio-inline">
+                    <input type="radio" name="uploaded-filters" id="last-week-filter" value="last-week">
+                    <label for="last-week-filter">Week </label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" name="uploaded-filters" id="last-month-filter" value="last-month" checked>
+                    <label for="last-month-filter">Month</label>
+                </div>
+                <div class="radio-inline">
+                    <input type="radio" name="uploaded-filters" id="last-year-filter" value="last-year">
+                    <label for="last-year-filter">Year</label>
+                </div>
+                <div class="">
+                    <label for="sub-select">For subscription: </label>
+                    <select id="sub-select"></select>
+                </div>
+            </div>
+        </form>
+        <div class="row">
+            <p id="loading-bar" class="col-md-6"></p>
+            <p id="status-bar" class="col-md-6"></p>
+        </div>
+        <div class="row" id="url-controls">
+            <ul id="url-list">
+                <li id="url-list-item-template" class="hidden">
+                    template text
+                    <button type="button" class="btn btn-xs btn-warning">✗</button>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <main class="container">
+        <div class="table-responsive row">
+            <table class="table table-stripped table-hover hidden">
+                <thead>
+                    <tr>
+                        <th scope="col" id="channel">Channel</th>
+                        <th scope="col" id="artist">Artist</th>
+                        <th scope="col" id="album">Album</th>
+                        <th scope="col" id="track">Track</th>
+                        <th scope="col" id="published-at">Published at</th>
+                        <th scope="col" id="length">Length</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr id="table-row-template" class="hidden">
+                        <td scope="col"><a target="_blank"><p>Channel Name</p></a></td>
+                        <td scope="col">
+                            <a target="_blank"><p>Artist Last FM page</p></a>
+                        </td>
+                        <td scope="col">
+                            <p></p>
+                            <dialog>
+                                <button type="button" class="btn btn-xs btn-warning">✗</button>
+                                <img src='' alt="image of album">
+                            </dialog>
+                        </td>
+                        <td scope="col"></td>
+                        <td scope="col"></td>
+                        <td scope="col"></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p id="no-content-message">Please enter a url in the above input box.</p>
+    </main>
+</div>
+<script src="main.js" defer></script>
+</body>
+</html>

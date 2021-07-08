@@ -1,0 +1,68 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "request/yamlrpc",
+  "title": "YAMLRPC protocol (fork of JSONRPC)",
+  "description": "Skeleton of the YAMLRPC protocol.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique identifier for a yamlrpc request",
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
+    "yamlrpc": {
+      "description": "Version number of the yamlrpc protocol",
+      "type": "string"
+    },
+    "action": {
+      "description": "Action name.",
+      "type": "string",
+      "enum": [
+        "search",
+        "subscribe",
+        "unsubscribe",
+        "edit_subscription",
+        "list_airports",
+        "list_subscriptions",
+        "credit_history",
+        "deposit_history",
+        "tax_history",
+        "modify_credentials",
+        "get_api_key",
+        "list_users",
+        "admin_add_role",
+        "admin_edit_role",
+        "admin_remove_role",
+        "admin_list_roles",
+        "admin_list_permissions",
+        "admin_add_employee",
+        "admin_edit_employee",
+        "admin_remove_employee",
+        "admin_list_employees",
+        "admin_list_fetches",
+        "admin_list_guest_subscriptions",
+        "admin_list_user_subscriptions",
+        "admin_list_users",
+        "admin_subscribe",
+        "admin_unsubscribe",
+        "admin_remove_user",
+        "admin_edit_user",
+        "admin_edit_subscription",
+        "admin_alter_user_credits",
+        "admin_list_account_transfers",
+        "senderror",
+        "admin_get_api_key"
+      ]
+    },
+    "parameters": {
+      "description": "Action parameters.",
+      "type": "object"
+    }
+  },
+  "required": [
+    "id",
+    "yamlrpc",
+    "action",
+    "parameters"
+  ]
+}

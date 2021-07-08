@@ -1,0 +1,37 @@
+{
+  "extends": ["eslint:recommended", "semistandard-react"],
+  "rules": {
+    "comma-dangle": ["error", "always-multiline"],
+    "jsx-quotes": ["error", "prefer-double"],
+    "max-params": ["error", 3],
+    "max-depth": ["error", 4],
+    "max-nested-callbacks": ["error", 3],
+    "complexity": ["warn", 20],
+    "prefer-arrow-callback": ["error"],
+    "prefer-spread": ["error"],
+    "prefer-rest-params": ["error"],
+    "prefer-template": ["error"],
+    "no-useless-concat": ["error"],
+    "symbol-description": ["error"],
+    "arrow-spacing": ["error"],
+    "no-confusing-arrow": ["error", { "allowParens": true }],
+    "rest-spread-spacing": ["error", "never"],
+    "no-var": ["error"],
+    
+    "prefer-const": ["error", {
+        "destructuring": "any",
+        "ignoreReadBeforeAssign": false
+    }],
+    "max-len": ["error", { 
+      "code": 80, 
+      "ignoreComments": true, 
+      "ignoreUrls": true,
+      "ignoreStrings": true,
+      "ignoreTemplateLiterals": true,
+      "ignoreRegExpLiterals": true
+    }]
+  },
+  "parserOptions": {
+    "ecmaVersion": 2018
+  }
+}

@@ -1,0 +1,247 @@
+.rotating {
+    animation-name: rotate;
+    animation-delay: 1s;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
+
+@keyframes rotate {
+    from {
+        transform: rotate(0);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+html {
+    /*font-size: 40px;*/
+    min-width: 100%;
+    min-height: 100%;
+}
+
+body {
+    margin: 0;
+}
+
+#main-header {
+    width: 100%;
+    height: 2em;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 10000;
+    /*padding: 0 2em;*/
+    /*margin: 0;*/
+    display: flex;
+    justify-content: flex-start;
+    background: #ddd;
+    color: #4a6fff;
+    box-shadow: 0 3px 6px rgba(0,0,0,0.16), 0 3px 6px rgba(0,0,0,0.23);
+}
+
+#main-header #header-logos {
+    width: 30%;
+    float: left;
+}
+
+#header-logos button {
+    height: 100%;
+    vertical-align: top;
+}
+
+#menu-button {
+    width: 3em;
+    background-image: url('menu-button.png');
+    background-size: 100% 100%;
+    color: inherit;
+    border: none;
+    padding: 0;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+
+#header-text {
+    width: 70%;
+    text-align: center;
+}
+
+#header-text * {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
+.fit-img {
+    height: 100%;
+    width: auto;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#main-footer {
+    width: 100%;
+    height: 2em;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 10000;
+    background-color: #ccc;
+    box-shadow: 0 -3px 6px rgba(0,0,0,0.16), 0 -3px 6px rgba(0,0,0,0.23);
+}
+
+#main-footer-text {
+    width: 100%;
+    margin: 0;
+    vertical-align: top;
+    display: flex;
+    justify-content: flex-start;
+}
+
+#main-footer h3 {
+    width: 100%;
+    margin: 0;
+    text-align: center;
+}
+
+#main-footer a {
+    white-space: nowrap;
+    text-align: center;
+}
+
+#sidebar {
+    width: 10em;
+    height: 100%;
+    position: fixed;
+    top: 2em;
+    left: 0;
+    z-index: 9999;
+    margin: 0;
+    background: #b5b8b3;
+    box-shadow: 3px 0 6px rgba(0,0,0,0.16), 3px 0 6px rgba(0,0,0,0.23); /* what does this do ? */
+}
+
+#sidebar.hide-sidebar {
+    display: none;
+}
+
+.hide-link {
+    display: none;
+}
+
+.show-link {
+    display: inline-block;
+}
+
+#sidebar-menu {
+    list-style: none;
+    padding: 0 1em 0 1em;
+}
+
+#sidebar-menu img {
+    width: 1em;
+    height: 1em;
+}
+
+.submenu ul {
+    display:none;
+    list-style: none;
+    padding: 0 1em;
+}
+
+.submenu:target ul {
+    display: block;
+}
+
+.submenu:target .hide-link {
+    display: inline-block;
+}
+
+.submenu:target .show-link {
+    display: none;
+}
+
+#main-content {
+    height: 90%; /* TODO use a media query */
+    margin: 3em 1em 5em 11em; /* margin right not working when width is set to 100% */
+}
+
+#main-content.fill-sidebar {
+    margin-left: 1em;
+}
+
+.gallery-controls {
+    margin-bottom: 0.5em;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.gallery-controls button {
+    display: block;
+    width: 3em;
+    height: 3em;
+    padding: 0;
+    margin: 0.3em;
+    color: inherit;
+    background: none;
+    border: none;
+    font: inherit;
+    cursor: pointer;
+    outline: inherit;
+}
+#add-button {
+    background-image: url("plus.png");
+    background-size: 100% 100%;
+}
+
+#remove-button {
+    background-image: url("minus.png");
+    background-size: 100% 100%;
+}
+
+#gallery {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    position: relative;
+}
+
+#gallery li {
+    width: 18%;
+    height: auto;
+    padding: 0.4%;
+}
+
+#gallery li img {
+    max-width: 100%;
+    max-height: 100%;
+}
+
+#gallery li:hover img {
+    position: sticky;
+    z-index: 5;
+    max-width: 150%;
+    max-height: 150%;
+}
+
+#all-the-css {
+    display: none;
+    width: 8em;
+    height: auto;
+    position: absolute;
+    top: -4em;
+    right: 5%;
+    border: 1px solid turquoise;
+}
+
+#all-the-css img {
+    max-width: 100%;
+    max-height: 100%;
+}
+#all-the-css:target {
+    display: block;
+}

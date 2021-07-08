@@ -1,0 +1,12 @@
+[Unit]
+Description=Excel export service for freefall
+After=network.target
+
+[Service]
+ExecStart=/home/taesko/.local/share/virtualenvs/parachute/bin/flask run
+Restart=always
+RestartSec=5
+EnvironmentFile=/opt/parachute/cfg/parachute.env
+
+[Install]
+WantedBy=multi-user.target

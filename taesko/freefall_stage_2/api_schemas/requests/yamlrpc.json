@@ -1,0 +1,38 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "request/yamlrpc",
+  "title": "YAMLRPC protocol (fork of JSONRPC)",
+  "description": "Skeleton of the YAMLRPC protocol.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique identifier for a yamlrpc request",
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
+    "yamlrpc": {
+      "description": "Version number of the yamlrpc protocol",
+      "type": "string"
+    },
+    "action": {
+      "description": "Action name.",
+      "type": "string",
+      "enum": [
+        "search",
+        "subscribe",
+        "unsubscribe",
+        "senderror"
+      ]
+    },
+    "parameters": {
+      "description": "Action parameters.",
+      "type": "object"
+    }
+  },
+  "required": [
+    "id",
+    "yamlrpc",
+    "action",
+    "parameters"
+  ]
+}

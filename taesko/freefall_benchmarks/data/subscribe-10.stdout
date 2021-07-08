@@ -1,0 +1,62 @@
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        nginx/1.10.3
+Server Hostname:        localhost
+Server Port:            80
+
+Document Path:          /
+Document Length:        182 bytes
+
+Concurrency Level:      10
+Time taken for tests:   247.908 seconds
+Complete requests:      30000
+Failed requests:        26657
+   (Connect: 0, Receive: 0, Length: 26657, Exceptions: 0)
+Non-2xx responses:      3343
+Total transferred:      8237411 bytes
+Total body sent:        11910000
+HTML transferred:       2714329 bytes
+Requests per second:    121.01 [#/sec] (mean)
+Time per request:       82.636 [ms] (mean)
+Time per request:       8.264 [ms] (mean, across all concurrent requests)
+Transfer rate:          32.45 [Kbytes/sec] received
+                        46.92 kb/s sent
+                        79.36 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       2
+Processing:     0   83 2727.1     32  149448
+Waiting:        0   82 2727.1     32  149448
+Total:          0   83 2727.1     32  149449
+
+Percentage of the requests served within a certain time (ms)
+  50%     32
+  66%     35
+  75%     38
+  80%     41
+  90%     52
+  95%     64
+  98%     82
+  99%     96
+ 100%  149449 (longest request)
+
+Profiling statistics
+
+2018-09-12T15:16:11.433Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 136.423167 ms\tAverage: 26.081098391339314 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:16:11.451Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 39.384257 ms\tAverage: 2.5133717931910944 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:16:11.724Z 'INFO' 'START eventloop-latency REPORT' 'Max: 26597 ns\tAverage: 1163.96875 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:17:11.432Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 136.423167 ms\tAverage: 25.710849883746334 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:17:11.449Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 39.384257 ms\tAverage: 2.4764634174897946 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:17:11.725Z 'INFO' 'START eventloop-latency REPORT' 'Max: 8702 ns\tAverage: 179.3440576652602 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:18:11.434Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 136.423167 ms\tAverage: 25.710849883746334 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:18:11.448Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 39.384257 ms\tAverage: 2.4764634174897946 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:18:11.725Z 'INFO' 'START eventloop-latency REPORT' 'Max: 17121 ns\tAverage: 142.77029096477796 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:19:11.431Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 159.876524 ms\tAverage: 26.92741171243481 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:19:11.443Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 80.14443 ms\tAverage: 2.5966643964402545 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:19:11.726Z 'INFO' 'START eventloop-latency REPORT' 'Max: 33533 ns\tAverage: 568.697365775186 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'

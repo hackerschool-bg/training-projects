@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ username }}'s uploads</title>
+</head>
+<body>
+<main>
+    <h3>{{ username }}'s page</h3>
+    <ol>
+    {{#files}}
+        <li><a href="/names/{{ username }}/{{ name }}">{{ name }}</a></li>
+    {{/files}}
+    </ol>
+</main>
+</body>
+</html>

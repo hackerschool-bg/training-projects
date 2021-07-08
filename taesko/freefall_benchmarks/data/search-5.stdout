@@ -1,0 +1,51 @@
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        nginx/1.10.3
+Server Hostname:        localhost
+Server Port:            80
+
+Document Path:          /
+Document Length:        85 bytes
+
+Concurrency Level:      5
+Time taken for tests:   101.895 seconds
+Complete requests:      30000
+Failed requests:        0
+Total transferred:      8160000 bytes
+Total body sent:        7650000
+HTML transferred:       2550000 bytes
+Requests per second:    294.42 [#/sec] (mean)
+Time per request:       16.982 [ms] (mean)
+Time per request:       3.396 [ms] (mean, across all concurrent requests)
+Transfer rate:          78.21 [Kbytes/sec] received
+                        73.32 kb/s sent
+                        151.52 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.0      0       2
+Processing:     4   17   8.5     14     109
+Waiting:        4   17   8.5     14     109
+Total:          4   17   8.5     14     109
+
+Percentage of the requests served within a certain time (ms)
+  50%     14
+  66%     17
+  75%     19
+  80%     21
+  90%     26
+  95%     34
+  98%     44
+  99%     52
+ 100%    109 (longest request)
+
+Profiling statistics
+
+2018-09-12T15:09:50.032Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 73.911774 ms\tAverage: 11.366996139507835 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:09:50.051Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 37.799797 ms\tAverage: 1.796524235798237 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:09:50.254Z 'INFO' 'START eventloop-latency REPORT' 'Max: 28474 ns\tAverage: 1033.5970887118924 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'

@@ -1,0 +1,15 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "responses/subscribe.json",
+  "title": "API response of subscribe method",
+  "type": "object",
+  "properties": {
+    "status_code": {
+      "type": "string",
+      "enum": [
+        "1000",
+        "2000"
+      ]
+    }
+  }
+}

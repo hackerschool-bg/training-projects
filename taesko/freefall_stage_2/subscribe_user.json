@@ -1,0 +1,12 @@
+{
+  "jsonrpc": "2.0",
+  "method": "subscribe_user",
+  "params": {
+    "fly_from": "1",
+    "fly_to": "2",
+    "email": "taeskosnsd@gmail.com",
+    "date_from": "2018-07-16T07:16:16.956Z",
+    "date_to": "2018-09-16T07:16:16.956Z"
+  },
+  "id": 1
+}

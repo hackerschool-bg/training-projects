@@ -1,0 +1,5 @@
+Enter the command:
+$ crontab -e
+
+Put at the bottom of the file:
+*/15 * * * * [path to node]/node [path to fetch-data.js]/fetch-data.js

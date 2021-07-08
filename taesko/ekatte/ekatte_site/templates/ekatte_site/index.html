@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ekatte</title>
+    {% load static %}
+    <link href="{% static 'ekatte_site/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <p>
+            Statistics for this database:
+            {{ db_object_total }} objects
+            {{ db_municipality_total }} municipalities
+            {{ db_province_total }} provinces
+            {{ db_ekatte_total }} places
+        </p>
+    </header>
+    <!-- Search form -->
+    <form class="md-form" action="/" method="GET">
+        <input class="form-control" type="text" placeholder="Search" aria-label="Search" id="search" name="search">
+    </form>
+    <main>
+        <table id="main-content-table" class="table">
+            <thead>
+                <tr>
+                    {% for column_header in table_data_headers %}
+                        <th scope="col">
+                            {{ column_header }}
+                        </th>
+                    {% endfor %}
+                </tr>
+            </thead>
+            <tbody>
+                {% for row in table_data %}
+                    <tr>
+                        {% for value in row %}
+                            <td>
+                                {{ value }}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </main>
+</body>
+</html>

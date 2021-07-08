@@ -1,0 +1,34 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "response/yamlrpc",
+  "title": "YAMLRPC response",
+  "description": "Skeleton of the post body for YAMLRPC.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique identifier for a yamlrpc request",
+      "type": "integer",
+      "exclusiveMinimum": 0
+    },
+    "yamlrpc": {
+      "description": "Version number of the yamlrpc protocol",
+      "type": "string"
+    },
+    "result": {
+      "description": "Response body",
+      "type": "object"
+    },
+    "error": {
+      "description": "Response body of errors.",
+      "type": "object"
+    }
+  },
+  "oneOf": [
+    {
+      "required": ["result"]
+    },
+    {
+      "required": ["error"]
+    }
+  ]
+}

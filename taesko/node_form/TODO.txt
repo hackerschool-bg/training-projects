@@ -1,0 +1,10 @@
+Design goal:
+    Multi page app that serves static content and allows uploading downloading of files.
+
+Page structure:
+    /
+    /:name - display content for the user with this name
+    /:name/files - display all files uploaded by this user
+    /:name/files/:file - specific files uploaded by the user.
+
+Use a REST-ful API through GET and POST ?

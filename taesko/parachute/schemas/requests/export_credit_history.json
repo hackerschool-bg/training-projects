@@ -1,0 +1,193 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "request/credit_history",
+  "title": "Body of the export_credit_history API method sent from the client.",
+  "type": "object",
+  "properties": {
+    "v": {
+      "type": "string"
+    },
+    "api_key": {
+      "type": "string"
+    },
+    "column_names": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "string"
+        },
+        "reason": {
+          "type": "string"
+        },
+        "subscription_plan_id": {
+          "type": "string"
+        },
+        "transfer_amount": {
+          "type": "string"
+        },
+        "transferred_at": {
+          "type": "string"
+        },
+        "airport_from_id": {
+          "type": "string"
+        },
+        "airport_to_id": {
+          "type": "string"
+        },
+        "date_from": {
+          "type": "string"
+        },
+        "date_to": {
+          "type": "string"
+        },
+        "user_subscr_id": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "active", "reason", "subscription_plan_id", "transfer_amount",
+        "transferred_at", "airport_from_id", "airport_to_id",
+        "date_from", "date_to", "user_subscr_id"
+      ]
+    },
+    "filter_names": {
+      "type": "object",
+      "properties": {
+        "user_id": {
+          "type": "string"
+        },
+        "fly_from": {
+          "type": "string"
+        },
+        "fly_to": {
+          "type": "string"
+        },
+        "date_from": {
+          "type": "string"
+        },
+        "date_to": {
+          "type": "string"
+        },
+        "transferred_from": {
+          "type": "string"
+        },
+        "transferred_to": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string"
+        },
+        "transfer_amount": {
+          "type": "string"
+        },
+        "transfer_amount_operator": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "user_id", "fly_from", "fly_to", "date_from", "date_to",
+        "transferred_from", "transferred_to", "status",
+        "transfer_amount", "transfer_amount_operator"
+      ]
+    },
+    "fly_from": {
+      "type": "string"
+    },
+    "fly_to": {
+      "type": "string"
+    },
+    "date_from": {
+      "type": "string",
+      "format": "date"
+    },
+    "date_to": {
+      "type": "string",
+      "format": "date"
+    },
+    "transferred_from": {
+      "type": "string",
+      "format": "date"
+    },
+    "transferred_to": {
+      "type": "string",
+      "format": "date"
+    },
+    "status": {
+      "type": "boolean"
+    },
+    "transfer_amount_operator": {
+      "type": "string",
+      "enum": [
+        "=",
+        ">",
+        "<"
+      ]
+    },
+    "transfer_amount": {
+      "type": "integer"
+    },
+    "limit": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 10
+    },
+    "offset": {
+      "type": "integer",
+      "minimum": 0,
+      "maximum": 1000000
+    },
+    "group_by": {
+      "type": "object",
+      "properties": {
+        "active": {
+          "type": "string",
+          "const": "default"
+        },
+        "reason": {
+          "type": "string",
+          "const": "default"
+        },
+        "transferred_at": {
+          "type": "string",
+          "enum": [
+            "year",
+            "month",
+            "day",
+            "default"
+          ]
+        }
+      }
+    },
+    "sort": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "properties": {
+          "column": {
+            "type": "string",
+            "enum": [
+              "transferred_at",
+              "active",
+              "reason",
+              "transfer_amount",
+              "airport_from_id",
+              "airport_to_id",
+              "date_from",
+              "date_to",
+              "id"
+            ]
+          },
+          "order": {
+            "type": "string",
+            "enum": ["ASC", "DESC"]
+          }
+        }
+      }
+    }
+  },
+  "required": [
+    "v",
+    "api_key"
+  ]
+}

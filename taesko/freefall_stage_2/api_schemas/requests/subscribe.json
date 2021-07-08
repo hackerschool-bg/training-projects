@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "request/subscribe",
+  "title": "Subscribe request API method",
+  "description": "Body of the subscribe API method sent from the client.",
+  "type": "object",
+  "properties": {
+    "v": {
+      "type": "string"
+    },
+    "fly_from": {
+      "type": "string"
+    },
+    "fly_to": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    },
+    "date_from": {
+      "type": "string"
+    },
+    "date_to": {
+      "type": "string"
+    }
+  },
+  "required": ["v", "fly_from", "fly_to", "email", "date_from", "date_to"]
+}

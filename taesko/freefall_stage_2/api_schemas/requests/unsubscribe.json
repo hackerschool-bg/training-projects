@@ -1,0 +1,19 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "request/unsubscribe",
+  "title": "Unsubscribe request API method",
+  "description": "Body of the unsubscribe API method sent from the client.",
+  "type": "object",
+  "properties": {
+    "v": {
+      "type": "string"
+    },
+    "email": {
+      "type": "string"
+    }
+  },
+  "required": [
+    "v",
+    "email"
+  ]
+}

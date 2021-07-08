@@ -1,0 +1,116 @@
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        nginx/1.10.3
+Server Hostname:        localhost
+Server Port:            80
+
+Document Path:          /
+Document Length:        182 bytes
+
+Concurrency Level:      5
+Time taken for tests:   1336.608 seconds
+Complete requests:      30000
+Failed requests:        29825
+   (Connect: 0, Receive: 0, Length: 29825, Exceptions: 0)
+Non-2xx responses:      175
+Total transferred:      17146661300 bytes
+Total body sent:        6810000
+HTML transferred:       17140936550 bytes
+Requests per second:    22.44 [#/sec] (mean)
+Time per request:       222.768 [ms] (mean)
+Time per request:       44.554 [ms] (mean, across all concurrent requests)
+Transfer rate:          12527.82 [Kbytes/sec] received
+                        4.98 kb/s sent
+                        12532.79 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.2      0      12
+Processing:     5  223 1084.1    201   84067
+Waiting:        2  222 1084.1    201   84065
+Total:          5  223 1084.1    201   84067
+
+Percentage of the requests served within a certain time (ms)
+  50%    201
+  66%    223
+  75%    236
+  80%    246
+  90%    278
+  95%    310
+  98%    350
+  99%    384
+ 100%  84067 (longest request)
+
+Profiling statistics
+
+2018-09-12T15:30:01.763Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 410.679718 ms\tAverage: 132.12730096121297 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:30:01.764Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 251.339981 ms\tAverage: 39.048763868309855 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:30:02.100Z 'INFO' 'START eventloop-latency REPORT' 'Max: 229911 ns\tAverage: 34319.074019245 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:31:01.770Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 410.679718 ms\tAverage: 131.85408111038063 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:31:01.771Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 251.339981 ms\tAverage: 38.94998192885148 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:31:02.154Z 'INFO' 'START eventloop-latency REPORT' 'Max: 182716 ns\tAverage: 32846.86862885858 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:32:01.777Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1185.053273 ms\tAverage: 129.94764278883827 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:32:01.777Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1058.463021 ms\tAverage: 38.392985563491465 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:32:02.176Z 'INFO' 'START eventloop-latency REPORT' 'Max: 1021097 ns\tAverage: 31200.500345065564 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:33:01.806Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1185.053273 ms\tAverage: 131.29742883390765 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:33:01.806Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1058.463021 ms\tAverage: 38.78776604174562 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:33:02.177Z 'INFO' 'START eventloop-latency REPORT' 'Max: 203181 ns\tAverage: 33938.649006622516 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:34:01.865Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1185.053273 ms\tAverage: 131.85587998430185 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:34:01.865Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1058.463021 ms\tAverage: 38.97380571716987 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:34:02.179Z 'INFO' 'START eventloop-latency REPORT' 'Max: 223984 ns\tAverage: 33004.506137184115 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:35:01.883Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1185.053273 ms\tAverage: 130.5417620667723 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:35:01.883Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1058.463021 ms\tAverage: 38.5939026465618 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:35:02.223Z 'INFO' 'START eventloop-latency REPORT' 'Max: 147906 ns\tAverage: 29709.2982689747 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:36:01.933Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1185.053273 ms\tAverage: 130.70656351822487 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:36:01.933Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1058.463021 ms\tAverage: 38.66235203921506 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:36:02.245Z 'INFO' 'START eventloop-latency REPORT' 'Max: 265429 ns\tAverage: 31860.2350877193 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:37:01.950Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1185.053273 ms\tAverage: 130.1425905717419 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:37:01.950Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1058.463021 ms\tAverage: 38.493095691648165 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:37:02.286Z 'INFO' 'START eventloop-latency REPORT' 'Max: 275437 ns\tAverage: 30712.691888207224 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:38:02.079Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1185.053273 ms\tAverage: 131.46225168712076 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:38:02.079Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1058.463021 ms\tAverage: 38.87513169271018 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:38:02.302Z 'INFO' 'START eventloop-latency REPORT' 'Max: 934874 ns\tAverage: 36940.602987421385 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:39:02.081Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1185.053273 ms\tAverage: 131.65120714168714 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:39:02.081Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1058.463021 ms\tAverage: 38.9277919582774 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:39:02.308Z 'INFO' 'START eventloop-latency REPORT' 'Max: 230945 ns\tAverage: 33084.84164859002 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:40:02.256Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1185.053273 ms\tAverage: 131.43709368314984 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:40:02.256Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1058.463021 ms\tAverage: 38.853098931170315 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:40:02.308Z 'INFO' 'START eventloop-latency REPORT' 'Max: 839887 ns\tAverage: 33449.50690909091 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:41:02.259Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 132.38616322598966 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:41:02.259Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.116370783452524 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:41:02.341Z 'INFO' 'START eventloop-latency REPORT' 'Max: 1080469 ns\tAverage: 36800.30329153605 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:42:02.259Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 132.67828756612056 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:42:02.260Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.19767326539244 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:42:02.339Z 'INFO' 'START eventloop-latency REPORT' 'Max: 353053 ns\tAverage: 24017.643874643876 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:43:02.259Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 132.67828756612056 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:43:02.261Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.19767326539244 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:43:02.342Z 'INFO' 'START eventloop-latency REPORT' 'Max: 4943 ns\tAverage: 114.82974393759538 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:44:02.410Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 133.13933341064427 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:44:02.411Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.33218681449984 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:44:02.419Z 'INFO' 'START eventloop-latency REPORT' 'Max: 964261 ns\tAverage: 12452.424492862508 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:45:02.447Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 133.5733896288743 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:45:02.448Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.45727219794027 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:45:02.449Z 'INFO' 'START eventloop-latency REPORT' 'Max: 929143 ns\tAverage: 34916.673438675694 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:46:02.496Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 133.64325754908154 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:46:02.497Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.48208822819319 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:46:02.500Z 'INFO' 'START eventloop-latency REPORT' 'Max: 423324 ns\tAverage: 33306.15579710145 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:47:02.572Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 133.5479100676651 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:47:02.573Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.47029479162669 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:47:02.573Z 'INFO' 'START eventloop-latency REPORT' 'Max: 197567 ns\tAverage: 32083.72605633803 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:48:02.579Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 133.81902855295883 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:48:02.579Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.53872490759918 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:48:02.581Z 'INFO' 'START eventloop-latency REPORT' 'Max: 288009 ns\tAverage: 36144.90810810811 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:49:02.633Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 133.91078750744816 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:49:02.633Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.56430521928096 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:49:02.634Z 'INFO' 'START eventloop-latency REPORT' 'Max: 211693 ns\tAverage: 34774.47080838323 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:50:02.663Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 133.80160105997024 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:50:02.663Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.53280357027586 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:50:02.665Z 'INFO' 'START eventloop-latency REPORT' 'Max: 179926 ns\tAverage: 31354.637119113573 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'
+2018-09-12T15:51:02.755Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 1284.34979 ms\tAverage: 134.49508240362118 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:51:02.755Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 1181.901854 ms\tAverage: 39.7331661871998 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:51:02.756Z 'INFO' 'START eventloop-latency REPORT' 'Max: 238637 ns\tAverage: 38637.4971567831 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'

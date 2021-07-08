@@ -1,0 +1,53 @@
+This is ApacheBench, Version 2.3 <$Revision: 1706008 $>
+Copyright 1996 Adam Twiss, Zeus Technology Ltd, http://www.zeustech.net/
+Licensed to The Apache Software Foundation, http://www.apache.org/
+
+Benchmarking localhost (be patient)
+
+
+Server Software:        nginx/1.10.3
+Server Hostname:        localhost
+Server Port:            80
+
+Document Path:          /
+Document Length:        182 bytes
+
+Concurrency Level:      5
+Time taken for tests:   64.031 seconds
+Complete requests:      30000
+Failed requests:        26334
+   (Connect: 0, Receive: 0, Length: 26334, Exceptions: 0)
+Non-2xx responses:      3666
+Total transferred:      7656600 bytes
+Total body sent:        12630000
+HTML transferred:       2141916 bytes
+Requests per second:    468.52 [#/sec] (mean)
+Time per request:       10.672 [ms] (mean)
+Time per request:       2.134 [ms] (mean, across all concurrent requests)
+Transfer rate:          116.77 [Kbytes/sec] received
+                        192.62 kb/s sent
+                        309.40 kb/s total
+
+Connection Times (ms)
+              min  mean[+/-sd] median   max
+Connect:        0    0   0.1      0       4
+Processing:     0   11   8.2      8      91
+Waiting:        0   11   8.2      8      91
+Total:          0   11   8.2      8      91
+
+Percentage of the requests served within a certain time (ms)
+  50%      8
+  66%     10
+  75%     12
+  80%     15
+  90%     23
+  95%     28
+  98%     34
+  99%     39
+ 100%     91 (longest request)
+
+Profiling statistics
+
+2018-09-12T15:26:26.767Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'client\'' 'Max: 53.967946 ms\tAverage: 4.210164797159822 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:26:26.775Z 'INFO' 'START profileAsync REPORT' 'Profiled function is \'_executeQuery\'' 'Max: 21.535832 ms\tAverage: 1.250516596899654 ms\tInterval: 60000 ms' 'END profileAsync REPORT'
+2018-09-12T15:26:27.036Z 'INFO' 'START eventloop-latency REPORT' 'Max: 24181 ns\tAverage: 763.1733259851198 ns\tInterval: 60000 ms' 'END eventloop-latency REPORT'

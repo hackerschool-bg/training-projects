@@ -1,0 +1,30 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "request/jsonrpc",
+  "title": "JSONRPC request protocol",
+  "description": "Skeleton of the JSONRPC protocol.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "description": "Unique identifier for a jsonrpc request",
+      "type": "integer",
+      "minimum": 0
+    },
+    "jsonrpc": {
+      "description": "Version number of the jsonrpc protocol",
+      "type": "string"
+    },
+    "method": {
+      "description": "Method name.",
+      "type": "string",
+      "enum": [
+        "export_credit_history"
+      ]
+    },
+    "params": {
+      "description": "Method parameters.",
+      "type": "object"
+    }
+  },
+  "required": ["id", "jsonrpc", "method", "params"]
+}
